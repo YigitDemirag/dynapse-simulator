@@ -21,7 +21,7 @@ def dynapse_eq():
                     # below Io, since negative currents are not possible on chips
                     Itau_clip = Itau*(Imem>Io) + Io*(Imem<=Io)  : amp
                     Ith_clip = Ith*(Imem>Io) + Io*(Imem<=Io)    : amp
-                    Iin_clip = clip(I_syn_nmda+I_syn_ampa-I_syn_gaba_a+Iconst,Io, 1*amp) : amp
+                    Iin_clip = clip(I_syn_nmda_dp + I_syn_ampa-I_syn_gaba_a+Iconst,Io, 1*amp) : amp
                     Iahp_clip = Iahp*(Imem>Io) + Io*(Imem<=Io)  : amp
                     Ia_clip = Ia*(Imem>Io) + 2*Io*(Imem<=Io)    : amp
                     Ithahp_clip = Ithahp*(Iahp>Io) + Io*(Iahp<=Io) : amp
@@ -33,7 +33,9 @@ def dynapse_eq():
                     tauahp = (Cahp * Ut) / (kappa * Itauahp) : second       # Time constant of adaptation
                     tau = (Cmem * Ut) / (kappa * Itau_clip) : second        # Membrane time constant
                     kappa = (kn + kp) / 2 : 1
-
+                    Vmem = Ut/kappa*log(Imem/Io) + Vs : volt                # Membrane voltage
+                    I_syn_nmda_dp = I_syn_nmda*exp(kn*Vmem/Ut)/(exp(kn*Vmem/Ut)+exp(kn*Vnmda/Ut)) : amp     # NMDA current after Differential Pair
+                    
                     # constants
                     kn      : 1     (shared, constant)                 # Subthreshold slope factor for nFETs
                     kp      : 1     (shared, constant)                 # Subthreshold slope factor for pFETs
@@ -55,7 +57,7 @@ def dynapse_eq():
                     Ianorm  : amp   (shared, constant)                 # Positive feedback normailzation current
                     Ishunt  : amp   (constant)                         # Shunting inhibitory synapic current
                     Ica     : amp   (constant)                         # Calcium current
-
+                    Vs      : volt  (constant)                         # Drain voltage of diode connected transistor MA4
                     #Synaptic dynamics #########################################
 
                     #exc #######################################################
@@ -70,7 +72,8 @@ def dynapse_eq():
                     I_g_syn_nmda       : amp (constant)                 # Current flowing through ?? sets the DPI's threshold
                     tau_syn_exc = C_syn_nmda * Ut /(kappa * I_tau_clip_syn_exc) : second    # Synaptic time-constant
                     C_syn_nmda          : farad (constant)               # Synapse's capacitance
-                    
+                    Vnmda   : volt  (constant)                           # NMDA threshold voltage
+
                     
                     #exc2 #######################################################
                     dI_syn_ampa/dt = (-I_syn_ampa - I_g_clip_syn_exc2 +\
