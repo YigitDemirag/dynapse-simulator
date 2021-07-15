@@ -1,0 +1,10 @@
+name: dynapse_sim
+dependencies:
+- python=3.8
+- pip:
+  - numpy
+  - matplotlib
+  - brian2
+  - sympy==1.4
+  - jupyter
+  - jupyterlab
