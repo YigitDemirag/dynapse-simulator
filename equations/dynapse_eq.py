@@ -34,7 +34,7 @@ def dynapse_eq():
                     tau = (Cmem * Ut) / (kappa * Itau_clip) : second        # Membrane time constant
                     kappa = (kn + kp) / 2 : 1
                     Vmem = Ut/kappa*log(Imem/Io) + Vs : volt                # Membrane voltage
-                    I_syn_nmda_dp = I_syn_nmda*exp(kn*Vmem/Ut)/(exp(kn*Vmem/Ut)+exp(kn*Vnmda/Ut)) : amp     # NMDA current after Differential Pair
+                    I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut)) : amp     # NMDA current after Differential Pair
                     
                     # constants
                     kn      : 1     (shared, constant)                 # Subthreshold slope factor for nFETs
