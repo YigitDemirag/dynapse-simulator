@@ -33,7 +33,9 @@ def dynapse_eq():
                     tauahp = (Cahp * Ut) / (kappa * Itauahp) : second       # Time constant of adaptation
                     tau = (Cmem * Ut) / (kappa * Itau_clip) : second        # Membrane time constant
                     kappa = (kn + kp) / 2 : 1
-                    Vmem = Ut/kappa*log(Imem/Io) + Vs : volt                # Membrane voltage
+                    Vmem = Ut/kappa*log(Imem/Io*(Imem>Io)+1*(Imem<=Io)) + Vs : volt                # Membrane voltage
+
+                    
                     I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut)) : amp     # NMDA current after Differential Pair
                     
                     # constants
