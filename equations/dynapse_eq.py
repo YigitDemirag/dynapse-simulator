@@ -33,10 +33,10 @@ def dynapse_eq():
                     tauahp = (Cahp * Ut) / (kappa * Itauahp) : second       # Time constant of adaptation
                     tau = (Cmem * Ut) / (kappa * Itau_clip) : second        # Membrane time constant
                     kappa = (kn + kp) / 2 : 1
-                    Vmem = Ut/kappa*log(Imem/Io*(Imem>Io)+1*(Imem<=Io)) + Vs : volt                # Membrane voltage
+                    Vmem = Ut/kappa*log(Imem/Io*(Imem>Io)+1*(Imem<=Io)) : volt                # Membrane voltage
 
                     
-                    I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut)) : amp     # NMDA current after Differential Pair
+                    I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut))*(Imem>Io) + Io*(Imem<=Io) : amp     # NMDA current after Differential Pair
                     
                     # constants
                     kn      : 1     (shared, constant)                 # Subthreshold slope factor for nFETs
@@ -59,7 +59,6 @@ def dynapse_eq():
                     Ianorm  : amp   (shared, constant)                 # Positive feedback normailzation current
                     Ishunt  : amp   (constant)                         # Shunting inhibitory synapic current
                     Ica     : amp   (constant)                         # Calcium current
-                    Vs      : volt  (constant)                         # Drain voltage of diode connected transistor MA4
                     #Synaptic dynamics #########################################
 
                     #exc #######################################################

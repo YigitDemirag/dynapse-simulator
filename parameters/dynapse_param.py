@@ -25,7 +25,6 @@ dynapse_param = {
     "refP": 15. * ms,                   # Refractory period, limits maximum firing rate
     "Ireset": 0.6 * pA,                 # Reset current after spike generation
     "Iconst": constants.Io,             # Initialize constant current injection to Io
-    "Vs": .5 *1e3 *mV,                  # Drain voltage of diode connected transistor MA4
     ##################
     "Itau": 8. * pA,                    # Membrane time constant current, the time constant is inversely proportional to Itau
     "Ishunt": constants.Io,             # Initialize shunting inhibitory current to Io
@@ -47,7 +46,7 @@ dynapse_param = {
     'I_wo_syn_nmda': 50. * pA,          # Base synaptic weight current which can be scaled by the .weight parameter
     'I_g_syn_nmda': 2.5 * pA,           # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
     'I_syn_nmda': constants.Io,         # Output current initial value
-    'Vnmda': 690 * mV,                  # Voltage NMDA DPI slow
+    'Vnmda': 90 * mV,                  # Voltage NMDA DPI slow
     #FAST_EXC, AMPA
     'C_syn_ampa': 1.5 * pF,             # Synaptic capacitance, fixed at layout time (see chip for details)
     'I_tau_syn_ampa': 50. * pA,         # Synapctic time constant current, the time constant is inversely proportional to I_tau
