@@ -34,9 +34,6 @@ def dynapse_eq():
                     tau = (Cmem * Ut) / (kappa * Itau_clip) : second        # Membrane time constant
                     kappa = (kn + kp) / 2 : 1
                     Vmem = Ut/kappa*log(Imem/Io*(Imem>Io)+1*(Imem<=Io)) : volt                # Membrane voltage
-
-                    
-                    I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut))*(Imem>Io) + Io*(Imem<=Io) : amp     # NMDA current after Differential Pair
                     
                     # constants
                     kn      : 1     (shared, constant)                 # Subthreshold slope factor for nFETs
@@ -68,6 +65,8 @@ def dynapse_eq():
                     I_g_clip_syn_exc = Io*(I_syn_nmda<=Io) + I_g_syn_nmda*(I_syn_nmda>Io) : amp
                     I_tau_clip_syn_exc = Io*(I_syn_nmda<=Io) + I_tau_syn_nmda*(I_syn_nmda>Io) : amp
 
+                    I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut))*(I_syn_nmda>Io) + Io*(I_syn_nmda<=Io) : amp     # NMDA current after Differential Pair
+                    
                     I_wo_syn_nmda : amp (constant)                       # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     I_tau_syn_nmda : amp (constant)                      # Leakage current, i.e. how much current is constantly leaked away (time-cosntant)
                     I_g_syn_nmda       : amp (constant)                 # Current flowing through ?? sets the DPI's threshold
