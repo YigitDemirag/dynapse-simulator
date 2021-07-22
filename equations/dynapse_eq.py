@@ -44,7 +44,7 @@ def dynapse_eq():
                     Ispkthr : amp   (shared, constant)                 # Spiking threshold
                     Ireset  : amp   (shared, constant)                 # Reset current
                     refP    : second (shared, constant)                # Refractory period
-                    Ith     : amp   (shared, constant)                 # DPI threshold (low pass filter)
+                    Ith     : amp   (shared, constant)                 # DPI threshold (low pass filter) (Igmem)
                     Itau    : amp   (shared, constant)                 # Leakage current
                     Iconst  : amp   (constant)                         # Additional input current similar to constant current injection
                     Ithahp  : amp   (shared, constant)                 # Threshold for spike-frequency adaptation
@@ -65,7 +65,8 @@ def dynapse_eq():
                     I_g_clip_syn_exc = Io*(I_syn_nmda<=Io) + I_g_syn_nmda*(I_syn_nmda>Io) : amp
                     I_tau_clip_syn_exc = Io*(I_syn_nmda<=Io) + I_tau_syn_nmda*(I_syn_nmda>Io) : amp
 
-                    I_syn_nmda_dp = I_syn_nmda / (1 + exp(kn*(Vnmda-Vmem)/Ut))*(I_syn_nmda>Io) + Io*(I_syn_nmda<=Io) : amp     # NMDA current after Differential Pair
+                    I_syn_nmda_dp =  I_syn_nmda/(1 + exp(kn*(Vnmda-Vmem)/Ut)) *(I_syn_nmda>=Io) + Io*(I_syn_nmda<Io) : amp     # NMDA current after Differential Pair
+                    I_syn_nmda_dp_clip = I_syn_nmda_dp*(I_syn_nmda_dp>Io) + Io * (I_syn_nmda_dp<=Io) : amp
                     
                     I_wo_syn_nmda : amp (constant)                       # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     I_tau_syn_nmda : amp (constant)                      # Leakage current, i.e. how much current is constantly leaked away (time-cosntant)
