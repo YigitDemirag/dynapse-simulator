@@ -105,7 +105,7 @@ class DynapSE:
             
         return synapse
     
-    def connect(self, Synapse, j='i'):
+    def connect(self, Synapse, j='i', weight=1):
         n11,n12 = Synapse.source.start,Synapse.source.stop
         n21,n22 = Synapse.target.start,Synapse.target.stop
         if isinstance(j, bool):
@@ -115,6 +115,9 @@ class DynapSE:
         if isinstance(j, str):
             if j=='i':
                 Synapse.connect(j=j)
+                
+        # Set default weight to 0
+        Synapse.weight=weight
             
     
     def get_num_free_neurons_chip(self):
