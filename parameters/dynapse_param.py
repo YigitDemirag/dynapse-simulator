@@ -52,16 +52,16 @@ dynapse_param = {
     'I_wo_syn_ampa': 50. * pA,          # Base synaptic weight current which can be scaled by the .weight parameter
     'I_g_syn_ampa': 50. * pA,           # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
     'I_syn_ampa': constants.Io,         # Output current initial value
-    #inh, SLOW_INH, GABA_A
-    'C_syn_gaba_a': 1.5 * pF,           # Synaptic capacitance, fixed at layout time (see chip for details)
-    'I_tau_syn_gaba_a': 10. * pA,       # Synapctic time constant current, the time constant is inversely proportional to I_tau
-    'I_wo_syn_gaba_a': 50. * pA,        # Base synaptic weight current which can be scaled by the .weight parameter
-    'I_g_syn_gaba_a': 10. * pA,         # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
-    'I_syn_gaba_a': constants.Io,       # Output current initial value
-    #FAST_INH, GABA_B
+    #inh, SLOW_INH, GABA_B, subtractive
     'C_syn_gaba_b': 1.5 * pF,           # Synaptic capacitance, fixed at layout time (see chip for details)
     'I_tau_syn_gaba_b': 10. * pA,       # Synapctic time constant current, the time constant is inversely proportional to I_tau
     'I_wo_syn_gaba_b': 50. * pA,        # Base synaptic weight current which can be scaled by the .weight parameter
     'I_g_syn_gaba_b': 10. * pA,         # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
-    'I_syn_gaba_b': constants.Io        # Output current initial value
+    'I_syn_gaba_b': constants.Io,       # Output current initial value
+    #FAST_INH, GABA_A, shunting, a mixture of subtractive and divisive
+    'C_syn_gaba_a': 1.5 * pF,           # Synaptic capacitance, fixed at layout time (see chip for details)
+    'I_tau_syn_gaba_a': 10. * pA,       # Synapctic time constant current, the time constant is inversely proportional to I_tau
+    'I_wo_syn_gaba_a': 50. * pA,        # Base synaptic weight current which can be scaled by the .weight parameter
+    'I_g_syn_gaba_a': 10. * pA,         # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
+    'I_syn_gaba_a': constants.Io        # Output current initial value
 }
