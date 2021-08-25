@@ -25,7 +25,7 @@ def dynapse_eq():
                     Iahp_clip = Iahp*(Imem>Io) + Io*(Imem<=Io)  : amp
                     Ia_clip = Ia*(Imem>Io) + 2*Io*(Imem<=Io)    : amp
                     Ithahp_clip = Ithahp*(Iahp>Io) + Io*(Iahp<=Io) : amp
-                    Ishunt_clip = clip(I_syn_gaba_b, Io, Imem) : amp
+                    Ishunt_clip = clip(I_syn_gaba_a, Io, Imem) : amp
 
                     Iahpmax = (Ica / Itauahp) * Ithahp_clip : amp                # Ratio of currents through diffpair and adaptation block
                     Ia = Iagain / (1 + exp(-(Imem - Iath) / Ianorm)) : amp       # Positive feedback current
@@ -88,32 +88,32 @@ def dynapse_eq():
                     #inh #######################################################
                     # the ihn synapse does not actually decrease Imem, it just
                     # decreases the input current from other synapses
-                    dI_syn_gaba_a/dt = (-I_syn_gaba_a - I_g_clip_syn_inh +\
-                    2*Io*(I_syn_gaba_a<=Io))/(tau_syn_inh *((I_g_clip_syn_inh/I_syn_gaba_a)+1)) : amp
+                    dI_syn_gaba_b/dt = (-I_syn_gaba_b - I_g_clip_syn_inh +\
+                    2*Io*(I_syn_gaba_b<=Io))/(tau_syn_inh *((I_g_clip_syn_inh/I_syn_gaba_b)+1)) : amp
 
-                    I_g_clip_syn_inh = Io*(I_syn_gaba_a<=Io) + I_g_syn_gaba_a*(I_syn_gaba_a>Io) : amp
-                    I_tau_clip_syn_inh  = Io*(I_syn_gaba_a<=Io) + I_tau_syn_gaba_a*(I_syn_gaba_a>Io) : amp
+                    I_g_clip_syn_inh = Io*(I_syn_gaba_b<=Io) + I_g_syn_gaba_b*(I_syn_gaba_b>Io) : amp
+                    I_tau_clip_syn_inh  = Io*(I_syn_gaba_b<=Io) + I_tau_syn_gaba_b*(I_syn_gaba_b>Io) : amp
 
-                    I_wo_syn_gaba_a : amp (constant)                       # Base synaptic weight, to convert unitless weight (set in synapse) to current
-                    I_tau_syn_gaba_a      : amp (constant)                 # Leakage current, i.e. how much current is constantly leaked away (time-cosntant)
-                    I_g_syn_gaba_a       : amp (constant)                 # Current flowing through ?? sets the DPI's threshold
-                    tau_syn_inh  = C_syn_gaba_a * Ut /(kappa * I_tau_clip_syn_inh) : second    # Synaptic time-constant
-                    C_syn_gaba_a          : farad (constant)               # Synapse's capacitance
+                    I_wo_syn_gaba_b : amp (constant)                       # Base synaptic weight, to convert unitless weight (set in synapse) to current
+                    I_tau_syn_gaba_b      : amp (constant)                 # Leakage current, i.e. how much current is constantly leaked away (time-cosntant)
+                    I_g_syn_gaba_b       : amp (constant)                 # Current flowing through ?? sets the DPI's threshold
+                    tau_syn_inh  = C_syn_gaba_b * Ut /(kappa * I_tau_clip_syn_inh) : second    # Synaptic time-constant
+                    C_syn_gaba_b          : farad (constant)               # Synapse's capacitance
 
                     #shunt #####################################################
-                    dI_syn_gaba_b/dt =(-I_syn_gaba_b - I_g_clip_syn_shunt +\
-                    2*Io*(I_syn_gaba_b<=Io))/(tau_syn_shunt*((I_g_clip_syn_shunt/I_syn_gaba_b)+1)) : amp
+                    dI_syn_gaba_a/dt =(-I_syn_gaba_a - I_g_clip_syn_shunt +\
+                    2*Io*(I_syn_gaba_a<=Io))/(tau_syn_shunt*((I_g_clip_syn_shunt/I_syn_gaba_a)+1)) : amp
 
-                    I_g_clip_syn_shunt = Io*(I_syn_gaba_b<=Io) +\
-                    I_g_syn_gaba_b*(I_syn_gaba_b>Io) : amp  # DPI's gain factor
+                    I_g_clip_syn_shunt = Io*(I_syn_gaba_a<=Io) +\
+                    I_g_syn_gaba_a*(I_syn_gaba_a>Io) : amp  # DPI's gain factor
 
-                    I_tau_clip_syn_shunt = Io*(I_syn_gaba_b<=Io) + I_tau_syn_gaba_b*(I_syn_gaba_b>Io) : amp
-                    I_wo_syn_gaba_b : amp (constant)             # Synaptic weight, to convert unitless weight to current
-                    tau_syn_shunt = C_syn_gaba_b * Ut /(kappa * I_tau_clip_syn_shunt) : second     # Synaptic time-constant
+                    I_tau_clip_syn_shunt = Io*(I_syn_gaba_a<=Io) + I_tau_syn_gaba_a*(I_syn_gaba_a>Io) : amp
+                    I_wo_syn_gaba_a : amp (constant)             # Synaptic weight, to convert unitless weight to current
+                    tau_syn_shunt = C_syn_gaba_a * Ut /(kappa * I_tau_clip_syn_shunt) : second     # Synaptic time-constant
 
-                    I_tau_syn_gaba_b       : amp (constant)    # Leakage current, i.e. how much current is constantly leaked away (time-cosntant)
-                    I_g_syn_gaba_b        : amp (constant)    # Current flowing through ?? sets the DPI's threshold
-                    C_syn_gaba_b         : farad (constant)    # Synapse's capacitance
+                    I_tau_syn_gaba_a       : amp (constant)    # Leakage current, i.e. how much current is constantly leaked away (time-cosntant)
+                    I_g_syn_gaba_a        : amp (constant)    # Current flowing through ?? sets the DPI's threshold
+                    C_syn_gaba_a         : farad (constant)    # Synapse's capacitance
                     ''',
            'threshold': '''Imem > Ispkthr''',
            'reset': '''
@@ -149,27 +149,27 @@ def dynapse_ampa_syn_eq(): # FAST_EXC
            'on_post': """ """,
            'method': 'euler'}
 
-def dynapse_gaba_a_syn_eq(): # SLOW_INH
-    """This function returns the inhibitory synapse equation dictionary.
-    """
-    return{'model': """
-                    weight : 1 # Can only be integer on the chip
-                    """,
-           'on_pre': """
-                     I_syn_gaba_a_post += I_wo_syn_gaba_a_post*-weight*I_g_syn_gaba_a_post/(I_tau_syn_gaba_a_post*((I_g_syn_gaba_a_post/I_syn_gaba_a_post)+1))
-                     """,
-           'on_post': """ """,
-           'method': 'euler'}
-
-
-def dynapse_gaba_b_syn_eq(): # FAST_INH
-    """This function returns the shunting synapse equation dictionary.
+def dynapse_gaba_b_syn_eq(): # SLOW_INH
+    """This function returns the subtractive inhibitory synapse equation dictionary.
     """
     return{'model': """
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
                      I_syn_gaba_b_post += I_wo_syn_gaba_b_post*-weight*I_g_syn_gaba_b_post/(I_tau_syn_gaba_b_post*((I_g_syn_gaba_b_post/I_syn_gaba_b_post)+1))
+                     """,
+           'on_post': """ """,
+           'method': 'euler'}
+
+
+def dynapse_gaba_a_syn_eq(): # FAST_INH
+    """This function returns the shunting synapse (a mixture of subtractive and divisive) equation dictionary.
+    """
+    return{'model': """
+                    weight : 1 # Can only be integer on the chip
+                    """,
+           'on_pre': """
+                     I_syn_gaba_a_post += I_wo_syn_gaba_a_post*-weight*I_g_syn_gaba_a_post/(I_tau_syn_gaba_a_post*((I_g_syn_gaba_a_post/I_syn_gaba_a_post)+1))
                      """,            # On pre-synaptic spike adds current to state variable of DPI synapse
            'on_post': """ """,
            'method': 'euler'}
