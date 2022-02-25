@@ -16,4 +16,4 @@ from brian2 import mV, pA
 kappa_n = 0.75  # Subthreshold slope factor (n-type transistor)
 kappa_p = 0.66  # Subthreshold slope factor (p-type transistor)
 Ut = 25. * mV  # Thermal voltage
-Io = 0.5 * pA  # Dark current
+I0 = 0.5 * pA  # Dark current
