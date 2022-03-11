@@ -80,25 +80,25 @@ void _run_AMPA1_pre_codeobject()
 
 
     ///// CONSTANTS ///////////
-    const size_t _numIampa_post = 256;
-const size_t _num_Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup_1__Iampa_g_Core_1_alpha = 1;
-const size_t _numIampa_w0_post = 256;
+    const size_t _num_Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup__Iampa_g_Core_1_Iampa_tau = 256;
+const size_t _numIampa_tau_post = 256;
 int32_t* const _array_AMPA1__synaptic_pre = _dynamic_array_AMPA1__synaptic_pre.empty()? 0 : &_dynamic_array_AMPA1__synaptic_pre[0];
 const size_t _num_synaptic_pre = _dynamic_array_AMPA1__synaptic_pre.size();
-const size_t _num_Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup_1__Iampa_g_Core_1_Iampa_tau = 256;
+const size_t _num_Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup__Iampa_g_Core_1_alpha = 1;
 double* const _array_AMPA1_weight = _dynamic_array_AMPA1_weight.empty()? 0 : &_dynamic_array_AMPA1_weight[0];
 const size_t _numweight = _dynamic_array_AMPA1_weight.size();
-const size_t _numIampa_tau_post = 256;
+const size_t _numIampa_w0_post = 256;
+const size_t _numIampa_post = 256;
 int32_t* const _array_AMPA1__synaptic_post = _dynamic_array_AMPA1__synaptic_post.empty()? 0 : &_dynamic_array_AMPA1__synaptic_post[0];
 const size_t _num_postsynaptic_idx = _dynamic_array_AMPA1__synaptic_post.size();
     ///// POINTERS ////////////
         
-    double* __restrict  _ptr_array_Core_1_Iampa = _array_Core_1_Iampa;
-    double*   _ptr_array_Core_1_alpha = _array_Core_1_alpha;
-    double* __restrict  _ptr_array_Core_1_Iampa_w0 = _array_Core_1_Iampa_w0;
-    int32_t* __restrict  _ptr_array_AMPA1__synaptic_pre = _array_AMPA1__synaptic_pre;
     double* __restrict  _ptr_array_Core_1_Iampa_tau = _array_Core_1_Iampa_tau;
+    int32_t* __restrict  _ptr_array_AMPA1__synaptic_pre = _array_AMPA1__synaptic_pre;
+    double*   _ptr_array_Core_1_alpha = _array_Core_1_alpha;
     double* __restrict  _ptr_array_AMPA1_weight = _array_AMPA1_weight;
+    double* __restrict  _ptr_array_Core_1_Iampa_w0 = _array_Core_1_Iampa_w0;
+    double* __restrict  _ptr_array_Core_1_Iampa = _array_Core_1_Iampa;
     int32_t* __restrict  _ptr_array_AMPA1__synaptic_post = _array_AMPA1__synaptic_post;
 
 
@@ -108,7 +108,7 @@ const size_t _num_postsynaptic_idx = _dynamic_array_AMPA1__synaptic_post.size();
     // scalar code
     const size_t _vectorisation_idx = -1;
         
-    const double _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup_1__Iampa_g_Core_1_alpha = _ptr_array_Core_1_alpha[0];
+    const double _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup__Iampa_g_Core_1_alpha = _ptr_array_Core_1_alpha[0];
 
 
     
@@ -126,12 +126,12 @@ const size_t _num_postsynaptic_idx = _dynamic_array_AMPA1__synaptic_post.size();
             const size_t _vectorisation_idx = _idx;
                         
             const int32_t _postsynaptic_idx = _ptr_array_AMPA1__synaptic_post[_idx];
-            const double _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup_1__Iampa_g_Core_1_Iampa_tau = _ptr_array_Core_1_Iampa_tau[_postsynaptic_idx];
-            const double Iampa_tau_post = _ptr_array_Core_1_Iampa_tau[_postsynaptic_idx];
-            double Iampa_post = _ptr_array_Core_1_Iampa[_postsynaptic_idx];
             const double Iampa_w0_post = _ptr_array_Core_1_Iampa_w0[_postsynaptic_idx];
+            double Iampa_post = _ptr_array_Core_1_Iampa[_postsynaptic_idx];
+            const double _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup__Iampa_g_Core_1_Iampa_tau = _ptr_array_Core_1_Iampa_tau[_postsynaptic_idx];
+            const double Iampa_tau_post = _ptr_array_Core_1_Iampa_tau[_postsynaptic_idx];
             const double weight = _ptr_array_AMPA1_weight[_idx];
-            const double Iampa_g_post = _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup_1__Iampa_g_Core_1_alpha * _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup_1__Iampa_g_Core_1_Iampa_tau;
+            const double Iampa_g_post = _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup__Iampa_g_Core_1_alpha * _Iampa_g_post_AMPA1__Iampa_g_post_Core_1_subgroup__Iampa_g_Core_1_Iampa_tau;
             Iampa_post += 1.0f*((Iampa_w0_post * weight) * Iampa_g_post)/(Iampa_tau_post * (1.0 + (1.0f*Iampa_g_post/Iampa_post)));
             _ptr_array_Core_1_Iampa[_postsynaptic_idx] = Iampa_post;
 

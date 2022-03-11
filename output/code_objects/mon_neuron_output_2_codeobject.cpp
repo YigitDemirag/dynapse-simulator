@@ -78,26 +78,26 @@ void _run_mon_neuron_output_2_codeobject()
 
 
     ///// CONSTANTS ///////////
-    const size_t _num_source_t = 1;
-const size_t _numN = 1;
+    const size_t _num_clock_t = 1;
 int32_t* const _array_mon_neuron_output_2_i = _dynamic_array_mon_neuron_output_2_i.empty()? 0 : &_dynamic_array_mon_neuron_output_2_i[0];
 const size_t _numi = _dynamic_array_mon_neuron_output_2_i.size();
-const size_t _num_source_i = 256;
-const size_t _numcount = 200;
 double* const _array_mon_neuron_output_2_t = _dynamic_array_mon_neuron_output_2_t.empty()? 0 : &_dynamic_array_mon_neuron_output_2_t[0];
 const size_t _numt = _dynamic_array_mon_neuron_output_2_t.size();
+const size_t _numcount = 200;
+const size_t _num_source_t = 1;
 const size_t _num_spikespace = 257;
-const size_t _num_clock_t = 1;
+const size_t _num_source_i = 256;
+const size_t _numN = 1;
 const size_t _num_source_idx = 200;
     ///// POINTERS ////////////
         
     double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
-    int32_t*   _ptr_array_mon_neuron_output_2_N = _array_mon_neuron_output_2_N;
     int32_t* __restrict  _ptr_array_mon_neuron_output_2_i = _array_mon_neuron_output_2_i;
-    int32_t* __restrict  _ptr_array_Core_2_i = _array_Core_2_i;
-    int32_t* __restrict  _ptr_array_mon_neuron_output_2_count = _array_mon_neuron_output_2_count;
     double* __restrict  _ptr_array_mon_neuron_output_2_t = _array_mon_neuron_output_2_t;
+    int32_t* __restrict  _ptr_array_mon_neuron_output_2_count = _array_mon_neuron_output_2_count;
     int32_t* __restrict  _ptr_array_Core_2__spikespace = _array_Core_2__spikespace;
+    int32_t* __restrict  _ptr_array_Core_2_i = _array_Core_2_i;
+    int32_t*   _ptr_array_mon_neuron_output_2_N = _array_mon_neuron_output_2_N;
     int32_t* __restrict  _ptr_array_mon_neuron_output_2__source_idx = _array_mon_neuron_output_2__source_idx;
 
 
@@ -154,25 +154,25 @@ const size_t _num_source_idx = 200;
 void _debugmsg_mon_neuron_output_2_codeobject()
 {
     using namespace brian;
-    const size_t _num_source_t = 1;
-const size_t _numN = 1;
+    const size_t _num_clock_t = 1;
 int32_t* const _array_mon_neuron_output_2_i = _dynamic_array_mon_neuron_output_2_i.empty()? 0 : &_dynamic_array_mon_neuron_output_2_i[0];
 const size_t _numi = _dynamic_array_mon_neuron_output_2_i.size();
-const size_t _num_source_i = 256;
-const size_t _numcount = 200;
 double* const _array_mon_neuron_output_2_t = _dynamic_array_mon_neuron_output_2_t.empty()? 0 : &_dynamic_array_mon_neuron_output_2_t[0];
 const size_t _numt = _dynamic_array_mon_neuron_output_2_t.size();
+const size_t _numcount = 200;
+const size_t _num_source_t = 1;
 const size_t _num_spikespace = 257;
-const size_t _num_clock_t = 1;
+const size_t _num_source_i = 256;
+const size_t _numN = 1;
 const size_t _num_source_idx = 200;
         
     double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
-    int32_t*   _ptr_array_mon_neuron_output_2_N = _array_mon_neuron_output_2_N;
     int32_t* __restrict  _ptr_array_mon_neuron_output_2_i = _array_mon_neuron_output_2_i;
-    int32_t* __restrict  _ptr_array_Core_2_i = _array_Core_2_i;
-    int32_t* __restrict  _ptr_array_mon_neuron_output_2_count = _array_mon_neuron_output_2_count;
     double* __restrict  _ptr_array_mon_neuron_output_2_t = _array_mon_neuron_output_2_t;
+    int32_t* __restrict  _ptr_array_mon_neuron_output_2_count = _array_mon_neuron_output_2_count;
     int32_t* __restrict  _ptr_array_Core_2__spikespace = _array_Core_2__spikespace;
+    int32_t* __restrict  _ptr_array_Core_2_i = _array_Core_2_i;
+    int32_t*   _ptr_array_mon_neuron_output_2_N = _array_mon_neuron_output_2_N;
     int32_t* __restrict  _ptr_array_mon_neuron_output_2__source_idx = _array_mon_neuron_output_2__source_idx;
 
     std::cout << "Number of spikes: " << _ptr_array_mon_neuron_output_2_N[0] << endl;

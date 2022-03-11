@@ -7,30 +7,28 @@
 #include "brianlib/common_math.h"
 #include "randomkit.h"
 
-#include "code_objects/AMPA0_post_codeobject.h"
-#include "code_objects/AMPA0_post_push_spikes.h"
-#include "code_objects/before_run_AMPA0_post_push_spikes.h"
-#include "code_objects/AMPA0_pre_codeobject.h"
-#include "code_objects/AMPA0_pre_push_spikes.h"
-#include "code_objects/before_run_AMPA0_pre_push_spikes.h"
-#include "code_objects/AMPA0_synapses_create_generator_codeobject.h"
-#include "code_objects/Core_0_resetter_1_codeobject.h"
-#include "code_objects/Core_0_stateupdater_1_codeobject.h"
-#include "code_objects/Core_0_thresholder_1_codeobject.h"
-#include "code_objects/Core_1_resetter_1_codeobject.h"
-#include "code_objects/Core_1_stateupdater_1_codeobject.h"
-#include "code_objects/Core_1_thresholder_1_codeobject.h"
-#include "code_objects/Core_2_resetter_1_codeobject.h"
-#include "code_objects/Core_2_stateupdater_1_codeobject.h"
-#include "code_objects/Core_2_thresholder_1_codeobject.h"
-#include "code_objects/Core_3_resetter_1_codeobject.h"
-#include "code_objects/Core_3_stateupdater_1_codeobject.h"
-#include "code_objects/Core_3_thresholder_1_codeobject.h"
-#include "code_objects/InpSpikeGenerator_codeobject.h"
+#include "code_objects/Core_0_resetter_codeobject.h"
+#include "code_objects/Core_0_stateupdater_codeobject.h"
+#include "code_objects/Core_0_thresholder_codeobject.h"
+#include "code_objects/Core_1_resetter_codeobject.h"
+#include "code_objects/Core_1_stateupdater_codeobject.h"
+#include "code_objects/Core_1_thresholder_codeobject.h"
+#include "code_objects/Core_2_resetter_codeobject.h"
+#include "code_objects/Core_2_stateupdater_codeobject.h"
+#include "code_objects/Core_2_thresholder_codeobject.h"
+#include "code_objects/Core_3_resetter_codeobject.h"
+#include "code_objects/Core_3_stateupdater_codeobject.h"
+#include "code_objects/Core_3_thresholder_codeobject.h"
 #include "code_objects/mon_neuron_input_codeobject.h"
 #include "code_objects/mon_neuron_output_codeobject.h"
-#include "code_objects/statemonitor_1_codeobject.h"
-#include "code_objects/statemonitor_2_codeobject.h"
+#include "code_objects/NMDA0_post_codeobject.h"
+#include "code_objects/NMDA0_post_push_spikes.h"
+#include "code_objects/before_run_NMDA0_post_push_spikes.h"
+#include "code_objects/NMDA0_pre_codeobject.h"
+#include "code_objects/NMDA0_pre_push_spikes.h"
+#include "code_objects/before_run_NMDA0_pre_push_spikes.h"
+#include "code_objects/NMDA0_synapses_create_generator_codeobject.h"
+#include "code_objects/poissongroup_thresholder_codeobject.h"
 
 
 #include <iostream>
@@ -55,33 +53,6 @@ int main(int argc, char **argv)
         _array_defaultclock_dt[0] = 0.0001;
         _array_defaultclock_dt[0] = 0.0001;
         _array_defaultclock_dt[0] = 1.9999999999999998e-05;
-        _dynamic_array_InpSpikeGenerator_spike_number.resize(500);
-        
-                        
-                        for(int i=0; i<_dynamic_array_InpSpikeGenerator_spike_number.size(); i++)
-                        {
-                            _dynamic_array_InpSpikeGenerator_spike_number[i] = _static_array__dynamic_array_InpSpikeGenerator_spike_number[i];
-                        }
-                        
-        _dynamic_array_InpSpikeGenerator_neuron_index.resize(500);
-        
-                        
-                        for(int i=0; i<_dynamic_array_InpSpikeGenerator_neuron_index.size(); i++)
-                        {
-                            _dynamic_array_InpSpikeGenerator_neuron_index[i] = _static_array__dynamic_array_InpSpikeGenerator_neuron_index[i];
-                        }
-                        
-        _dynamic_array_InpSpikeGenerator_spike_time.resize(500);
-        
-                        
-                        for(int i=0; i<_dynamic_array_InpSpikeGenerator_spike_time.size(); i++)
-                        {
-                            _dynamic_array_InpSpikeGenerator_spike_time[i] = _static_array__dynamic_array_InpSpikeGenerator_spike_time[i];
-                        }
-                        
-        _dynamic_array_InpSpikeGenerator__timebins.resize(500);
-        _array_InpSpikeGenerator__lastindex[0] = 0;
-        _array_InpSpikeGenerator_period[0] = 0.0;
         
                         
                         for(int i=0; i<_num__array_Core_0_lastspike; i++)
@@ -762,61 +733,39 @@ int main(int argc, char **argv)
                             _array_Core_3_Igaba_a[i] = 5e-13;
                         }
                         
-        _run_AMPA0_synapses_create_generator_codeobject();
+        _run_NMDA0_synapses_create_generator_codeobject();
         
                         
-                        for(int i=0; i<_dynamic_array_AMPA0_weight.size(); i++)
+                        for(int i=0; i<_dynamic_array_NMDA0_weight.size(); i++)
                         {
-                            _dynamic_array_AMPA0_weight[i] = 500;
+                            _dynamic_array_NMDA0_weight[i] = 300;
                         }
                         
-        _array_Core_1_Isoma_ahp_tau[0] = 4e-14;
-        _array_Core_1_Isoma_ahp_th[0] = 5e-14;
-        
-                        
-                        for(int i=0; i<_num__array_Core_1_Iampa_tau; i++)
-                        {
-                            _array_Core_1_Iampa_tau[i] = 1e-11;
-                        }
-                        
-        _array_statemonitor_1__indices[0] = 0;
-        _array_statemonitor_2__indices[0] = 0;
         _array_defaultclock_timestep[0] = 0;
         _array_defaultclock_t[0] = 0.0;
-        _array_InpSpikeGenerator__lastindex[0] = 0;
-        
-                        
-                        for(int i=0; i<_dynamic_array_InpSpikeGenerator__timebins.size(); i++)
-                        {
-                            _dynamic_array_InpSpikeGenerator__timebins[i] = _static_array__dynamic_array_InpSpikeGenerator__timebins[i];
-                        }
-                        
-        _array_InpSpikeGenerator__period_bins[0] = 0.0;
-        _before_run_AMPA0_pre_push_spikes();
-        _before_run_AMPA0_post_push_spikes();
-        network_1.clear();
-        network_1.add(&defaultclock, _run_statemonitor_1_codeobject);
-        network_1.add(&defaultclock, _run_statemonitor_2_codeobject);
-        network_1.add(&defaultclock, _run_Core_0_stateupdater_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_1_stateupdater_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_2_stateupdater_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_3_stateupdater_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_0_thresholder_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_1_thresholder_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_2_thresholder_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_3_thresholder_1_codeobject);
-        network_1.add(&defaultclock, _run_InpSpikeGenerator_codeobject);
-        network_1.add(&defaultclock, _run_mon_neuron_input_codeobject);
-        network_1.add(&defaultclock, _run_mon_neuron_output_codeobject);
-        network_1.add(&defaultclock, _run_AMPA0_pre_push_spikes);
-        network_1.add(&defaultclock, _run_AMPA0_pre_codeobject);
-        network_1.add(&defaultclock, _run_AMPA0_post_push_spikes);
-        network_1.add(&defaultclock, _run_AMPA0_post_codeobject);
-        network_1.add(&defaultclock, _run_Core_0_resetter_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_1_resetter_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_2_resetter_1_codeobject);
-        network_1.add(&defaultclock, _run_Core_3_resetter_1_codeobject);
-        network_1.run(5.0, NULL, 10.0);
+        _before_run_NMDA0_pre_push_spikes();
+        _before_run_NMDA0_post_push_spikes();
+        network.clear();
+        network.add(&defaultclock, _run_Core_0_stateupdater_codeobject);
+        network.add(&defaultclock, _run_Core_1_stateupdater_codeobject);
+        network.add(&defaultclock, _run_Core_2_stateupdater_codeobject);
+        network.add(&defaultclock, _run_Core_3_stateupdater_codeobject);
+        network.add(&defaultclock, _run_Core_0_thresholder_codeobject);
+        network.add(&defaultclock, _run_Core_1_thresholder_codeobject);
+        network.add(&defaultclock, _run_Core_2_thresholder_codeobject);
+        network.add(&defaultclock, _run_Core_3_thresholder_codeobject);
+        network.add(&defaultclock, _run_poissongroup_thresholder_codeobject);
+        network.add(&defaultclock, _run_mon_neuron_input_codeobject);
+        network.add(&defaultclock, _run_mon_neuron_output_codeobject);
+        network.add(&defaultclock, _run_NMDA0_pre_push_spikes);
+        network.add(&defaultclock, _run_NMDA0_pre_codeobject);
+        network.add(&defaultclock, _run_NMDA0_post_push_spikes);
+        network.add(&defaultclock, _run_NMDA0_post_codeobject);
+        network.add(&defaultclock, _run_Core_0_resetter_codeobject);
+        network.add(&defaultclock, _run_Core_1_resetter_codeobject);
+        network.add(&defaultclock, _run_Core_2_resetter_codeobject);
+        network.add(&defaultclock, _run_Core_3_resetter_codeobject);
+        network.run(5.0, NULL, 10.0);
         #ifdef DEBUG
         _debugmsg_mon_neuron_input_codeobject();
         #endif
@@ -826,11 +775,11 @@ int main(int argc, char **argv)
         #endif
         
         #ifdef DEBUG
-        _debugmsg_AMPA0_pre_codeobject();
+        _debugmsg_NMDA0_pre_codeobject();
         #endif
         
         #ifdef DEBUG
-        _debugmsg_AMPA0_post_codeobject();
+        _debugmsg_NMDA0_post_codeobject();
         #endif
 
 	}

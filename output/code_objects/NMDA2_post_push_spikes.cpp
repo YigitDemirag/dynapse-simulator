@@ -80,13 +80,13 @@ void _run_NMDA2_post_push_spikes()
     ///// CONSTANTS ///////////
     double* const _array_NMDA2_delay_1 = _dynamic_array_NMDA2_delay_1.empty()? 0 : &_dynamic_array_NMDA2_delay_1[0];
 const size_t _numdelay = _dynamic_array_NMDA2_delay_1.size();
-const size_t _num_source_dt = 1;
 const size_t _num_spikespace = 257;
+const size_t _num_source_dt = 1;
     ///// POINTERS ////////////
         
     double* __restrict  _ptr_array_NMDA2_delay_1 = _array_NMDA2_delay_1;
-    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
     int32_t* __restrict  _ptr_array_Core_2__spikespace = _array_Core_2__spikespace;
+    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
 
 
     // we do advance at the beginning rather than at the end because it saves us making

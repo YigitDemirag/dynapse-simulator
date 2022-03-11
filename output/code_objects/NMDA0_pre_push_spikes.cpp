@@ -78,15 +78,15 @@ void _run_NMDA0_pre_push_spikes()
 
 
     ///// CONSTANTS ///////////
-    double* const _array_NMDA0_delay = _dynamic_array_NMDA0_delay.empty()? 0 : &_dynamic_array_NMDA0_delay[0];
+    const size_t _num_source_dt = 1;
+double* const _array_NMDA0_delay = _dynamic_array_NMDA0_delay.empty()? 0 : &_dynamic_array_NMDA0_delay[0];
 const size_t _numdelay = _dynamic_array_NMDA0_delay.size();
-const size_t _num_source_dt = 1;
 const size_t _num_spikespace = 201;
     ///// POINTERS ////////////
         
-    double* __restrict  _ptr_array_NMDA0_delay = _array_NMDA0_delay;
     double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
-    int32_t* __restrict  _ptr_array_poissongroup_2__spikespace = _array_poissongroup_2__spikespace;
+    double* __restrict  _ptr_array_NMDA0_delay = _array_NMDA0_delay;
+    int32_t* __restrict  _ptr_array_poissongroup__spikespace = _array_poissongroup__spikespace;
 
 
     // we do advance at the beginning rather than at the end because it saves us making
@@ -94,7 +94,7 @@ const size_t _num_spikespace = 201;
     
     {
         NMDA0_pre.advance();
-        NMDA0_pre.push(_ptr_array_poissongroup_2__spikespace, _ptr_array_poissongroup_2__spikespace[_num_spikespace-1]);
+        NMDA0_pre.push(_ptr_array_poissongroup__spikespace, _ptr_array_poissongroup__spikespace[_num_spikespace-1]);
     }
 
 

@@ -1,0 +1,6 @@
+__pycache__
+output
+.DS_Store
+equations/.ipynb_checkpoints
+parameters/.ipynb_checkpoints
+var

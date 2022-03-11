@@ -12,15 +12,15 @@ void _before_run_NMDA0_post_push_spikes()
 {
     using namespace brian;
     ///// CONSTANTS ///////////
-    double* const _array_NMDA0_delay_1 = _dynamic_array_NMDA0_delay_1.empty()? 0 : &_dynamic_array_NMDA0_delay_1[0];
+    const size_t _num_source_dt = 1;
+double* const _array_NMDA0_delay_1 = _dynamic_array_NMDA0_delay_1.empty()? 0 : &_dynamic_array_NMDA0_delay_1[0];
 const size_t _numdelay = _dynamic_array_NMDA0_delay_1.size();
-const size_t _num_source_dt = 1;
 const size_t _num_spikespace = 257;
     ///// POINTERS ////////////
         
-    double* __restrict  _ptr_array_NMDA0_delay_1 = _array_NMDA0_delay_1;
     double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
-    int32_t* __restrict  _ptr_array_Core_0__spikespace = _array_Core_0__spikespace;
+    double* __restrict  _ptr_array_NMDA0_delay_1 = _array_NMDA0_delay_1;
+    int32_t* __restrict  _ptr_array_Core_1__spikespace = _array_Core_1__spikespace;
 
     std::vector<double> &real_delays = _dynamic_array_NMDA0_delay_1;
     double* real_delays_data = real_delays.empty() ? 0 : &(real_delays[0]);

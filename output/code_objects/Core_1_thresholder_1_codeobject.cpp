@@ -79,19 +79,19 @@ void _run_Core_1_thresholder_1_codeobject()
 
     ///// CONSTANTS ///////////
     const size_t _numIsoma_mem = 256;
-const size_t _numlastspike = 256;
-const size_t _num_spikespace = 257;
-const size_t _numnot_refractory = 256;
 const size_t _numIsoma_th = 1;
 const size_t _numt = 1;
+const size_t _numnot_refractory = 256;
+const size_t _num_spikespace = 257;
+const size_t _numlastspike = 256;
     ///// POINTERS ////////////
         
     double* __restrict  _ptr_array_Core_1_Isoma_mem = _array_Core_1_Isoma_mem;
-    double* __restrict  _ptr_array_Core_1_lastspike = _array_Core_1_lastspike;
-    int32_t* __restrict  _ptr_array_Core_1__spikespace = _array_Core_1__spikespace;
-    char* __restrict  _ptr_array_Core_1_not_refractory = _array_Core_1_not_refractory;
     double*   _ptr_array_Core_1_Isoma_th = _array_Core_1_Isoma_th;
     double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
+    char* __restrict  _ptr_array_Core_1_not_refractory = _array_Core_1_not_refractory;
+    int32_t* __restrict  _ptr_array_Core_1__spikespace = _array_Core_1__spikespace;
+    double* __restrict  _ptr_array_Core_1_lastspike = _array_Core_1_lastspike;
 
 
 

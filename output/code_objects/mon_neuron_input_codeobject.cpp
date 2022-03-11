@@ -78,32 +78,32 @@ void _run_mon_neuron_input_codeobject()
 
 
     ///// CONSTANTS ///////////
-    const size_t _num_clock_t = 1;
-int32_t* const _array_mon_neuron_input_i = _dynamic_array_mon_neuron_input_i.empty()? 0 : &_dynamic_array_mon_neuron_input_i[0];
+    int32_t* const _array_mon_neuron_input_i = _dynamic_array_mon_neuron_input_i.empty()? 0 : &_dynamic_array_mon_neuron_input_i[0];
 const size_t _numi = _dynamic_array_mon_neuron_input_i.size();
-const size_t _numcount = 1;
-const size_t _num_source_i = 1;
 const size_t _numN = 1;
-const size_t _num_spikespace = 2;
+const size_t _num_spikespace = 201;
+const size_t _numcount = 200;
 const size_t _num_source_t = 1;
+const size_t _num_source_i = 200;
+const size_t _num_clock_t = 1;
 double* const _array_mon_neuron_input_t = _dynamic_array_mon_neuron_input_t.empty()? 0 : &_dynamic_array_mon_neuron_input_t[0];
 const size_t _numt = _dynamic_array_mon_neuron_input_t.size();
-const size_t _num_source_idx = 1;
+const size_t _num_source_idx = 200;
     ///// POINTERS ////////////
         
-    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
     int32_t* __restrict  _ptr_array_mon_neuron_input_i = _array_mon_neuron_input_i;
-    int32_t*   _ptr_array_mon_neuron_input_count = _array_mon_neuron_input_count;
-    int32_t*   _ptr_array_InpSpikeGenerator_i = _array_InpSpikeGenerator_i;
     int32_t*   _ptr_array_mon_neuron_input_N = _array_mon_neuron_input_N;
-    int32_t* __restrict  _ptr_array_InpSpikeGenerator__spikespace = _array_InpSpikeGenerator__spikespace;
+    int32_t* __restrict  _ptr_array_poissongroup__spikespace = _array_poissongroup__spikespace;
+    int32_t* __restrict  _ptr_array_mon_neuron_input_count = _array_mon_neuron_input_count;
+    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
+    int32_t* __restrict  _ptr_array_poissongroup_i = _array_poissongroup_i;
     double* __restrict  _ptr_array_mon_neuron_input_t = _array_mon_neuron_input_t;
-    int32_t*   _ptr_array_mon_neuron_input__source_idx = _array_mon_neuron_input__source_idx;
+    int32_t* __restrict  _ptr_array_mon_neuron_input__source_idx = _array_mon_neuron_input__source_idx;
 
 
     //// MAIN CODE ////////////
 
-    int32_t _num_events = _ptr_array_InpSpikeGenerator__spikespace[_num_spikespace-1];
+    int32_t _num_events = _ptr_array_poissongroup__spikespace[_num_spikespace-1];
 
     if (_num_events > 0)
     {
@@ -111,7 +111,7 @@ const size_t _num_source_idx = 1;
         size_t _end_idx = _num_events;
         for(size_t _j=0; _j<_num_events; _j++)
         {
-            const int _idx = _ptr_array_InpSpikeGenerator__spikespace[_j];
+            const int _idx = _ptr_array_poissongroup__spikespace[_j];
             if (_idx >= 0) {
                 _start_idx = _j;
                 break;
@@ -119,8 +119,8 @@ const size_t _num_source_idx = 1;
         }
         for(size_t _j=_num_events-1; _j>=_start_idx; _j--)
         {
-            const int _idx = _ptr_array_InpSpikeGenerator__spikespace[_j];
-            if (_idx < 1) {
+            const int _idx = _ptr_array_poissongroup__spikespace[_j];
+            if (_idx < 200) {
                 break;
             }
             _end_idx = _j;
@@ -133,12 +133,12 @@ const size_t _num_source_idx = 1;
 
             for(size_t _j=_start_idx; _j<_end_idx; _j++)
             {
-                const size_t _idx = _ptr_array_InpSpikeGenerator__spikespace[_j];
+                const size_t _idx = _ptr_array_poissongroup__spikespace[_j];
                 const size_t _vectorisation_idx = _idx;
                                 
-                const int32_t _source_i = _ptr_array_InpSpikeGenerator_i[_idx];
-                const int32_t _to_record_i = _source_i;
+                const int32_t _source_i = _ptr_array_poissongroup_i[_idx];
                 const double _to_record_t = _source_t;
+                const int32_t _to_record_i = _source_i;
 
                 _dynamic_array_mon_neuron_input_i.push_back(_to_record_i);
                 _dynamic_array_mon_neuron_input_t.push_back(_to_record_t);
@@ -154,26 +154,26 @@ const size_t _num_source_idx = 1;
 void _debugmsg_mon_neuron_input_codeobject()
 {
     using namespace brian;
-    const size_t _num_clock_t = 1;
-int32_t* const _array_mon_neuron_input_i = _dynamic_array_mon_neuron_input_i.empty()? 0 : &_dynamic_array_mon_neuron_input_i[0];
+    int32_t* const _array_mon_neuron_input_i = _dynamic_array_mon_neuron_input_i.empty()? 0 : &_dynamic_array_mon_neuron_input_i[0];
 const size_t _numi = _dynamic_array_mon_neuron_input_i.size();
-const size_t _numcount = 1;
-const size_t _num_source_i = 1;
 const size_t _numN = 1;
-const size_t _num_spikespace = 2;
+const size_t _num_spikespace = 201;
+const size_t _numcount = 200;
 const size_t _num_source_t = 1;
+const size_t _num_source_i = 200;
+const size_t _num_clock_t = 1;
 double* const _array_mon_neuron_input_t = _dynamic_array_mon_neuron_input_t.empty()? 0 : &_dynamic_array_mon_neuron_input_t[0];
 const size_t _numt = _dynamic_array_mon_neuron_input_t.size();
-const size_t _num_source_idx = 1;
+const size_t _num_source_idx = 200;
         
-    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
     int32_t* __restrict  _ptr_array_mon_neuron_input_i = _array_mon_neuron_input_i;
-    int32_t*   _ptr_array_mon_neuron_input_count = _array_mon_neuron_input_count;
-    int32_t*   _ptr_array_InpSpikeGenerator_i = _array_InpSpikeGenerator_i;
     int32_t*   _ptr_array_mon_neuron_input_N = _array_mon_neuron_input_N;
-    int32_t* __restrict  _ptr_array_InpSpikeGenerator__spikespace = _array_InpSpikeGenerator__spikespace;
+    int32_t* __restrict  _ptr_array_poissongroup__spikespace = _array_poissongroup__spikespace;
+    int32_t* __restrict  _ptr_array_mon_neuron_input_count = _array_mon_neuron_input_count;
+    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
+    int32_t* __restrict  _ptr_array_poissongroup_i = _array_poissongroup_i;
     double* __restrict  _ptr_array_mon_neuron_input_t = _array_mon_neuron_input_t;
-    int32_t*   _ptr_array_mon_neuron_input__source_idx = _array_mon_neuron_input__source_idx;
+    int32_t* __restrict  _ptr_array_mon_neuron_input__source_idx = _array_mon_neuron_input__source_idx;
 
     std::cout << "Number of spikes: " << _ptr_array_mon_neuron_input_N[0] << endl;
 }

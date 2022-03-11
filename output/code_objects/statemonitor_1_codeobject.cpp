@@ -78,28 +78,29 @@ void _run_statemonitor_1_codeobject()
 
 
     ///// CONSTANTS ///////////
-    const size_t _num_source_Isoma_ahp = 256;
-const size_t _numN = 1;
-const size_t _num_clock_t = 1;
+    const size_t _num_clock_t = 1;
+const size_t _num_source_Iampa = 256;
 const size_t _num_indices = 1;
 double* const _array_statemonitor_1_t = _dynamic_array_statemonitor_1_t.empty()? 0 : &_dynamic_array_statemonitor_1_t[0];
 const size_t _numt = _dynamic_array_statemonitor_1_t.size();
-const size_t _num_sub_idx = 1;
+const size_t _numN = 1;
+int32_t* const _array_AMPA1__synaptic_post = _dynamic_array_AMPA1__synaptic_post.empty()? 0 : &_dynamic_array_AMPA1__synaptic_post[0];
+const size_t _num_postsynaptic_idx = _dynamic_array_AMPA1__synaptic_post.size();
     ///// POINTERS ////////////
         
-    double* __restrict  _ptr_array_Core_1_Isoma_ahp = _array_Core_1_Isoma_ahp;
-    int32_t*   _ptr_array_statemonitor_1_N = _array_statemonitor_1_N;
     double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
+    double* __restrict  _ptr_array_Core_1_Iampa = _array_Core_1_Iampa;
     int32_t*   _ptr_array_statemonitor_1__indices = _array_statemonitor_1__indices;
     double* __restrict  _ptr_array_statemonitor_1_t = _array_statemonitor_1_t;
-    int32_t*   _ptr_array_Core_1_subgroup_1__sub_idx = _array_Core_1_subgroup_1__sub_idx;
+    int32_t*   _ptr_array_statemonitor_1_N = _array_statemonitor_1_N;
+    int32_t* __restrict  _ptr_array_AMPA1__synaptic_post = _array_AMPA1__synaptic_post;
 
 
     _dynamic_array_statemonitor_1_t.push_back(_ptr_array_defaultclock_t[0]);
 
     const size_t _new_size = _dynamic_array_statemonitor_1_t.size();
     // Resize the dynamic arrays
-    _dynamic_array_statemonitor_1_Isoma_ahp.resize(_new_size, _num_indices);
+    _dynamic_array_statemonitor_1_Iampa.resize(_new_size, _num_indices);
 
     // scalar code
     const size_t _vectorisation_idx = -1;
@@ -113,12 +114,12 @@ const size_t _num_sub_idx = 1;
         const size_t _idx = _ptr_array_statemonitor_1__indices[_i];
         const size_t _vectorisation_idx = _idx;
                 
-        const int32_t _sub_idx = _ptr_array_Core_1_subgroup_1__sub_idx[_idx];
-        const double _source_Isoma_ahp = _ptr_array_Core_1_Isoma_ahp[_sub_idx];
-        const double _to_record_Isoma_ahp = _source_Isoma_ahp;
+        const int32_t _postsynaptic_idx = _ptr_array_AMPA1__synaptic_post[_idx];
+        const double _source_Iampa = _ptr_array_Core_1_Iampa[_postsynaptic_idx];
+        const double _to_record_Iampa = _source_Iampa;
 
 
-        _dynamic_array_statemonitor_1_Isoma_ahp(_new_size-1, _i) = _to_record_Isoma_ahp;
+        _dynamic_array_statemonitor_1_Iampa(_new_size-1, _i) = _to_record_Iampa;
     }
 
     _ptr_array_statemonitor_1_N[0] = _new_size;

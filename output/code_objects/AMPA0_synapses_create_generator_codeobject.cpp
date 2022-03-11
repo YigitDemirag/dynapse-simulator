@@ -83,28 +83,28 @@ void _run_AMPA0_synapses_create_generator_codeobject()
 
 
     ///// CONSTANTS ///////////
-    int32_t* const _array_AMPA0_N_outgoing = _dynamic_array_AMPA0_N_outgoing.empty()? 0 : &_dynamic_array_AMPA0_N_outgoing[0];
-const size_t _numN_outgoing = _dynamic_array_AMPA0_N_outgoing.size();
-int32_t* const _array_AMPA0_N_incoming = _dynamic_array_AMPA0_N_incoming.empty()? 0 : &_dynamic_array_AMPA0_N_incoming[0];
-const size_t _numN_incoming = _dynamic_array_AMPA0_N_incoming.size();
+    int32_t* const _array_AMPA0__synaptic_post = _dynamic_array_AMPA0__synaptic_post.empty()? 0 : &_dynamic_array_AMPA0__synaptic_post[0];
+const size_t _num_synaptic_post = _dynamic_array_AMPA0__synaptic_post.size();
 int32_t* const _array_AMPA0__synaptic_pre = _dynamic_array_AMPA0__synaptic_pre.empty()? 0 : &_dynamic_array_AMPA0__synaptic_pre[0];
 const size_t _num_synaptic_pre = _dynamic_array_AMPA0__synaptic_pre.size();
-int32_t* const _array_AMPA0__synaptic_post = _dynamic_array_AMPA0__synaptic_post.empty()? 0 : &_dynamic_array_AMPA0__synaptic_post[0];
-const size_t _num_synaptic_post = _dynamic_array_AMPA0__synaptic_post.size();
 const size_t _numN = 1;
+int32_t* const _array_AMPA0_N_incoming = _dynamic_array_AMPA0_N_incoming.empty()? 0 : &_dynamic_array_AMPA0_N_incoming[0];
+const size_t _numN_incoming = _dynamic_array_AMPA0_N_incoming.size();
+int32_t* const _array_AMPA0_N_outgoing = _dynamic_array_AMPA0_N_outgoing.empty()? 0 : &_dynamic_array_AMPA0_N_outgoing[0];
+const size_t _numN_outgoing = _dynamic_array_AMPA0_N_outgoing.size();
     ///// POINTERS ////////////
         
-    int32_t* __restrict  _ptr_array_AMPA0_N_outgoing = _array_AMPA0_N_outgoing;
-    int32_t* __restrict  _ptr_array_AMPA0_N_incoming = _array_AMPA0_N_incoming;
-    int32_t* __restrict  _ptr_array_AMPA0__synaptic_pre = _array_AMPA0__synaptic_pre;
     int32_t* __restrict  _ptr_array_AMPA0__synaptic_post = _array_AMPA0__synaptic_post;
+    int32_t* __restrict  _ptr_array_AMPA0__synaptic_pre = _array_AMPA0__synaptic_pre;
     int32_t*   _ptr_array_AMPA0_N = _array_AMPA0_N;
+    int32_t* __restrict  _ptr_array_AMPA0_N_incoming = _array_AMPA0_N_incoming;
+    int32_t* __restrict  _ptr_array_AMPA0_N_outgoing = _array_AMPA0_N_outgoing;
 
 
     #include<iostream>
 
-    const size_t _N_pre = 1;
-    const size_t _N_post = 1;
+    const size_t _N_pre = 200;
+    const size_t _N_post = 200;
     _dynamic_array_AMPA0_N_incoming.resize(_N_post + 0);
     _dynamic_array_AMPA0_N_outgoing.resize(_N_pre + 0);
     size_t _raw_pre_idx, _raw_post_idx;
@@ -157,13 +157,14 @@ const size_t _numN = 1;
             _uiter_high = _iter_high;
             _uiter_step = _iter_step;
         }
-        for(long _k=_uiter_low; _k<_uiter_high; _k+=_uiter_step)
+        for(long _=_uiter_low; _<_uiter_high; _+=_uiter_step)
         {
             long __j, _j, _pre_idx, __pre_idx;
             {
                                 
                 const int32_t _pre_idx = _raw_pre_idx;
-                const int32_t _j = _k;
+                const int32_t i = _i;
+                const int32_t _j = i;
 
                 __j = _j; // pick up the locally scoped _j and store in __j
                 __pre_idx = _pre_idx;

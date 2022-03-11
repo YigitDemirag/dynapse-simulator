@@ -78,14 +78,16 @@ void _run_AMPA1_post_push_spikes()
 
 
     ///// CONSTANTS ///////////
-    double* const _array_AMPA1_delay_1 = _dynamic_array_AMPA1_delay_1.empty()? 0 : &_dynamic_array_AMPA1_delay_1[0];
+    const size_t _num_source_dt = 1;
+const int64_t _n_sources = 1;
+double* const _array_AMPA1_delay_1 = _dynamic_array_AMPA1_delay_1.empty()? 0 : &_dynamic_array_AMPA1_delay_1[0];
 const size_t _numdelay = _dynamic_array_AMPA1_delay_1.size();
-const size_t _num_source_dt = 1;
+const int64_t _n_targets = 1;
 const size_t _num_spikespace = 257;
     ///// POINTERS ////////////
         
-    double* __restrict  _ptr_array_AMPA1_delay_1 = _array_AMPA1_delay_1;
     double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
+    double* __restrict  _ptr_array_AMPA1_delay_1 = _array_AMPA1_delay_1;
     int32_t* __restrict  _ptr_array_Core_1__spikespace = _array_Core_1__spikespace;
 
 
@@ -96,7 +98,6 @@ const size_t _num_spikespace = 257;
         AMPA1_post.advance();
         AMPA1_post.push(_ptr_array_Core_1__spikespace, _ptr_array_Core_1__spikespace[_num_spikespace-1]);
     }
-
 
 }
 

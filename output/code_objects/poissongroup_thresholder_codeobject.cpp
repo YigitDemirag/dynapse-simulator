@@ -11,6 +11,9 @@
 ////// SUPPORT CODE ///////
 namespace {
         
+    double _rand(const int _vectorisation_idx) {
+        return rk_double(brian::_mersenne_twister_states[0]);
+    }
     static double* _namespace_timedarray_values;
     static inline double _timedarray(const double t, const int i)
     {
@@ -23,9 +26,6 @@ namespace {
         else if(timestep >= 5000)
             timestep = 5000-1;
         return _namespace_timedarray_values[timestep*200 + i];
-    }
-    double _rand(const int _vectorisation_idx) {
-        return rk_double(brian::_mersenne_twister_states[0]);
     }
     template < typename T1, typename T2 > struct _higher_type;
     template < > struct _higher_type<int,int> { typedef int type; };
@@ -95,15 +95,15 @@ void _run_poissongroup_thresholder_codeobject()
 
     ///// CONSTANTS ///////////
     const size_t _numi = 200;
-const size_t _numt = 1;
-const size_t _numdt = 1;
 const size_t _num_spikespace = 201;
+const size_t _numdt = 1;
+const size_t _numt = 1;
     ///// POINTERS ////////////
         
     int32_t* __restrict  _ptr_array_poissongroup_i = _array_poissongroup_i;
-    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
-    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
     int32_t* __restrict  _ptr_array_poissongroup__spikespace = _array_poissongroup__spikespace;
+    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
+    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
     _namespace_timedarray_values = _timedarray_values;
 
 

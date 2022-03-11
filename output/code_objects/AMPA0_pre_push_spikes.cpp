@@ -78,15 +78,15 @@ void _run_AMPA0_pre_push_spikes()
 
 
     ///// CONSTANTS ///////////
-    const size_t _num_source_dt = 1;
-double* const _array_AMPA0_delay = _dynamic_array_AMPA0_delay.empty()? 0 : &_dynamic_array_AMPA0_delay[0];
+    double* const _array_AMPA0_delay = _dynamic_array_AMPA0_delay.empty()? 0 : &_dynamic_array_AMPA0_delay[0];
 const size_t _numdelay = _dynamic_array_AMPA0_delay.size();
-const size_t _num_spikespace = 2;
+const size_t _num_spikespace = 201;
+const size_t _num_source_dt = 1;
     ///// POINTERS ////////////
         
-    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
     double* __restrict  _ptr_array_AMPA0_delay = _array_AMPA0_delay;
-    int32_t* __restrict  _ptr_array_InpSpikeGenerator__spikespace = _array_InpSpikeGenerator__spikespace;
+    int32_t* __restrict  _ptr_array_poissongroup_1__spikespace = _array_poissongroup_1__spikespace;
+    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
 
 
     // we do advance at the beginning rather than at the end because it saves us making
@@ -94,7 +94,7 @@ const size_t _num_spikespace = 2;
     
     {
         AMPA0_pre.advance();
-        AMPA0_pre.push(_ptr_array_InpSpikeGenerator__spikespace, _ptr_array_InpSpikeGenerator__spikespace[_num_spikespace-1]);
+        AMPA0_pre.push(_ptr_array_poissongroup_1__spikespace, _ptr_array_poissongroup_1__spikespace[_num_spikespace-1]);
     }
 
 

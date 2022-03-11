@@ -83,10 +83,10 @@ void _run_NMDA1_pre_codeobject()
     int32_t* const _array_NMDA1__synaptic_pre = _dynamic_array_NMDA1__synaptic_pre.empty()? 0 : &_dynamic_array_NMDA1__synaptic_pre[0];
 const size_t _num_synaptic_pre = _dynamic_array_NMDA1__synaptic_pre.size();
 const size_t _numInmda_post = 256;
-const size_t _num_Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_Inmda_tau = 256;
-const size_t _numInmda_w0 = 256;
 double* const _array_NMDA1_weight = _dynamic_array_NMDA1_weight.empty()? 0 : &_dynamic_array_NMDA1_weight[0];
 const size_t _numweight = _dynamic_array_NMDA1_weight.size();
+const size_t _numInmda_w0 = 256;
+const size_t _num_Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_Inmda_tau = 256;
 const size_t _num_Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_alpha = 1;
 const size_t _numInmda_tau_post = 256;
 int32_t* const _array_NMDA1__synaptic_post = _dynamic_array_NMDA1__synaptic_post.empty()? 0 : &_dynamic_array_NMDA1__synaptic_post[0];
@@ -95,9 +95,9 @@ const size_t _num_postsynaptic_idx = _dynamic_array_NMDA1__synaptic_post.size();
         
     int32_t* __restrict  _ptr_array_NMDA1__synaptic_pre = _array_NMDA1__synaptic_pre;
     double* __restrict  _ptr_array_Core_1_Inmda = _array_Core_1_Inmda;
-    double* __restrict  _ptr_array_Core_1_Inmda_tau = _array_Core_1_Inmda_tau;
-    double* __restrict  _ptr_array_Core_1_Inmda_w0 = _array_Core_1_Inmda_w0;
     double* __restrict  _ptr_array_NMDA1_weight = _array_NMDA1_weight;
+    double* __restrict  _ptr_array_Core_1_Inmda_w0 = _array_Core_1_Inmda_w0;
+    double* __restrict  _ptr_array_Core_1_Inmda_tau = _array_Core_1_Inmda_tau;
     double*   _ptr_array_Core_1_alpha = _array_Core_1_alpha;
     int32_t* __restrict  _ptr_array_NMDA1__synaptic_post = _array_NMDA1__synaptic_post;
 
@@ -126,11 +126,11 @@ const size_t _num_postsynaptic_idx = _dynamic_array_NMDA1__synaptic_post.size();
             const size_t _vectorisation_idx = _idx;
                         
             const int32_t _postsynaptic_idx = _ptr_array_NMDA1__synaptic_post[_idx];
-            const double _Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_Inmda_tau = _ptr_array_Core_1_Inmda_tau[_postsynaptic_idx];
-            const double Inmda_tau_post = _ptr_array_Core_1_Inmda_tau[_postsynaptic_idx];
             double Inmda_post = _ptr_array_Core_1_Inmda[_postsynaptic_idx];
-            const double weight = _ptr_array_NMDA1_weight[_idx];
             const double Inmda_w0 = _ptr_array_Core_1_Inmda_w0[_postsynaptic_idx];
+            const double _Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_Inmda_tau = _ptr_array_Core_1_Inmda_tau[_postsynaptic_idx];
+            const double weight = _ptr_array_NMDA1_weight[_idx];
+            const double Inmda_tau_post = _ptr_array_Core_1_Inmda_tau[_postsynaptic_idx];
             const double Inmda_g_post = _Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_alpha * _Inmda_g_post_NMDA1__Inmda_g_post_Core_1_subgroup_2__Inmda_g_Core_1_Inmda_tau;
             Inmda_post += 1.0f*((Inmda_w0 * weight) * Inmda_g_post)/(Inmda_tau_post * (1.0 + (1.0f*Inmda_g_post/Inmda_post)));
             _ptr_array_Core_1_Inmda[_postsynaptic_idx] = Inmda_post;

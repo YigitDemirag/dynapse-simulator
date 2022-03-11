@@ -78,25 +78,25 @@ void _run_Core_2_resetter_1_codeobject()
 
 
     ///// CONSTANTS ///////////
-    const size_t _numIsoma_reset = 1;
-const size_t _numIsoma_ahp_tau = 1;
-const size_t _numI0 = 1;
-const size_t _num_spikespace = 257;
+    const size_t _numI0 = 1;
+const size_t _numIsoma_reset = 1;
 const size_t _numIsoma_ahp_th = 1;
-const size_t _numIsoma_ahp_w = 256;
 const size_t _numIsoma_mem = 256;
 const size_t _numIsoma_ahp = 256;
+const size_t _numIsoma_ahp_w = 256;
+const size_t _numIsoma_ahp_tau = 1;
+const size_t _num_spikespace = 257;
 const size_t _numnot_refractory = 256;
     ///// POINTERS ////////////
         
-    double*   _ptr_array_Core_2_Isoma_reset = _array_Core_2_Isoma_reset;
-    double*   _ptr_array_Core_2_Isoma_ahp_tau = _array_Core_2_Isoma_ahp_tau;
     double*   _ptr_array_Core_2_I0 = _array_Core_2_I0;
-    int32_t* __restrict  _ptr_array_Core_2__spikespace = _array_Core_2__spikespace;
+    double*   _ptr_array_Core_2_Isoma_reset = _array_Core_2_Isoma_reset;
     double*   _ptr_array_Core_2_Isoma_ahp_th = _array_Core_2_Isoma_ahp_th;
-    double* __restrict  _ptr_array_Core_2_Isoma_ahp_w = _array_Core_2_Isoma_ahp_w;
     double* __restrict  _ptr_array_Core_2_Isoma_mem = _array_Core_2_Isoma_mem;
     double* __restrict  _ptr_array_Core_2_Isoma_ahp = _array_Core_2_Isoma_ahp;
+    double* __restrict  _ptr_array_Core_2_Isoma_ahp_w = _array_Core_2_Isoma_ahp_w;
+    double*   _ptr_array_Core_2_Isoma_ahp_tau = _array_Core_2_Isoma_ahp_tau;
+    int32_t* __restrict  _ptr_array_Core_2__spikespace = _array_Core_2__spikespace;
     char* __restrict  _ptr_array_Core_2_not_refractory = _array_Core_2_not_refractory;
 
 
@@ -108,9 +108,9 @@ const size_t _numnot_refractory = 256;
 	// scalar code
 	const size_t _vectorisation_idx = -1;
  	
- const double Isoma_reset = _ptr_array_Core_2_Isoma_reset[0];
  const double Isoma_ahp_th = _ptr_array_Core_2_Isoma_ahp_th[0];
  const double I0 = _ptr_array_Core_2_I0[0];
+ const double Isoma_reset = _ptr_array_Core_2_Isoma_reset[0];
  const double Isoma_ahp_tau = _ptr_array_Core_2_Isoma_ahp_tau[0];
  const double _lio_1 = 1.0f*1.0/Isoma_ahp_tau;
 
@@ -122,8 +122,8 @@ const size_t _numnot_refractory = 256;
 		const size_t _idx = _events[_index_events];
 		const size_t _vectorisation_idx = _idx;
                 
-        const double Isoma_ahp_w = _ptr_array_Core_2_Isoma_ahp_w[_idx];
         double Isoma_ahp = _ptr_array_Core_2_Isoma_ahp[_idx];
+        const double Isoma_ahp_w = _ptr_array_Core_2_Isoma_ahp_w[_idx];
         double Isoma_mem;
         Isoma_mem = Isoma_reset;
         const double Isoma_ahp_th_clip = (Isoma_ahp_th * (Isoma_ahp > I0)) + (I0 * (Isoma_ahp <= I0));

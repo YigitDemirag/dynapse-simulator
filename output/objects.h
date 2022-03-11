@@ -20,30 +20,22 @@ extern std::vector< rk_state* > _mersenne_twister_states;
 extern Clock defaultclock;
 
 //////////////// networks /////////////////
-extern Network network_1;
+extern Network network;
 
 //////////////// dynamic arrays ///////////
-extern std::vector<int32_t> _dynamic_array_AMPA0__synaptic_post;
-extern std::vector<int32_t> _dynamic_array_AMPA0__synaptic_pre;
-extern std::vector<double> _dynamic_array_AMPA0_delay;
-extern std::vector<double> _dynamic_array_AMPA0_delay_1;
-extern std::vector<int32_t> _dynamic_array_AMPA0_N_incoming;
-extern std::vector<int32_t> _dynamic_array_AMPA0_N_outgoing;
-extern std::vector<double> _dynamic_array_AMPA0_weight;
-extern std::vector<int32_t> _dynamic_array_InpSpikeGenerator__timebins;
-extern std::vector<int32_t> _dynamic_array_InpSpikeGenerator_neuron_index;
-extern std::vector<int32_t> _dynamic_array_InpSpikeGenerator_spike_number;
-extern std::vector<double> _dynamic_array_InpSpikeGenerator_spike_time;
 extern std::vector<int32_t> _dynamic_array_mon_neuron_input_i;
 extern std::vector<double> _dynamic_array_mon_neuron_input_t;
 extern std::vector<int32_t> _dynamic_array_mon_neuron_output_i;
 extern std::vector<double> _dynamic_array_mon_neuron_output_t;
-extern std::vector<double> _dynamic_array_statemonitor_1_t;
-extern std::vector<double> _dynamic_array_statemonitor_2_t;
+extern std::vector<int32_t> _dynamic_array_NMDA0__synaptic_post;
+extern std::vector<int32_t> _dynamic_array_NMDA0__synaptic_pre;
+extern std::vector<double> _dynamic_array_NMDA0_delay;
+extern std::vector<double> _dynamic_array_NMDA0_delay_1;
+extern std::vector<int32_t> _dynamic_array_NMDA0_N_incoming;
+extern std::vector<int32_t> _dynamic_array_NMDA0_N_outgoing;
+extern std::vector<double> _dynamic_array_NMDA0_weight;
 
 //////////////// arrays ///////////////////
-extern int32_t *_array_AMPA0_N;
-extern const int _num__array_AMPA0_N;
 extern int32_t *_array_Core_0__spikespace;
 extern const int _num__array_Core_0__spikespace;
 extern double *_array_Core_0_alpha;
@@ -204,8 +196,8 @@ extern char *_array_Core_1_not_refractory;
 extern const int _num__array_Core_1_not_refractory;
 extern double *_array_Core_1_soma_refP;
 extern const int _num__array_Core_1_soma_refP;
-extern int32_t *_array_Core_1_subgroup_1__sub_idx;
-extern const int _num__array_Core_1_subgroup_1__sub_idx;
+extern int32_t *_array_Core_1_subgroup__sub_idx;
+extern const int _num__array_Core_1_subgroup__sub_idx;
 extern double *_array_Core_1_Ut;
 extern const int _num__array_Core_1_Ut;
 extern double *_array_Core_1_Vnmda;
@@ -380,16 +372,6 @@ extern double *_array_defaultclock_t;
 extern const int _num__array_defaultclock_t;
 extern int64_t *_array_defaultclock_timestep;
 extern const int _num__array_defaultclock_timestep;
-extern int32_t *_array_InpSpikeGenerator__lastindex;
-extern const int _num__array_InpSpikeGenerator__lastindex;
-extern int32_t *_array_InpSpikeGenerator__period_bins;
-extern const int _num__array_InpSpikeGenerator__period_bins;
-extern int32_t *_array_InpSpikeGenerator__spikespace;
-extern const int _num__array_InpSpikeGenerator__spikespace;
-extern int32_t *_array_InpSpikeGenerator_i;
-extern const int _num__array_InpSpikeGenerator_i;
-extern double *_array_InpSpikeGenerator_period;
-extern const int _num__array_InpSpikeGenerator_period;
 extern int32_t *_array_mon_neuron_input__source_idx;
 extern const int _num__array_mon_neuron_input__source_idx;
 extern int32_t *_array_mon_neuron_input_count;
@@ -402,37 +384,23 @@ extern int32_t *_array_mon_neuron_output_count;
 extern const int _num__array_mon_neuron_output_count;
 extern int32_t *_array_mon_neuron_output_N;
 extern const int _num__array_mon_neuron_output_N;
-extern int32_t *_array_statemonitor_1__indices;
-extern const int _num__array_statemonitor_1__indices;
-extern double *_array_statemonitor_1_Isoma_ahp;
-extern const int _num__array_statemonitor_1_Isoma_ahp;
-extern int32_t *_array_statemonitor_1_N;
-extern const int _num__array_statemonitor_1_N;
-extern int32_t *_array_statemonitor_2__indices;
-extern const int _num__array_statemonitor_2__indices;
-extern double *_array_statemonitor_2_Isoma_mem;
-extern const int _num__array_statemonitor_2_Isoma_mem;
-extern int32_t *_array_statemonitor_2_N;
-extern const int _num__array_statemonitor_2_N;
+extern int32_t *_array_NMDA0_N;
+extern const int _num__array_NMDA0_N;
+extern int32_t *_array_poissongroup__spikespace;
+extern const int _num__array_poissongroup__spikespace;
+extern int32_t *_array_poissongroup_i;
+extern const int _num__array_poissongroup_i;
 
 //////////////// dynamic arrays 2d /////////
-extern DynamicArray2D<double> _dynamic_array_statemonitor_1_Isoma_ahp;
-extern DynamicArray2D<double> _dynamic_array_statemonitor_2_Isoma_mem;
 
 /////////////// static arrays /////////////
-extern int32_t *_static_array__dynamic_array_InpSpikeGenerator__timebins;
-extern const int _num__static_array__dynamic_array_InpSpikeGenerator__timebins;
-extern double *_static_array__dynamic_array_InpSpikeGenerator_neuron_index;
-extern const int _num__static_array__dynamic_array_InpSpikeGenerator_neuron_index;
-extern int64_t *_static_array__dynamic_array_InpSpikeGenerator_spike_number;
-extern const int _num__static_array__dynamic_array_InpSpikeGenerator_spike_number;
-extern double *_static_array__dynamic_array_InpSpikeGenerator_spike_time;
-extern const int _num__static_array__dynamic_array_InpSpikeGenerator_spike_time;
+extern double *_timedarray_values;
+extern const int _num__timedarray_values;
 
 //////////////// synapses /////////////////
-// AMPA0
-extern SynapticPathway AMPA0_post;
-extern SynapticPathway AMPA0_pre;
+// NMDA0
+extern SynapticPathway NMDA0_post;
+extern SynapticPathway NMDA0_pre;
 
 // Profiling information for each code object
 }

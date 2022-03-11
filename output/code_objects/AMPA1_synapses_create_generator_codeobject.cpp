@@ -10,6 +10,9 @@
 #include "brianlib/stdint_compat.h"
 #include "synapses_classes.h"
 
+#include <iostream>
+#include <set>
+
 ////// SUPPORT CODE ///////
 namespace {
         
@@ -83,31 +86,34 @@ void _run_AMPA1_synapses_create_generator_codeobject()
 
 
     ///// CONSTANTS ///////////
-    int32_t* const _array_AMPA1_N_incoming = _dynamic_array_AMPA1_N_incoming.empty()? 0 : &_dynamic_array_AMPA1_N_incoming[0];
-const size_t _numN_incoming = _dynamic_array_AMPA1_N_incoming.size();
-int32_t* const _array_AMPA1_N_outgoing = _dynamic_array_AMPA1_N_outgoing.empty()? 0 : &_dynamic_array_AMPA1_N_outgoing[0];
+    int32_t* const _array_AMPA1_N_outgoing = _dynamic_array_AMPA1_N_outgoing.empty()? 0 : &_dynamic_array_AMPA1_N_outgoing[0];
 const size_t _numN_outgoing = _dynamic_array_AMPA1_N_outgoing.size();
+const size_t _numN = 1;
+const int64_t N_post = 1;
+const int64_t N_pre = 1;
+const int64_t _target_offset = 0;
 int32_t* const _array_AMPA1__synaptic_pre = _dynamic_array_AMPA1__synaptic_pre.empty()? 0 : &_dynamic_array_AMPA1__synaptic_pre[0];
 const size_t _num_synaptic_pre = _dynamic_array_AMPA1__synaptic_pre.size();
+const int64_t _source_offset = 0;
 int32_t* const _array_AMPA1__synaptic_post = _dynamic_array_AMPA1__synaptic_post.empty()? 0 : &_dynamic_array_AMPA1__synaptic_post[0];
 const size_t _num_synaptic_post = _dynamic_array_AMPA1__synaptic_post.size();
-const size_t _numN = 1;
+int32_t* const _array_AMPA1_N_incoming = _dynamic_array_AMPA1_N_incoming.empty()? 0 : &_dynamic_array_AMPA1_N_incoming[0];
+const size_t _numN_incoming = _dynamic_array_AMPA1_N_incoming.size();
     ///// POINTERS ////////////
         
-    int32_t* __restrict  _ptr_array_AMPA1_N_incoming = _array_AMPA1_N_incoming;
     int32_t* __restrict  _ptr_array_AMPA1_N_outgoing = _array_AMPA1_N_outgoing;
+    int32_t*   _ptr_array_AMPA1_N = _array_AMPA1_N;
     int32_t* __restrict  _ptr_array_AMPA1__synaptic_pre = _array_AMPA1__synaptic_pre;
     int32_t* __restrict  _ptr_array_AMPA1__synaptic_post = _array_AMPA1__synaptic_post;
-    int32_t*   _ptr_array_AMPA1_N = _array_AMPA1_N;
+    int32_t* __restrict  _ptr_array_AMPA1_N_incoming = _array_AMPA1_N_incoming;
 
 
-    #include<iostream>
-
-    const size_t _N_pre = 200;
-    const size_t _N_post = 200;
-    _dynamic_array_AMPA1_N_incoming.resize(_N_post + 0);
-    _dynamic_array_AMPA1_N_outgoing.resize(_N_pre + 0);
+    const size_t _N_pre = N_pre;
+    const size_t _N_post = N_post;
+    _dynamic_array_AMPA1_N_incoming.resize(_N_post + _target_offset);
+    _dynamic_array_AMPA1_N_outgoing.resize(_N_pre + _source_offset);
     size_t _raw_pre_idx, _raw_post_idx;
+    
     // scalar code
     const size_t _vectorisation_idx = -1;
         
@@ -121,7 +127,7 @@ const size_t _numN = 1;
     for(size_t _i=0; _i<_N_pre; _i++)
     {
         bool __cond, _cond;
-        _raw_pre_idx = _i + 0;
+        _raw_pre_idx = _i + _source_offset;
         {
                         
             const char _cond = true;
@@ -150,33 +156,32 @@ const size_t _numN = 1;
         {
                         
             const int32_t _iter_low = 0;
-            const int32_t _iter_high = 1;
+            const int32_t _iter_high = N_post;
             const int32_t _iter_step = 1;
 
             _uiter_low = _iter_low;
             _uiter_high = _iter_high;
             _uiter_step = _iter_step;
         }
-        for(long _=_uiter_low; _<_uiter_high; _+=_uiter_step)
+        for(long _k=_uiter_low; _k<_uiter_high; _k+=_uiter_step)
         {
             long __j, _j, _pre_idx, __pre_idx;
             {
                                 
                 const int32_t _pre_idx = _raw_pre_idx;
-                const int32_t i = _i;
-                const int32_t _j = i;
+                const int32_t _j = _k;
 
-                __j = _j; // pick up the locally scoped _j and store in __j
+                __j = _j; // pick up the locally scoped var and store in outer var
                 __pre_idx = _pre_idx;
             }
-            _j = __j; // make the previously locally scoped _j available
+            _j = __j; // make the previously locally scoped var available
             _pre_idx = __pre_idx;
-            _raw_post_idx = _j + 0;
+            _raw_post_idx = _j + _target_offset;
 
             if(_j<0 || _j>=_N_post)
             {
-                cout << "Error: tried to create synapse to neuron j=" << _j << " outside range 0 to " <<
-                        _N_post-1 << endl;
+                cout << "Error: tried to create synapse to neuron j=" << _j <<
+                        " outside range 0 to " << _N_post-1 << endl;
                 exit(1);
             }
                         

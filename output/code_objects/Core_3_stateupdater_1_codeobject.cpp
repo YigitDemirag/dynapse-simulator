@@ -11,10 +11,6 @@
 ////// SUPPORT CODE ///////
 namespace {
         
-    static inline int64_t _timestep(double t, double dt)
-    {
-        return (int64_t)((t + 1e-3*dt)/dt); 
-    }
     template <typename T>
     static inline T _clip(const T value, const double a_min, const double a_max)
     {
@@ -23,6 +19,10 @@ namespace {
         if (value > a_max)
             return a_max;
         return value;
+    }
+    static inline int64_t _timestep(double t, double dt)
+    {
+        return (int64_t)((t + 1e-3*dt)/dt); 
     }
     template < typename T1, typename T2 > struct _higher_type;
     template < > struct _higher_type<int,int> { typedef int type; };
@@ -91,98 +91,98 @@ void _run_Core_3_stateupdater_1_codeobject()
 
 
     ///// CONSTANTS ///////////
-    const size_t _numCnmda = 256;
-const size_t _numnot_refractory = 256;
-const size_t _numIgaba_a_tau = 256;
-const size_t _numIgaba_a = 256;
-const size_t _numIsoma_pfb_th = 1;
-const size_t _numInmda_tau = 256;
-const size_t _numIgaba_b = 256;
-const size_t _numUt = 1;
-const size_t _numIsoma_const = 256;
-const size_t _numIampa_tau = 256;
-const size_t _numdt = 1;
-const size_t _numIsoma_mem = 256;
-const size_t _numCgaba_b = 256;
+    const size_t _numkn = 1;
 const size_t _numsoma_refP = 1;
-const size_t _numalpha = 1;
-const size_t _numIsoma_ahp_tau = 1;
-const size_t _numIsoma_dpi_tau = 1;
-const size_t _numIsoma_pfb_gain = 1;
-const size_t _numIsoma_pfb_norm = 1;
-const size_t _numVnmda = 256;
-const size_t _numCgaba_a = 256;
-const size_t _numIsoma_ahp_th = 1;
-const size_t _numCsoma_ahp = 1;
-const size_t _numlastspike = 256;
-const size_t _numIampa = 256;
-const size_t _numt = 1;
-const size_t _numCampa = 256;
-const size_t _numkn = 1;
-const size_t _numI0 = 1;
-const size_t _numIgaba_b_tau = 256;
-const size_t _numCsoma_mem = 1;
 const size_t _numInmda = 256;
-const size_t _numIsoma_ahp = 256;
+const size_t _numt = 1;
 const size_t _numkp = 1;
+const size_t _numCnmda = 256;
+const size_t _numIgaba_b = 256;
+const size_t _numVnmda = 256;
+const size_t _numnot_refractory = 256;
+const size_t _numIsoma_pfb_th = 1;
+const size_t _numIgaba_b_tau = 256;
+const size_t _numIgaba_a_tau = 256;
+const size_t _numIampa = 256;
+const size_t _numIsoma_const = 256;
+const size_t _numCgaba_b = 256;
+const size_t _numI0 = 1;
+const size_t _numCsoma_ahp = 1;
+const size_t _numIsoma_ahp_th = 1;
+const size_t _numIsoma_dpi_tau = 1;
+const size_t _numIsoma_pfb_norm = 1;
+const size_t _numIsoma_ahp_tau = 1;
+const size_t _numalpha = 1;
+const size_t _numCampa = 256;
+const size_t _numUt = 1;
+const size_t _numIampa_tau = 256;
+const size_t _numlastspike = 256;
+const size_t _numIgaba_a = 256;
+const size_t _numCgaba_a = 256;
+const size_t _numIsoma_ahp = 256;
+const size_t _numIsoma_mem = 256;
+const size_t _numInmda_tau = 256;
+const size_t _numIsoma_pfb_gain = 1;
+const size_t _numCsoma_mem = 1;
+const size_t _numdt = 1;
     ///// POINTERS ////////////
         
-    double* __restrict  _ptr_array_Core_3_Cnmda = _array_Core_3_Cnmda;
-    char* __restrict  _ptr_array_Core_3_not_refractory = _array_Core_3_not_refractory;
-    double* __restrict  _ptr_array_Core_3_Igaba_a_tau = _array_Core_3_Igaba_a_tau;
-    double* __restrict  _ptr_array_Core_3_Igaba_a = _array_Core_3_Igaba_a;
-    double*   _ptr_array_Core_3_Isoma_pfb_th = _array_Core_3_Isoma_pfb_th;
-    double* __restrict  _ptr_array_Core_3_Inmda_tau = _array_Core_3_Inmda_tau;
-    double* __restrict  _ptr_array_Core_3_Igaba_b = _array_Core_3_Igaba_b;
-    double*   _ptr_array_Core_3_Ut = _array_Core_3_Ut;
-    double* __restrict  _ptr_array_Core_3_Isoma_const = _array_Core_3_Isoma_const;
-    double* __restrict  _ptr_array_Core_3_Iampa_tau = _array_Core_3_Iampa_tau;
-    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
-    double* __restrict  _ptr_array_Core_3_Isoma_mem = _array_Core_3_Isoma_mem;
-    double* __restrict  _ptr_array_Core_3_Cgaba_b = _array_Core_3_Cgaba_b;
-    double*   _ptr_array_Core_3_soma_refP = _array_Core_3_soma_refP;
-    double*   _ptr_array_Core_3_alpha = _array_Core_3_alpha;
-    double*   _ptr_array_Core_3_Isoma_ahp_tau = _array_Core_3_Isoma_ahp_tau;
-    double*   _ptr_array_Core_3_Isoma_dpi_tau = _array_Core_3_Isoma_dpi_tau;
-    double*   _ptr_array_Core_3_Isoma_pfb_gain = _array_Core_3_Isoma_pfb_gain;
-    double*   _ptr_array_Core_3_Isoma_pfb_norm = _array_Core_3_Isoma_pfb_norm;
-    double* __restrict  _ptr_array_Core_3_Vnmda = _array_Core_3_Vnmda;
-    double* __restrict  _ptr_array_Core_3_Cgaba_a = _array_Core_3_Cgaba_a;
-    double*   _ptr_array_Core_3_Isoma_ahp_th = _array_Core_3_Isoma_ahp_th;
-    double*   _ptr_array_Core_3_Csoma_ahp = _array_Core_3_Csoma_ahp;
-    double* __restrict  _ptr_array_Core_3_lastspike = _array_Core_3_lastspike;
-    double* __restrict  _ptr_array_Core_3_Iampa = _array_Core_3_Iampa;
-    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
-    double* __restrict  _ptr_array_Core_3_Campa = _array_Core_3_Campa;
     double*   _ptr_array_Core_3_kn = _array_Core_3_kn;
-    double*   _ptr_array_Core_3_I0 = _array_Core_3_I0;
-    double* __restrict  _ptr_array_Core_3_Igaba_b_tau = _array_Core_3_Igaba_b_tau;
-    double*   _ptr_array_Core_3_Csoma_mem = _array_Core_3_Csoma_mem;
+    double*   _ptr_array_Core_3_soma_refP = _array_Core_3_soma_refP;
     double* __restrict  _ptr_array_Core_3_Inmda = _array_Core_3_Inmda;
-    double* __restrict  _ptr_array_Core_3_Isoma_ahp = _array_Core_3_Isoma_ahp;
+    double*   _ptr_array_defaultclock_t = _array_defaultclock_t;
     double*   _ptr_array_Core_3_kp = _array_Core_3_kp;
+    double* __restrict  _ptr_array_Core_3_Cnmda = _array_Core_3_Cnmda;
+    double* __restrict  _ptr_array_Core_3_Igaba_b = _array_Core_3_Igaba_b;
+    double* __restrict  _ptr_array_Core_3_Vnmda = _array_Core_3_Vnmda;
+    char* __restrict  _ptr_array_Core_3_not_refractory = _array_Core_3_not_refractory;
+    double*   _ptr_array_Core_3_Isoma_pfb_th = _array_Core_3_Isoma_pfb_th;
+    double* __restrict  _ptr_array_Core_3_Igaba_b_tau = _array_Core_3_Igaba_b_tau;
+    double* __restrict  _ptr_array_Core_3_Igaba_a_tau = _array_Core_3_Igaba_a_tau;
+    double* __restrict  _ptr_array_Core_3_Iampa = _array_Core_3_Iampa;
+    double* __restrict  _ptr_array_Core_3_Isoma_const = _array_Core_3_Isoma_const;
+    double* __restrict  _ptr_array_Core_3_Cgaba_b = _array_Core_3_Cgaba_b;
+    double*   _ptr_array_Core_3_I0 = _array_Core_3_I0;
+    double*   _ptr_array_Core_3_Csoma_ahp = _array_Core_3_Csoma_ahp;
+    double*   _ptr_array_Core_3_Isoma_ahp_th = _array_Core_3_Isoma_ahp_th;
+    double*   _ptr_array_Core_3_Isoma_dpi_tau = _array_Core_3_Isoma_dpi_tau;
+    double*   _ptr_array_Core_3_Isoma_pfb_norm = _array_Core_3_Isoma_pfb_norm;
+    double*   _ptr_array_Core_3_Isoma_ahp_tau = _array_Core_3_Isoma_ahp_tau;
+    double*   _ptr_array_Core_3_alpha = _array_Core_3_alpha;
+    double* __restrict  _ptr_array_Core_3_Campa = _array_Core_3_Campa;
+    double*   _ptr_array_Core_3_Ut = _array_Core_3_Ut;
+    double* __restrict  _ptr_array_Core_3_Iampa_tau = _array_Core_3_Iampa_tau;
+    double* __restrict  _ptr_array_Core_3_lastspike = _array_Core_3_lastspike;
+    double* __restrict  _ptr_array_Core_3_Igaba_a = _array_Core_3_Igaba_a;
+    double* __restrict  _ptr_array_Core_3_Cgaba_a = _array_Core_3_Cgaba_a;
+    double* __restrict  _ptr_array_Core_3_Isoma_ahp = _array_Core_3_Isoma_ahp;
+    double* __restrict  _ptr_array_Core_3_Isoma_mem = _array_Core_3_Isoma_mem;
+    double* __restrict  _ptr_array_Core_3_Inmda_tau = _array_Core_3_Inmda_tau;
+    double*   _ptr_array_Core_3_Isoma_pfb_gain = _array_Core_3_Isoma_pfb_gain;
+    double*   _ptr_array_Core_3_Csoma_mem = _array_Core_3_Csoma_mem;
+    double*   _ptr_array_defaultclock_dt = _array_defaultclock_dt;
 
 
     //// MAIN CODE ////////////
     // scalar code
     const size_t _vectorisation_idx = -1;
         
-    const double soma_refP = _ptr_array_Core_3_soma_refP[0];
-    const double alpha = _ptr_array_Core_3_alpha[0];
-    const double Isoma_ahp_tau = _ptr_array_Core_3_Isoma_ahp_tau[0];
-    const double Ut = _ptr_array_Core_3_Ut[0];
-    const double Isoma_dpi_tau = _ptr_array_Core_3_Isoma_dpi_tau[0];
-    const double kn = _ptr_array_Core_3_kn[0];
-    const double Isoma_pfb_gain = _ptr_array_Core_3_Isoma_pfb_gain[0];
-    const double t = _ptr_array_defaultclock_t[0];
-    const double Isoma_pfb_norm = _ptr_array_Core_3_Isoma_pfb_norm[0];
     const double I0 = _ptr_array_Core_3_I0[0];
-    const double dt = _ptr_array_defaultclock_dt[0];
-    const double Csoma_mem = _ptr_array_Core_3_Csoma_mem[0];
-    const double Isoma_ahp_th = _ptr_array_Core_3_Isoma_ahp_th[0];
+    const double kn = _ptr_array_Core_3_kn[0];
+    const double soma_refP = _ptr_array_Core_3_soma_refP[0];
     const double Csoma_ahp = _ptr_array_Core_3_Csoma_ahp[0];
-    const double Isoma_pfb_th = _ptr_array_Core_3_Isoma_pfb_th[0];
+    const double Ut = _ptr_array_Core_3_Ut[0];
+    const double t = _ptr_array_defaultclock_t[0];
     const double kp = _ptr_array_Core_3_kp[0];
+    const double Isoma_dpi_tau = _ptr_array_Core_3_Isoma_dpi_tau[0];
+    const double Isoma_pfb_norm = _ptr_array_Core_3_Isoma_pfb_norm[0];
+    const double Isoma_ahp_th = _ptr_array_Core_3_Isoma_ahp_th[0];
+    const double Isoma_pfb_gain = _ptr_array_Core_3_Isoma_pfb_gain[0];
+    const double Isoma_ahp_tau = _ptr_array_Core_3_Isoma_ahp_tau[0];
+    const double dt = _ptr_array_defaultclock_dt[0];
+    const double alpha = _ptr_array_Core_3_alpha[0];
+    const double Isoma_pfb_th = _ptr_array_Core_3_Isoma_pfb_th[0];
+    const double Csoma_mem = _ptr_array_Core_3_Csoma_mem[0];
     const int64_t _lio_1 = _timestep(soma_refP, dt);
     const double _lio_2 = 1.0f*(dt * ((0.5 * kn) + (0.5 * kp)))/Ut;
     const double _lio_3 = 2.0 * I0;
@@ -200,24 +200,24 @@ const size_t _numkp = 1;
         // vector code
         const size_t _vectorisation_idx = _idx;
                 
-        const double Cnmda = _ptr_array_Core_3_Cnmda[_idx];
-        char not_refractory = _ptr_array_Core_3_not_refractory[_idx];
-        const double Igaba_a_tau = _ptr_array_Core_3_Igaba_a_tau[_idx];
-        double Igaba_a = _ptr_array_Core_3_Igaba_a[_idx];
-        const double Inmda_tau = _ptr_array_Core_3_Inmda_tau[_idx];
-        double Igaba_b = _ptr_array_Core_3_Igaba_b[_idx];
-        const double Isoma_const = _ptr_array_Core_3_Isoma_const[_idx];
-        const double Iampa_tau = _ptr_array_Core_3_Iampa_tau[_idx];
-        double Isoma_mem = _ptr_array_Core_3_Isoma_mem[_idx];
-        const double Cgaba_b = _ptr_array_Core_3_Cgaba_b[_idx];
-        const double Vnmda = _ptr_array_Core_3_Vnmda[_idx];
-        const double Cgaba_a = _ptr_array_Core_3_Cgaba_a[_idx];
-        const double lastspike = _ptr_array_Core_3_lastspike[_idx];
-        double Iampa = _ptr_array_Core_3_Iampa[_idx];
-        const double Campa = _ptr_array_Core_3_Campa[_idx];
-        const double Igaba_b_tau = _ptr_array_Core_3_Igaba_b_tau[_idx];
         double Inmda = _ptr_array_Core_3_Inmda[_idx];
+        const double Cnmda = _ptr_array_Core_3_Cnmda[_idx];
+        double Igaba_b = _ptr_array_Core_3_Igaba_b[_idx];
+        const double Vnmda = _ptr_array_Core_3_Vnmda[_idx];
+        char not_refractory = _ptr_array_Core_3_not_refractory[_idx];
+        const double Igaba_b_tau = _ptr_array_Core_3_Igaba_b_tau[_idx];
+        const double Igaba_a_tau = _ptr_array_Core_3_Igaba_a_tau[_idx];
+        double Iampa = _ptr_array_Core_3_Iampa[_idx];
+        const double Isoma_const = _ptr_array_Core_3_Isoma_const[_idx];
+        const double Cgaba_b = _ptr_array_Core_3_Cgaba_b[_idx];
+        const double Campa = _ptr_array_Core_3_Campa[_idx];
+        const double Iampa_tau = _ptr_array_Core_3_Iampa_tau[_idx];
+        const double lastspike = _ptr_array_Core_3_lastspike[_idx];
+        double Igaba_a = _ptr_array_Core_3_Igaba_a[_idx];
+        const double Cgaba_a = _ptr_array_Core_3_Cgaba_a[_idx];
         double Isoma_ahp = _ptr_array_Core_3_Isoma_ahp[_idx];
+        double Isoma_mem = _ptr_array_Core_3_Isoma_mem[_idx];
+        const double Inmda_tau = _ptr_array_Core_3_Inmda_tau[_idx];
         not_refractory = _timestep(t - lastspike, dt) >= _lio_1;
         const double _Iampa = Iampa + (1.0f*(_lio_2 * ((((I0 * (Iampa <= I0)) + (Iampa_tau * (Iampa > I0))) * (_brian_pow(1.0 + (1.0f*((I0 * (Iampa <= I0)) + (alpha * (Iampa_tau * (Iampa > I0))))/Iampa), - 1))) * ((_lio_3 * (Iampa <= I0)) - ((Iampa + (I0 * (Iampa <= I0))) + (alpha * (Iampa_tau * (Iampa > I0)))))))/Campa);
         const double _Igaba_a = Igaba_a + (1.0f*(_lio_2 * ((((I0 * (Igaba_a <= I0)) + (Igaba_a_tau * (Igaba_a > I0))) * (_brian_pow(1.0 + (1.0f*((I0 * (Igaba_a <= I0)) + (alpha * (Igaba_a_tau * (Igaba_a > I0))))/Igaba_a), - 1))) * ((_lio_3 * (Igaba_a <= I0)) - ((Igaba_a + (I0 * (Igaba_a <= I0))) + (alpha * (Igaba_a_tau * (Igaba_a > I0)))))))/Cgaba_a);
@@ -236,13 +236,13 @@ const size_t _numkp = 1;
         Isoma_ahp = _Isoma_ahp;
         if(not_refractory)
             Isoma_mem = _Isoma_mem;
-        _ptr_array_Core_3_not_refractory[_idx] = not_refractory;
-        _ptr_array_Core_3_Igaba_a[_idx] = Igaba_a;
         _ptr_array_Core_3_Inmda[_idx] = Inmda;
+        _ptr_array_Core_3_Igaba_b[_idx] = Igaba_b;
+        _ptr_array_Core_3_Igaba_a[_idx] = Igaba_a;
         _ptr_array_Core_3_Iampa[_idx] = Iampa;
         _ptr_array_Core_3_Isoma_mem[_idx] = Isoma_mem;
-        _ptr_array_Core_3_Igaba_b[_idx] = Igaba_b;
         _ptr_array_Core_3_Isoma_ahp[_idx] = Isoma_ahp;
+        _ptr_array_Core_3_not_refractory[_idx] = not_refractory;
 
     }
 

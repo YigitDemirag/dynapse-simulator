@@ -15,11 +15,9 @@ namespace brian {
 std::vector< rk_state* > _mersenne_twister_states;
 
 //////////////// networks /////////////////
-Network network_1;
+Network network;
 
 //////////////// arrays ///////////////////
-int32_t * _array_AMPA0_N;
-const int _num__array_AMPA0_N = 1;
 int32_t * _array_Core_0__spikespace;
 const int _num__array_Core_0__spikespace = 257;
 double * _array_Core_0_alpha;
@@ -180,8 +178,8 @@ char * _array_Core_1_not_refractory;
 const int _num__array_Core_1_not_refractory = 256;
 double * _array_Core_1_soma_refP;
 const int _num__array_Core_1_soma_refP = 1;
-int32_t * _array_Core_1_subgroup_1__sub_idx;
-const int _num__array_Core_1_subgroup_1__sub_idx = 1;
+int32_t * _array_Core_1_subgroup__sub_idx;
+const int _num__array_Core_1_subgroup__sub_idx = 200;
 double * _array_Core_1_Ut;
 const int _num__array_Core_1_Ut = 1;
 double * _array_Core_1_Vnmda;
@@ -356,82 +354,52 @@ double * _array_defaultclock_t;
 const int _num__array_defaultclock_t = 1;
 int64_t * _array_defaultclock_timestep;
 const int _num__array_defaultclock_timestep = 1;
-int32_t * _array_InpSpikeGenerator__lastindex;
-const int _num__array_InpSpikeGenerator__lastindex = 1;
-int32_t * _array_InpSpikeGenerator__period_bins;
-const int _num__array_InpSpikeGenerator__period_bins = 1;
-int32_t * _array_InpSpikeGenerator__spikespace;
-const int _num__array_InpSpikeGenerator__spikespace = 2;
-int32_t * _array_InpSpikeGenerator_i;
-const int _num__array_InpSpikeGenerator_i = 1;
-double * _array_InpSpikeGenerator_period;
-const int _num__array_InpSpikeGenerator_period = 1;
 int32_t * _array_mon_neuron_input__source_idx;
-const int _num__array_mon_neuron_input__source_idx = 1;
+const int _num__array_mon_neuron_input__source_idx = 200;
 int32_t * _array_mon_neuron_input_count;
-const int _num__array_mon_neuron_input_count = 1;
+const int _num__array_mon_neuron_input_count = 200;
 int32_t * _array_mon_neuron_input_N;
 const int _num__array_mon_neuron_input_N = 1;
 int32_t * _array_mon_neuron_output__source_idx;
-const int _num__array_mon_neuron_output__source_idx = 1;
+const int _num__array_mon_neuron_output__source_idx = 200;
 int32_t * _array_mon_neuron_output_count;
-const int _num__array_mon_neuron_output_count = 1;
+const int _num__array_mon_neuron_output_count = 200;
 int32_t * _array_mon_neuron_output_N;
 const int _num__array_mon_neuron_output_N = 1;
-int32_t * _array_statemonitor_1__indices;
-const int _num__array_statemonitor_1__indices = 1;
-double * _array_statemonitor_1_Isoma_ahp;
-const int _num__array_statemonitor_1_Isoma_ahp = (0, 1);
-int32_t * _array_statemonitor_1_N;
-const int _num__array_statemonitor_1_N = 1;
-int32_t * _array_statemonitor_2__indices;
-const int _num__array_statemonitor_2__indices = 1;
-double * _array_statemonitor_2_Isoma_mem;
-const int _num__array_statemonitor_2_Isoma_mem = (0, 1);
-int32_t * _array_statemonitor_2_N;
-const int _num__array_statemonitor_2_N = 1;
+int32_t * _array_NMDA0_N;
+const int _num__array_NMDA0_N = 1;
+int32_t * _array_poissongroup__spikespace;
+const int _num__array_poissongroup__spikespace = 201;
+int32_t * _array_poissongroup_i;
+const int _num__array_poissongroup_i = 200;
 
 //////////////// dynamic arrays 1d /////////
-std::vector<int32_t> _dynamic_array_AMPA0__synaptic_post;
-std::vector<int32_t> _dynamic_array_AMPA0__synaptic_pre;
-std::vector<double> _dynamic_array_AMPA0_delay;
-std::vector<double> _dynamic_array_AMPA0_delay_1;
-std::vector<int32_t> _dynamic_array_AMPA0_N_incoming;
-std::vector<int32_t> _dynamic_array_AMPA0_N_outgoing;
-std::vector<double> _dynamic_array_AMPA0_weight;
-std::vector<int32_t> _dynamic_array_InpSpikeGenerator__timebins;
-std::vector<int32_t> _dynamic_array_InpSpikeGenerator_neuron_index;
-std::vector<int32_t> _dynamic_array_InpSpikeGenerator_spike_number;
-std::vector<double> _dynamic_array_InpSpikeGenerator_spike_time;
 std::vector<int32_t> _dynamic_array_mon_neuron_input_i;
 std::vector<double> _dynamic_array_mon_neuron_input_t;
 std::vector<int32_t> _dynamic_array_mon_neuron_output_i;
 std::vector<double> _dynamic_array_mon_neuron_output_t;
-std::vector<double> _dynamic_array_statemonitor_1_t;
-std::vector<double> _dynamic_array_statemonitor_2_t;
+std::vector<int32_t> _dynamic_array_NMDA0__synaptic_post;
+std::vector<int32_t> _dynamic_array_NMDA0__synaptic_pre;
+std::vector<double> _dynamic_array_NMDA0_delay;
+std::vector<double> _dynamic_array_NMDA0_delay_1;
+std::vector<int32_t> _dynamic_array_NMDA0_N_incoming;
+std::vector<int32_t> _dynamic_array_NMDA0_N_outgoing;
+std::vector<double> _dynamic_array_NMDA0_weight;
 
 //////////////// dynamic arrays 2d /////////
-DynamicArray2D<double> _dynamic_array_statemonitor_1_Isoma_ahp;
-DynamicArray2D<double> _dynamic_array_statemonitor_2_Isoma_mem;
 
 /////////////// static arrays /////////////
-int32_t * _static_array__dynamic_array_InpSpikeGenerator__timebins;
-const int _num__static_array__dynamic_array_InpSpikeGenerator__timebins = 500;
-double * _static_array__dynamic_array_InpSpikeGenerator_neuron_index;
-const int _num__static_array__dynamic_array_InpSpikeGenerator_neuron_index = 500;
-int64_t * _static_array__dynamic_array_InpSpikeGenerator_spike_number;
-const int _num__static_array__dynamic_array_InpSpikeGenerator_spike_number = 500;
-double * _static_array__dynamic_array_InpSpikeGenerator_spike_time;
-const int _num__static_array__dynamic_array_InpSpikeGenerator_spike_time = 500;
+double * _timedarray_values;
+const int _num__timedarray_values = 1000000;
 
 //////////////// synapses /////////////////
-// AMPA0
-SynapticPathway AMPA0_post(
-		_dynamic_array_AMPA0__synaptic_post,
-		0, 1);
-SynapticPathway AMPA0_pre(
-		_dynamic_array_AMPA0__synaptic_pre,
-		0, 1);
+// NMDA0
+SynapticPathway NMDA0_post(
+		_dynamic_array_NMDA0__synaptic_post,
+		0, 200);
+SynapticPathway NMDA0_pre(
+		_dynamic_array_NMDA0__synaptic_pre,
+		0, 200);
 
 //////////////// clocks ///////////////////
 Clock defaultclock;  // attributes will be set in run.cpp
@@ -444,10 +412,6 @@ void _init_arrays()
 	using namespace brian;
 
     // Arrays initialized to 0
-	_array_AMPA0_N = new int32_t[1];
-    
-	for(int i=0; i<1; i++) _array_AMPA0_N[i] = 0;
-
 	_array_Core_0__spikespace = new int32_t[257];
     
 	for(int i=0; i<257; i++) _array_Core_0__spikespace[i] = 0;
@@ -768,9 +732,9 @@ void _init_arrays()
     
 	for(int i=0; i<1; i++) _array_Core_1_soma_refP[i] = 0;
 
-	_array_Core_1_subgroup_1__sub_idx = new int32_t[1];
+	_array_Core_1_subgroup__sub_idx = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_Core_1_subgroup_1__sub_idx[i] = 0;
+	for(int i=0; i<200; i++) _array_Core_1_subgroup__sub_idx[i] = 0;
 
 	_array_Core_1_Ut = new double[1];
     
@@ -1120,69 +1084,41 @@ void _init_arrays()
     
 	for(int i=0; i<1; i++) _array_defaultclock_timestep[i] = 0;
 
-	_array_InpSpikeGenerator__lastindex = new int32_t[1];
+	_array_mon_neuron_input__source_idx = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_InpSpikeGenerator__lastindex[i] = 0;
+	for(int i=0; i<200; i++) _array_mon_neuron_input__source_idx[i] = 0;
 
-	_array_InpSpikeGenerator__period_bins = new int32_t[1];
+	_array_mon_neuron_input_count = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_InpSpikeGenerator__period_bins[i] = 0;
-
-	_array_InpSpikeGenerator__spikespace = new int32_t[2];
-    
-	for(int i=0; i<2; i++) _array_InpSpikeGenerator__spikespace[i] = 0;
-
-	_array_InpSpikeGenerator_i = new int32_t[1];
-    
-	for(int i=0; i<1; i++) _array_InpSpikeGenerator_i[i] = 0;
-
-	_array_InpSpikeGenerator_period = new double[1];
-    
-	for(int i=0; i<1; i++) _array_InpSpikeGenerator_period[i] = 0;
-
-	_array_mon_neuron_input__source_idx = new int32_t[1];
-    
-	for(int i=0; i<1; i++) _array_mon_neuron_input__source_idx[i] = 0;
-
-	_array_mon_neuron_input_count = new int32_t[1];
-    
-	for(int i=0; i<1; i++) _array_mon_neuron_input_count[i] = 0;
+	for(int i=0; i<200; i++) _array_mon_neuron_input_count[i] = 0;
 
 	_array_mon_neuron_input_N = new int32_t[1];
     
 	for(int i=0; i<1; i++) _array_mon_neuron_input_N[i] = 0;
 
-	_array_mon_neuron_output__source_idx = new int32_t[1];
+	_array_mon_neuron_output__source_idx = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_mon_neuron_output__source_idx[i] = 0;
+	for(int i=0; i<200; i++) _array_mon_neuron_output__source_idx[i] = 0;
 
-	_array_mon_neuron_output_count = new int32_t[1];
+	_array_mon_neuron_output_count = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_mon_neuron_output_count[i] = 0;
+	for(int i=0; i<200; i++) _array_mon_neuron_output_count[i] = 0;
 
 	_array_mon_neuron_output_N = new int32_t[1];
     
 	for(int i=0; i<1; i++) _array_mon_neuron_output_N[i] = 0;
 
-	_array_statemonitor_1__indices = new int32_t[1];
+	_array_NMDA0_N = new int32_t[1];
     
-	for(int i=0; i<1; i++) _array_statemonitor_1__indices[i] = 0;
+	for(int i=0; i<1; i++) _array_NMDA0_N[i] = 0;
 
-	_array_statemonitor_1_N = new int32_t[1];
+	_array_poissongroup__spikespace = new int32_t[201];
     
-	for(int i=0; i<1; i++) _array_statemonitor_1_N[i] = 0;
+	for(int i=0; i<201; i++) _array_poissongroup__spikespace[i] = 0;
 
-	_array_statemonitor_2__indices = new int32_t[1];
+	_array_poissongroup_i = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_statemonitor_2__indices[i] = 0;
-
-	_array_statemonitor_2_N = new int32_t[1];
-    
-	for(int i=0; i<1; i++) _array_statemonitor_2_N[i] = 0;
-
-	_dynamic_array_InpSpikeGenerator__timebins.resize(500);
-    
-	for(int i=0; i<500; i++) _dynamic_array_InpSpikeGenerator__timebins[i] = 0;
+	for(int i=0; i<200; i++) _array_poissongroup_i[i] = 0;
 
 
 	// Arrays initialized to an "arange"
@@ -1194,9 +1130,9 @@ void _init_arrays()
     
 	for(int i=0; i<256; i++) _array_Core_1_i[i] = 0 + i;
 
-	_array_Core_1_subgroup_1__sub_idx = new int32_t[1];
+	_array_Core_1_subgroup__sub_idx = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_Core_1_subgroup_1__sub_idx[i] = 0 + i;
+	for(int i=0; i<200; i++) _array_Core_1_subgroup__sub_idx[i] = 0 + i;
 
 	_array_Core_2_i = new int32_t[256];
     
@@ -1206,24 +1142,21 @@ void _init_arrays()
     
 	for(int i=0; i<256; i++) _array_Core_3_i[i] = 0 + i;
 
-	_array_InpSpikeGenerator_i = new int32_t[1];
+	_array_mon_neuron_input__source_idx = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_InpSpikeGenerator_i[i] = 0 + i;
+	for(int i=0; i<200; i++) _array_mon_neuron_input__source_idx[i] = 0 + i;
 
-	_array_mon_neuron_input__source_idx = new int32_t[1];
+	_array_mon_neuron_output__source_idx = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_mon_neuron_input__source_idx[i] = 0 + i;
+	for(int i=0; i<200; i++) _array_mon_neuron_output__source_idx[i] = 0 + i;
 
-	_array_mon_neuron_output__source_idx = new int32_t[1];
+	_array_poissongroup_i = new int32_t[200];
     
-	for(int i=0; i<1; i++) _array_mon_neuron_output__source_idx[i] = 0 + i;
+	for(int i=0; i<200; i++) _array_poissongroup_i[i] = 0 + i;
 
 
 	// static arrays
-	_static_array__dynamic_array_InpSpikeGenerator__timebins = new int32_t[500];
-	_static_array__dynamic_array_InpSpikeGenerator_neuron_index = new double[500];
-	_static_array__dynamic_array_InpSpikeGenerator_spike_number = new int64_t[500];
-	_static_array__dynamic_array_InpSpikeGenerator_spike_time = new double[500];
+	_timedarray_values = new double[1000000];
 
 	// Random number generator states
 	for (int i=0; i<1; i++)
@@ -1234,41 +1167,14 @@ void _load_arrays()
 {
 	using namespace brian;
 
-	ifstream f_static_array__dynamic_array_InpSpikeGenerator__timebins;
-	f_static_array__dynamic_array_InpSpikeGenerator__timebins.open("static_arrays/_static_array__dynamic_array_InpSpikeGenerator__timebins", ios::in | ios::binary);
-	if(f_static_array__dynamic_array_InpSpikeGenerator__timebins.is_open())
+	ifstream f_timedarray_values;
+	f_timedarray_values.open("static_arrays/_timedarray_values", ios::in | ios::binary);
+	if(f_timedarray_values.is_open())
 	{
-		f_static_array__dynamic_array_InpSpikeGenerator__timebins.read(reinterpret_cast<char*>(_static_array__dynamic_array_InpSpikeGenerator__timebins), 500*sizeof(int32_t));
+		f_timedarray_values.read(reinterpret_cast<char*>(_timedarray_values), 1000000*sizeof(double));
 	} else
 	{
-		std::cout << "Error opening static array _static_array__dynamic_array_InpSpikeGenerator__timebins." << endl;
-	}
-	ifstream f_static_array__dynamic_array_InpSpikeGenerator_neuron_index;
-	f_static_array__dynamic_array_InpSpikeGenerator_neuron_index.open("static_arrays/_static_array__dynamic_array_InpSpikeGenerator_neuron_index", ios::in | ios::binary);
-	if(f_static_array__dynamic_array_InpSpikeGenerator_neuron_index.is_open())
-	{
-		f_static_array__dynamic_array_InpSpikeGenerator_neuron_index.read(reinterpret_cast<char*>(_static_array__dynamic_array_InpSpikeGenerator_neuron_index), 500*sizeof(double));
-	} else
-	{
-		std::cout << "Error opening static array _static_array__dynamic_array_InpSpikeGenerator_neuron_index." << endl;
-	}
-	ifstream f_static_array__dynamic_array_InpSpikeGenerator_spike_number;
-	f_static_array__dynamic_array_InpSpikeGenerator_spike_number.open("static_arrays/_static_array__dynamic_array_InpSpikeGenerator_spike_number", ios::in | ios::binary);
-	if(f_static_array__dynamic_array_InpSpikeGenerator_spike_number.is_open())
-	{
-		f_static_array__dynamic_array_InpSpikeGenerator_spike_number.read(reinterpret_cast<char*>(_static_array__dynamic_array_InpSpikeGenerator_spike_number), 500*sizeof(int64_t));
-	} else
-	{
-		std::cout << "Error opening static array _static_array__dynamic_array_InpSpikeGenerator_spike_number." << endl;
-	}
-	ifstream f_static_array__dynamic_array_InpSpikeGenerator_spike_time;
-	f_static_array__dynamic_array_InpSpikeGenerator_spike_time.open("static_arrays/_static_array__dynamic_array_InpSpikeGenerator_spike_time", ios::in | ios::binary);
-	if(f_static_array__dynamic_array_InpSpikeGenerator_spike_time.is_open())
-	{
-		f_static_array__dynamic_array_InpSpikeGenerator_spike_time.read(reinterpret_cast<char*>(_static_array__dynamic_array_InpSpikeGenerator_spike_time), 500*sizeof(double));
-	} else
-	{
-		std::cout << "Error opening static array _static_array__dynamic_array_InpSpikeGenerator_spike_time." << endl;
+		std::cout << "Error opening static array _timedarray_values." << endl;
 	}
 }
 
@@ -1276,18 +1182,8 @@ void _write_arrays()
 {
 	using namespace brian;
 
-	ofstream outfile__array_AMPA0_N;
-	outfile__array_AMPA0_N.open("results/_array_AMPA0_N_-2089549631045677162", ios::binary | ios::out);
-	if(outfile__array_AMPA0_N.is_open())
-	{
-		outfile__array_AMPA0_N.write(reinterpret_cast<char*>(_array_AMPA0_N), 1*sizeof(_array_AMPA0_N[0]));
-		outfile__array_AMPA0_N.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_AMPA0_N." << endl;
-	}
 	ofstream outfile__array_Core_0__spikespace;
-	outfile__array_Core_0__spikespace.open("results/_array_Core_0__spikespace_-6127338396175578998", ios::binary | ios::out);
+	outfile__array_Core_0__spikespace.open("results/_array_Core_0__spikespace_8097146419878060048", ios::binary | ios::out);
 	if(outfile__array_Core_0__spikespace.is_open())
 	{
 		outfile__array_Core_0__spikespace.write(reinterpret_cast<char*>(_array_Core_0__spikespace), 257*sizeof(_array_Core_0__spikespace[0]));
@@ -1297,7 +1193,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0__spikespace." << endl;
 	}
 	ofstream outfile__array_Core_0_alpha;
-	outfile__array_Core_0_alpha.open("results/_array_Core_0_alpha_5850697527017224590", ios::binary | ios::out);
+	outfile__array_Core_0_alpha.open("results/_array_Core_0_alpha_6656631157718018654", ios::binary | ios::out);
 	if(outfile__array_Core_0_alpha.is_open())
 	{
 		outfile__array_Core_0_alpha.write(reinterpret_cast<char*>(_array_Core_0_alpha), 1*sizeof(_array_Core_0_alpha[0]));
@@ -1307,7 +1203,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_alpha." << endl;
 	}
 	ofstream outfile__array_Core_0_Campa;
-	outfile__array_Core_0_Campa.open("results/_array_Core_0_Campa_6656725339048725981", ios::binary | ios::out);
+	outfile__array_Core_0_Campa.open("results/_array_Core_0_Campa_4450902435179399783", ios::binary | ios::out);
 	if(outfile__array_Core_0_Campa.is_open())
 	{
 		outfile__array_Core_0_Campa.write(reinterpret_cast<char*>(_array_Core_0_Campa), 256*sizeof(_array_Core_0_Campa[0]));
@@ -1317,7 +1213,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Campa." << endl;
 	}
 	ofstream outfile__array_Core_0_Cgaba_a;
-	outfile__array_Core_0_Cgaba_a.open("results/_array_Core_0_Cgaba_a_6001250643595457832", ios::binary | ios::out);
+	outfile__array_Core_0_Cgaba_a.open("results/_array_Core_0_Cgaba_a_-917725417654597309", ios::binary | ios::out);
 	if(outfile__array_Core_0_Cgaba_a.is_open())
 	{
 		outfile__array_Core_0_Cgaba_a.write(reinterpret_cast<char*>(_array_Core_0_Cgaba_a), 256*sizeof(_array_Core_0_Cgaba_a[0]));
@@ -1327,7 +1223,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Cgaba_a." << endl;
 	}
 	ofstream outfile__array_Core_0_Cgaba_b;
-	outfile__array_Core_0_Cgaba_b.open("results/_array_Core_0_Cgaba_b_814923398027350573", ios::binary | ios::out);
+	outfile__array_Core_0_Cgaba_b.open("results/_array_Core_0_Cgaba_b_-3843185481736145924", ios::binary | ios::out);
 	if(outfile__array_Core_0_Cgaba_b.is_open())
 	{
 		outfile__array_Core_0_Cgaba_b.write(reinterpret_cast<char*>(_array_Core_0_Cgaba_b), 256*sizeof(_array_Core_0_Cgaba_b[0]));
@@ -1337,7 +1233,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Cgaba_b." << endl;
 	}
 	ofstream outfile__array_Core_0_Cnmda;
-	outfile__array_Core_0_Cnmda.open("results/_array_Core_0_Cnmda_5274539728360223002", ios::binary | ios::out);
+	outfile__array_Core_0_Cnmda.open("results/_array_Core_0_Cnmda_-9010445725137049026", ios::binary | ios::out);
 	if(outfile__array_Core_0_Cnmda.is_open())
 	{
 		outfile__array_Core_0_Cnmda.write(reinterpret_cast<char*>(_array_Core_0_Cnmda), 256*sizeof(_array_Core_0_Cnmda[0]));
@@ -1347,7 +1243,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Cnmda." << endl;
 	}
 	ofstream outfile__array_Core_0_Csoma_ahp;
-	outfile__array_Core_0_Csoma_ahp.open("results/_array_Core_0_Csoma_ahp_7651747312280184092", ios::binary | ios::out);
+	outfile__array_Core_0_Csoma_ahp.open("results/_array_Core_0_Csoma_ahp_-3937814710898105789", ios::binary | ios::out);
 	if(outfile__array_Core_0_Csoma_ahp.is_open())
 	{
 		outfile__array_Core_0_Csoma_ahp.write(reinterpret_cast<char*>(_array_Core_0_Csoma_ahp), 1*sizeof(_array_Core_0_Csoma_ahp[0]));
@@ -1357,7 +1253,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Csoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_0_Csoma_mem;
-	outfile__array_Core_0_Csoma_mem.open("results/_array_Core_0_Csoma_mem_-7560740969247686000", ios::binary | ios::out);
+	outfile__array_Core_0_Csoma_mem.open("results/_array_Core_0_Csoma_mem_5783530513863066554", ios::binary | ios::out);
 	if(outfile__array_Core_0_Csoma_mem.is_open())
 	{
 		outfile__array_Core_0_Csoma_mem.write(reinterpret_cast<char*>(_array_Core_0_Csoma_mem), 1*sizeof(_array_Core_0_Csoma_mem[0]));
@@ -1367,7 +1263,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Csoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_0_i;
-	outfile__array_Core_0_i.open("results/_array_Core_0_i_3825435563533998578", ios::binary | ios::out);
+	outfile__array_Core_0_i.open("results/_array_Core_0_i_-5960520545996854005", ios::binary | ios::out);
 	if(outfile__array_Core_0_i.is_open())
 	{
 		outfile__array_Core_0_i.write(reinterpret_cast<char*>(_array_Core_0_i), 256*sizeof(_array_Core_0_i[0]));
@@ -1377,7 +1273,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_i." << endl;
 	}
 	ofstream outfile__array_Core_0_I0;
-	outfile__array_Core_0_I0.open("results/_array_Core_0_I0_-3224706341714495315", ios::binary | ios::out);
+	outfile__array_Core_0_I0.open("results/_array_Core_0_I0_-3021259697338811357", ios::binary | ios::out);
 	if(outfile__array_Core_0_I0.is_open())
 	{
 		outfile__array_Core_0_I0.write(reinterpret_cast<char*>(_array_Core_0_I0), 1*sizeof(_array_Core_0_I0[0]));
@@ -1387,7 +1283,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_I0." << endl;
 	}
 	ofstream outfile__array_Core_0_Iampa;
-	outfile__array_Core_0_Iampa.open("results/_array_Core_0_Iampa_7729274252525070588", ios::binary | ios::out);
+	outfile__array_Core_0_Iampa.open("results/_array_Core_0_Iampa_-1457427188187744816", ios::binary | ios::out);
 	if(outfile__array_Core_0_Iampa.is_open())
 	{
 		outfile__array_Core_0_Iampa.write(reinterpret_cast<char*>(_array_Core_0_Iampa), 256*sizeof(_array_Core_0_Iampa[0]));
@@ -1397,7 +1293,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Iampa." << endl;
 	}
 	ofstream outfile__array_Core_0_Iampa_tau;
-	outfile__array_Core_0_Iampa_tau.open("results/_array_Core_0_Iampa_tau_5543787605440422569", ios::binary | ios::out);
+	outfile__array_Core_0_Iampa_tau.open("results/_array_Core_0_Iampa_tau_6037061684352902888", ios::binary | ios::out);
 	if(outfile__array_Core_0_Iampa_tau.is_open())
 	{
 		outfile__array_Core_0_Iampa_tau.write(reinterpret_cast<char*>(_array_Core_0_Iampa_tau), 256*sizeof(_array_Core_0_Iampa_tau[0]));
@@ -1407,7 +1303,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Iampa_tau." << endl;
 	}
 	ofstream outfile__array_Core_0_Iampa_w0;
-	outfile__array_Core_0_Iampa_w0.open("results/_array_Core_0_Iampa_w0_-8043614426414250314", ios::binary | ios::out);
+	outfile__array_Core_0_Iampa_w0.open("results/_array_Core_0_Iampa_w0_-3347142568882949289", ios::binary | ios::out);
 	if(outfile__array_Core_0_Iampa_w0.is_open())
 	{
 		outfile__array_Core_0_Iampa_w0.write(reinterpret_cast<char*>(_array_Core_0_Iampa_w0), 256*sizeof(_array_Core_0_Iampa_w0[0]));
@@ -1417,7 +1313,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Iampa_w0." << endl;
 	}
 	ofstream outfile__array_Core_0_Igaba_a;
-	outfile__array_Core_0_Igaba_a.open("results/_array_Core_0_Igaba_a_1662311039164243678", ios::binary | ios::out);
+	outfile__array_Core_0_Igaba_a.open("results/_array_Core_0_Igaba_a_5102956005768905199", ios::binary | ios::out);
 	if(outfile__array_Core_0_Igaba_a.is_open())
 	{
 		outfile__array_Core_0_Igaba_a.write(reinterpret_cast<char*>(_array_Core_0_Igaba_a), 256*sizeof(_array_Core_0_Igaba_a[0]));
@@ -1427,7 +1323,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Igaba_a." << endl;
 	}
 	ofstream outfile__array_Core_0_Igaba_a_tau;
-	outfile__array_Core_0_Igaba_a_tau.open("results/_array_Core_0_Igaba_a_tau_-4882604392481895741", ios::binary | ios::out);
+	outfile__array_Core_0_Igaba_a_tau.open("results/_array_Core_0_Igaba_a_tau_-2548481926726133868", ios::binary | ios::out);
 	if(outfile__array_Core_0_Igaba_a_tau.is_open())
 	{
 		outfile__array_Core_0_Igaba_a_tau.write(reinterpret_cast<char*>(_array_Core_0_Igaba_a_tau), 256*sizeof(_array_Core_0_Igaba_a_tau[0]));
@@ -1437,7 +1333,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Igaba_a_tau." << endl;
 	}
 	ofstream outfile__array_Core_0_Igaba_a_w0;
-	outfile__array_Core_0_Igaba_a_w0.open("results/_array_Core_0_Igaba_a_w0_-7208589869116602196", ios::binary | ios::out);
+	outfile__array_Core_0_Igaba_a_w0.open("results/_array_Core_0_Igaba_a_w0_-851216200074112354", ios::binary | ios::out);
 	if(outfile__array_Core_0_Igaba_a_w0.is_open())
 	{
 		outfile__array_Core_0_Igaba_a_w0.write(reinterpret_cast<char*>(_array_Core_0_Igaba_a_w0), 256*sizeof(_array_Core_0_Igaba_a_w0[0]));
@@ -1447,7 +1343,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Igaba_a_w0." << endl;
 	}
 	ofstream outfile__array_Core_0_Igaba_b;
-	outfile__array_Core_0_Igaba_b.open("results/_array_Core_0_Igaba_b_-7928726593427239455", ios::binary | ios::out);
+	outfile__array_Core_0_Igaba_b.open("results/_array_Core_0_Igaba_b_-959612227091446291", ios::binary | ios::out);
 	if(outfile__array_Core_0_Igaba_b.is_open())
 	{
 		outfile__array_Core_0_Igaba_b.write(reinterpret_cast<char*>(_array_Core_0_Igaba_b), 256*sizeof(_array_Core_0_Igaba_b[0]));
@@ -1457,7 +1353,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Igaba_b." << endl;
 	}
 	ofstream outfile__array_Core_0_Igaba_b_tau;
-	outfile__array_Core_0_Igaba_b_tau.open("results/_array_Core_0_Igaba_b_tau_-6266223503639381986", ios::binary | ios::out);
+	outfile__array_Core_0_Igaba_b_tau.open("results/_array_Core_0_Igaba_b_tau_-818511749708402440", ios::binary | ios::out);
 	if(outfile__array_Core_0_Igaba_b_tau.is_open())
 	{
 		outfile__array_Core_0_Igaba_b_tau.write(reinterpret_cast<char*>(_array_Core_0_Igaba_b_tau), 256*sizeof(_array_Core_0_Igaba_b_tau[0]));
@@ -1467,7 +1363,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Igaba_b_tau." << endl;
 	}
 	ofstream outfile__array_Core_0_Igaba_b_w0;
-	outfile__array_Core_0_Igaba_b_w0.open("results/_array_Core_0_Igaba_b_w0_-6079997876084906104", ios::binary | ios::out);
+	outfile__array_Core_0_Igaba_b_w0.open("results/_array_Core_0_Igaba_b_w0_3463872194572203552", ios::binary | ios::out);
 	if(outfile__array_Core_0_Igaba_b_w0.is_open())
 	{
 		outfile__array_Core_0_Igaba_b_w0.write(reinterpret_cast<char*>(_array_Core_0_Igaba_b_w0), 256*sizeof(_array_Core_0_Igaba_b_w0[0]));
@@ -1477,7 +1373,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Igaba_b_w0." << endl;
 	}
 	ofstream outfile__array_Core_0_Inmda;
-	outfile__array_Core_0_Inmda.open("results/_array_Core_0_Inmda_3031110741736020590", ios::binary | ios::out);
+	outfile__array_Core_0_Inmda.open("results/_array_Core_0_Inmda_6776487861035268665", ios::binary | ios::out);
 	if(outfile__array_Core_0_Inmda.is_open())
 	{
 		outfile__array_Core_0_Inmda.write(reinterpret_cast<char*>(_array_Core_0_Inmda), 256*sizeof(_array_Core_0_Inmda[0]));
@@ -1487,7 +1383,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Inmda." << endl;
 	}
 	ofstream outfile__array_Core_0_Inmda_tau;
-	outfile__array_Core_0_Inmda_tau.open("results/_array_Core_0_Inmda_tau_-2616423449553617745", ios::binary | ios::out);
+	outfile__array_Core_0_Inmda_tau.open("results/_array_Core_0_Inmda_tau_-2637992797932041448", ios::binary | ios::out);
 	if(outfile__array_Core_0_Inmda_tau.is_open())
 	{
 		outfile__array_Core_0_Inmda_tau.write(reinterpret_cast<char*>(_array_Core_0_Inmda_tau), 256*sizeof(_array_Core_0_Inmda_tau[0]));
@@ -1497,7 +1393,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Inmda_tau." << endl;
 	}
 	ofstream outfile__array_Core_0_Inmda_w0;
-	outfile__array_Core_0_Inmda_w0.open("results/_array_Core_0_Inmda_w0_-1144851214375922978", ios::binary | ios::out);
+	outfile__array_Core_0_Inmda_w0.open("results/_array_Core_0_Inmda_w0_-8190665152088380923", ios::binary | ios::out);
 	if(outfile__array_Core_0_Inmda_w0.is_open())
 	{
 		outfile__array_Core_0_Inmda_w0.write(reinterpret_cast<char*>(_array_Core_0_Inmda_w0), 256*sizeof(_array_Core_0_Inmda_w0[0]));
@@ -1507,7 +1403,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Inmda_w0." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_ahp;
-	outfile__array_Core_0_Isoma_ahp.open("results/_array_Core_0_Isoma_ahp_-1042656003568559909", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_ahp.open("results/_array_Core_0_Isoma_ahp_-5627077552545085753", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_ahp.is_open())
 	{
 		outfile__array_Core_0_Isoma_ahp.write(reinterpret_cast<char*>(_array_Core_0_Isoma_ahp), 256*sizeof(_array_Core_0_Isoma_ahp[0]));
@@ -1517,7 +1413,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_ahp_tau;
-	outfile__array_Core_0_Isoma_ahp_tau.open("results/_array_Core_0_Isoma_ahp_tau_-7557807388318105812", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_ahp_tau.open("results/_array_Core_0_Isoma_ahp_tau_-5049599420396491452", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_ahp_tau.is_open())
 	{
 		outfile__array_Core_0_Isoma_ahp_tau.write(reinterpret_cast<char*>(_array_Core_0_Isoma_ahp_tau), 1*sizeof(_array_Core_0_Isoma_ahp_tau[0]));
@@ -1527,7 +1423,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_ahp_tau." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_ahp_th;
-	outfile__array_Core_0_Isoma_ahp_th.open("results/_array_Core_0_Isoma_ahp_th_1444407781884526571", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_ahp_th.open("results/_array_Core_0_Isoma_ahp_th_-8166506817854959084", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_ahp_th.is_open())
 	{
 		outfile__array_Core_0_Isoma_ahp_th.write(reinterpret_cast<char*>(_array_Core_0_Isoma_ahp_th), 1*sizeof(_array_Core_0_Isoma_ahp_th[0]));
@@ -1537,7 +1433,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_ahp_th." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_ahp_w;
-	outfile__array_Core_0_Isoma_ahp_w.open("results/_array_Core_0_Isoma_ahp_w_2866096128977636701", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_ahp_w.open("results/_array_Core_0_Isoma_ahp_w_-2967083318276009201", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_ahp_w.is_open())
 	{
 		outfile__array_Core_0_Isoma_ahp_w.write(reinterpret_cast<char*>(_array_Core_0_Isoma_ahp_w), 256*sizeof(_array_Core_0_Isoma_ahp_w[0]));
@@ -1547,7 +1443,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_ahp_w." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_const;
-	outfile__array_Core_0_Isoma_const.open("results/_array_Core_0_Isoma_const_7437281074555578483", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_const.open("results/_array_Core_0_Isoma_const_-7075051387610329213", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_const.is_open())
 	{
 		outfile__array_Core_0_Isoma_const.write(reinterpret_cast<char*>(_array_Core_0_Isoma_const), 256*sizeof(_array_Core_0_Isoma_const[0]));
@@ -1557,7 +1453,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_const." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_dpi_tau;
-	outfile__array_Core_0_Isoma_dpi_tau.open("results/_array_Core_0_Isoma_dpi_tau_-2563925190936908757", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_dpi_tau.open("results/_array_Core_0_Isoma_dpi_tau_-5595998642996866899", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_dpi_tau.is_open())
 	{
 		outfile__array_Core_0_Isoma_dpi_tau.write(reinterpret_cast<char*>(_array_Core_0_Isoma_dpi_tau), 1*sizeof(_array_Core_0_Isoma_dpi_tau[0]));
@@ -1567,7 +1463,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_dpi_tau." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_mem;
-	outfile__array_Core_0_Isoma_mem.open("results/_array_Core_0_Isoma_mem_-5170483185696270906", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_mem.open("results/_array_Core_0_Isoma_mem_3266650047496024670", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_mem.is_open())
 	{
 		outfile__array_Core_0_Isoma_mem.write(reinterpret_cast<char*>(_array_Core_0_Isoma_mem), 256*sizeof(_array_Core_0_Isoma_mem[0]));
@@ -1577,7 +1473,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_pfb_gain;
-	outfile__array_Core_0_Isoma_pfb_gain.open("results/_array_Core_0_Isoma_pfb_gain_2946284640440784501", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_pfb_gain.open("results/_array_Core_0_Isoma_pfb_gain_-8008490571635100289", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_pfb_gain.is_open())
 	{
 		outfile__array_Core_0_Isoma_pfb_gain.write(reinterpret_cast<char*>(_array_Core_0_Isoma_pfb_gain), 1*sizeof(_array_Core_0_Isoma_pfb_gain[0]));
@@ -1587,7 +1483,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_pfb_gain." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_pfb_norm;
-	outfile__array_Core_0_Isoma_pfb_norm.open("results/_array_Core_0_Isoma_pfb_norm_-1936605131540051565", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_pfb_norm.open("results/_array_Core_0_Isoma_pfb_norm_-5154477065552101188", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_pfb_norm.is_open())
 	{
 		outfile__array_Core_0_Isoma_pfb_norm.write(reinterpret_cast<char*>(_array_Core_0_Isoma_pfb_norm), 1*sizeof(_array_Core_0_Isoma_pfb_norm[0]));
@@ -1597,7 +1493,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_pfb_norm." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_pfb_th;
-	outfile__array_Core_0_Isoma_pfb_th.open("results/_array_Core_0_Isoma_pfb_th_-5995535306595000209", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_pfb_th.open("results/_array_Core_0_Isoma_pfb_th_8158106460523666065", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_pfb_th.is_open())
 	{
 		outfile__array_Core_0_Isoma_pfb_th.write(reinterpret_cast<char*>(_array_Core_0_Isoma_pfb_th), 1*sizeof(_array_Core_0_Isoma_pfb_th[0]));
@@ -1607,7 +1503,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_pfb_th." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_reset;
-	outfile__array_Core_0_Isoma_reset.open("results/_array_Core_0_Isoma_reset_5100461109269520600", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_reset.open("results/_array_Core_0_Isoma_reset_1168648158986230994", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_reset.is_open())
 	{
 		outfile__array_Core_0_Isoma_reset.write(reinterpret_cast<char*>(_array_Core_0_Isoma_reset), 1*sizeof(_array_Core_0_Isoma_reset[0]));
@@ -1617,7 +1513,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_reset." << endl;
 	}
 	ofstream outfile__array_Core_0_Isoma_th;
-	outfile__array_Core_0_Isoma_th.open("results/_array_Core_0_Isoma_th_1436489901164838527", ios::binary | ios::out);
+	outfile__array_Core_0_Isoma_th.open("results/_array_Core_0_Isoma_th_-7166173712634343664", ios::binary | ios::out);
 	if(outfile__array_Core_0_Isoma_th.is_open())
 	{
 		outfile__array_Core_0_Isoma_th.write(reinterpret_cast<char*>(_array_Core_0_Isoma_th), 1*sizeof(_array_Core_0_Isoma_th[0]));
@@ -1627,7 +1523,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Isoma_th." << endl;
 	}
 	ofstream outfile__array_Core_0_kn;
-	outfile__array_Core_0_kn.open("results/_array_Core_0_kn_-5845744990007879776", ios::binary | ios::out);
+	outfile__array_Core_0_kn.open("results/_array_Core_0_kn_-2585032584961745283", ios::binary | ios::out);
 	if(outfile__array_Core_0_kn.is_open())
 	{
 		outfile__array_Core_0_kn.write(reinterpret_cast<char*>(_array_Core_0_kn), 1*sizeof(_array_Core_0_kn[0]));
@@ -1637,7 +1533,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_kn." << endl;
 	}
 	ofstream outfile__array_Core_0_kp;
-	outfile__array_Core_0_kp.open("results/_array_Core_0_kp_-6261487230129476860", ios::binary | ios::out);
+	outfile__array_Core_0_kp.open("results/_array_Core_0_kp_6534127534784763213", ios::binary | ios::out);
 	if(outfile__array_Core_0_kp.is_open())
 	{
 		outfile__array_Core_0_kp.write(reinterpret_cast<char*>(_array_Core_0_kp), 1*sizeof(_array_Core_0_kp[0]));
@@ -1647,7 +1543,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_kp." << endl;
 	}
 	ofstream outfile__array_Core_0_lastspike;
-	outfile__array_Core_0_lastspike.open("results/_array_Core_0_lastspike_-9030991134167214049", ios::binary | ios::out);
+	outfile__array_Core_0_lastspike.open("results/_array_Core_0_lastspike_280399881318240997", ios::binary | ios::out);
 	if(outfile__array_Core_0_lastspike.is_open())
 	{
 		outfile__array_Core_0_lastspike.write(reinterpret_cast<char*>(_array_Core_0_lastspike), 256*sizeof(_array_Core_0_lastspike[0]));
@@ -1657,7 +1553,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_lastspike." << endl;
 	}
 	ofstream outfile__array_Core_0_not_refractory;
-	outfile__array_Core_0_not_refractory.open("results/_array_Core_0_not_refractory_510892038574004497", ios::binary | ios::out);
+	outfile__array_Core_0_not_refractory.open("results/_array_Core_0_not_refractory_7608920729004545751", ios::binary | ios::out);
 	if(outfile__array_Core_0_not_refractory.is_open())
 	{
 		outfile__array_Core_0_not_refractory.write(reinterpret_cast<char*>(_array_Core_0_not_refractory), 256*sizeof(_array_Core_0_not_refractory[0]));
@@ -1667,7 +1563,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_not_refractory." << endl;
 	}
 	ofstream outfile__array_Core_0_soma_refP;
-	outfile__array_Core_0_soma_refP.open("results/_array_Core_0_soma_refP_-1856817019010007013", ios::binary | ios::out);
+	outfile__array_Core_0_soma_refP.open("results/_array_Core_0_soma_refP_-1057281137238136185", ios::binary | ios::out);
 	if(outfile__array_Core_0_soma_refP.is_open())
 	{
 		outfile__array_Core_0_soma_refP.write(reinterpret_cast<char*>(_array_Core_0_soma_refP), 1*sizeof(_array_Core_0_soma_refP[0]));
@@ -1677,7 +1573,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_soma_refP." << endl;
 	}
 	ofstream outfile__array_Core_0_Ut;
-	outfile__array_Core_0_Ut.open("results/_array_Core_0_Ut_-229306267942232832", ios::binary | ios::out);
+	outfile__array_Core_0_Ut.open("results/_array_Core_0_Ut_8332919010992360385", ios::binary | ios::out);
 	if(outfile__array_Core_0_Ut.is_open())
 	{
 		outfile__array_Core_0_Ut.write(reinterpret_cast<char*>(_array_Core_0_Ut), 1*sizeof(_array_Core_0_Ut[0]));
@@ -1687,7 +1583,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Ut." << endl;
 	}
 	ofstream outfile__array_Core_0_Vnmda;
-	outfile__array_Core_0_Vnmda.open("results/_array_Core_0_Vnmda_6420491474394360777", ios::binary | ios::out);
+	outfile__array_Core_0_Vnmda.open("results/_array_Core_0_Vnmda_-1660270172492938575", ios::binary | ios::out);
 	if(outfile__array_Core_0_Vnmda.is_open())
 	{
 		outfile__array_Core_0_Vnmda.write(reinterpret_cast<char*>(_array_Core_0_Vnmda), 256*sizeof(_array_Core_0_Vnmda[0]));
@@ -1697,7 +1593,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_0_Vnmda." << endl;
 	}
 	ofstream outfile__array_Core_1__spikespace;
-	outfile__array_Core_1__spikespace.open("results/_array_Core_1__spikespace_6372948192554292189", ios::binary | ios::out);
+	outfile__array_Core_1__spikespace.open("results/_array_Core_1__spikespace_4745029304618448235", ios::binary | ios::out);
 	if(outfile__array_Core_1__spikespace.is_open())
 	{
 		outfile__array_Core_1__spikespace.write(reinterpret_cast<char*>(_array_Core_1__spikespace), 257*sizeof(_array_Core_1__spikespace[0]));
@@ -1707,7 +1603,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1__spikespace." << endl;
 	}
 	ofstream outfile__array_Core_1_alpha;
-	outfile__array_Core_1_alpha.open("results/_array_Core_1_alpha_-5003338862689232460", ios::binary | ios::out);
+	outfile__array_Core_1_alpha.open("results/_array_Core_1_alpha_571658138794351274", ios::binary | ios::out);
 	if(outfile__array_Core_1_alpha.is_open())
 	{
 		outfile__array_Core_1_alpha.write(reinterpret_cast<char*>(_array_Core_1_alpha), 1*sizeof(_array_Core_1_alpha[0]));
@@ -1717,7 +1613,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_alpha." << endl;
 	}
 	ofstream outfile__array_Core_1_Campa;
-	outfile__array_Core_1_Campa.open("results/_array_Core_1_Campa_1197284360183577730", ios::binary | ios::out);
+	outfile__array_Core_1_Campa.open("results/_array_Core_1_Campa_8609382552111055249", ios::binary | ios::out);
 	if(outfile__array_Core_1_Campa.is_open())
 	{
 		outfile__array_Core_1_Campa.write(reinterpret_cast<char*>(_array_Core_1_Campa), 256*sizeof(_array_Core_1_Campa[0]));
@@ -1727,7 +1623,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Campa." << endl;
 	}
 	ofstream outfile__array_Core_1_Cgaba_a;
-	outfile__array_Core_1_Cgaba_a.open("results/_array_Core_1_Cgaba_a_2606185523735978605", ios::binary | ios::out);
+	outfile__array_Core_1_Cgaba_a.open("results/_array_Core_1_Cgaba_a_-8995723779350095530", ios::binary | ios::out);
 	if(outfile__array_Core_1_Cgaba_a.is_open())
 	{
 		outfile__array_Core_1_Cgaba_a.write(reinterpret_cast<char*>(_array_Core_1_Cgaba_a), 256*sizeof(_array_Core_1_Cgaba_a[0]));
@@ -1737,7 +1633,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Cgaba_a." << endl;
 	}
 	ofstream outfile__array_Core_1_Cgaba_b;
-	outfile__array_Core_1_Cgaba_b.open("results/_array_Core_1_Cgaba_b_-2432514329970163084", ios::binary | ios::out);
+	outfile__array_Core_1_Cgaba_b.open("results/_array_Core_1_Cgaba_b_3663097468023035989", ios::binary | ios::out);
 	if(outfile__array_Core_1_Cgaba_b.is_open())
 	{
 		outfile__array_Core_1_Cgaba_b.write(reinterpret_cast<char*>(_array_Core_1_Cgaba_b), 256*sizeof(_array_Core_1_Cgaba_b[0]));
@@ -1747,7 +1643,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Cgaba_b." << endl;
 	}
 	ofstream outfile__array_Core_1_Cnmda;
-	outfile__array_Core_1_Cnmda.open("results/_array_Core_1_Cnmda_8565978596394273040", ios::binary | ios::out);
+	outfile__array_Core_1_Cnmda.open("results/_array_Core_1_Cnmda_-681375116183163330", ios::binary | ios::out);
 	if(outfile__array_Core_1_Cnmda.is_open())
 	{
 		outfile__array_Core_1_Cnmda.write(reinterpret_cast<char*>(_array_Core_1_Cnmda), 256*sizeof(_array_Core_1_Cnmda[0]));
@@ -1757,7 +1653,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Cnmda." << endl;
 	}
 	ofstream outfile__array_Core_1_Csoma_ahp;
-	outfile__array_Core_1_Csoma_ahp.open("results/_array_Core_1_Csoma_ahp_5169704871528207879", ios::binary | ios::out);
+	outfile__array_Core_1_Csoma_ahp.open("results/_array_Core_1_Csoma_ahp_-2699986503282591293", ios::binary | ios::out);
 	if(outfile__array_Core_1_Csoma_ahp.is_open())
 	{
 		outfile__array_Core_1_Csoma_ahp.write(reinterpret_cast<char*>(_array_Core_1_Csoma_ahp), 1*sizeof(_array_Core_1_Csoma_ahp[0]));
@@ -1767,7 +1663,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Csoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_1_Csoma_mem;
-	outfile__array_Core_1_Csoma_mem.open("results/_array_Core_1_Csoma_mem_-8518000324377905923", ios::binary | ios::out);
+	outfile__array_Core_1_Csoma_mem.open("results/_array_Core_1_Csoma_mem_648782377989776482", ios::binary | ios::out);
 	if(outfile__array_Core_1_Csoma_mem.is_open())
 	{
 		outfile__array_Core_1_Csoma_mem.write(reinterpret_cast<char*>(_array_Core_1_Csoma_mem), 1*sizeof(_array_Core_1_Csoma_mem[0]));
@@ -1777,7 +1673,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Csoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_1_i;
-	outfile__array_Core_1_i.open("results/_array_Core_1_i_-1707765890006174157", ios::binary | ios::out);
+	outfile__array_Core_1_i.open("results/_array_Core_1_i_-3467675460354046822", ios::binary | ios::out);
 	if(outfile__array_Core_1_i.is_open())
 	{
 		outfile__array_Core_1_i.write(reinterpret_cast<char*>(_array_Core_1_i), 256*sizeof(_array_Core_1_i[0]));
@@ -1787,7 +1683,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_i." << endl;
 	}
 	ofstream outfile__array_Core_1_I0;
-	outfile__array_Core_1_I0.open("results/_array_Core_1_I0_-8520733982895591945", ios::binary | ios::out);
+	outfile__array_Core_1_I0.open("results/_array_Core_1_I0_-6096087739673173138", ios::binary | ios::out);
 	if(outfile__array_Core_1_I0.is_open())
 	{
 		outfile__array_Core_1_I0.write(reinterpret_cast<char*>(_array_Core_1_I0), 1*sizeof(_array_Core_1_I0[0]));
@@ -1797,7 +1693,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_I0." << endl;
 	}
 	ofstream outfile__array_Core_1_Iampa;
-	outfile__array_Core_1_Iampa.open("results/_array_Core_1_Iampa_-130932533772529510", ios::binary | ios::out);
+	outfile__array_Core_1_Iampa.open("results/_array_Core_1_Iampa_-3193502329945830275", ios::binary | ios::out);
 	if(outfile__array_Core_1_Iampa.is_open())
 	{
 		outfile__array_Core_1_Iampa.write(reinterpret_cast<char*>(_array_Core_1_Iampa), 256*sizeof(_array_Core_1_Iampa[0]));
@@ -1807,7 +1703,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Iampa." << endl;
 	}
 	ofstream outfile__array_Core_1_Iampa_tau;
-	outfile__array_Core_1_Iampa_tau.open("results/_array_Core_1_Iampa_tau_-5868138337210769628", ios::binary | ios::out);
+	outfile__array_Core_1_Iampa_tau.open("results/_array_Core_1_Iampa_tau_7016003092968859404", ios::binary | ios::out);
 	if(outfile__array_Core_1_Iampa_tau.is_open())
 	{
 		outfile__array_Core_1_Iampa_tau.write(reinterpret_cast<char*>(_array_Core_1_Iampa_tau), 256*sizeof(_array_Core_1_Iampa_tau[0]));
@@ -1817,7 +1713,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Iampa_tau." << endl;
 	}
 	ofstream outfile__array_Core_1_Iampa_w0;
-	outfile__array_Core_1_Iampa_w0.open("results/_array_Core_1_Iampa_w0_1473145801843537569", ios::binary | ios::out);
+	outfile__array_Core_1_Iampa_w0.open("results/_array_Core_1_Iampa_w0_-4840741910656773315", ios::binary | ios::out);
 	if(outfile__array_Core_1_Iampa_w0.is_open())
 	{
 		outfile__array_Core_1_Iampa_w0.write(reinterpret_cast<char*>(_array_Core_1_Iampa_w0), 256*sizeof(_array_Core_1_Iampa_w0[0]));
@@ -1827,7 +1723,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Iampa_w0." << endl;
 	}
 	ofstream outfile__array_Core_1_Igaba_a;
-	outfile__array_Core_1_Igaba_a.open("results/_array_Core_1_Igaba_a_-1952522861904419841", ios::binary | ios::out);
+	outfile__array_Core_1_Igaba_a.open("results/_array_Core_1_Igaba_a_6484421537062458286", ios::binary | ios::out);
 	if(outfile__array_Core_1_Igaba_a.is_open())
 	{
 		outfile__array_Core_1_Igaba_a.write(reinterpret_cast<char*>(_array_Core_1_Igaba_a), 256*sizeof(_array_Core_1_Igaba_a[0]));
@@ -1837,7 +1733,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Igaba_a." << endl;
 	}
 	ofstream outfile__array_Core_1_Igaba_a_tau;
-	outfile__array_Core_1_Igaba_a_tau.open("results/_array_Core_1_Igaba_a_tau_-5762635770962079559", ios::binary | ios::out);
+	outfile__array_Core_1_Igaba_a_tau.open("results/_array_Core_1_Igaba_a_tau_-527859343927284139", ios::binary | ios::out);
 	if(outfile__array_Core_1_Igaba_a_tau.is_open())
 	{
 		outfile__array_Core_1_Igaba_a_tau.write(reinterpret_cast<char*>(_array_Core_1_Igaba_a_tau), 256*sizeof(_array_Core_1_Igaba_a_tau[0]));
@@ -1847,7 +1743,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Igaba_a_tau." << endl;
 	}
 	ofstream outfile__array_Core_1_Igaba_a_w0;
-	outfile__array_Core_1_Igaba_a_w0.open("results/_array_Core_1_Igaba_a_w0_5939591649833310747", ios::binary | ios::out);
+	outfile__array_Core_1_Igaba_a_w0.open("results/_array_Core_1_Igaba_a_w0_3111911350743917276", ios::binary | ios::out);
 	if(outfile__array_Core_1_Igaba_a_w0.is_open())
 	{
 		outfile__array_Core_1_Igaba_a_w0.write(reinterpret_cast<char*>(_array_Core_1_Igaba_a_w0), 256*sizeof(_array_Core_1_Igaba_a_w0[0]));
@@ -1857,7 +1753,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Igaba_a_w0." << endl;
 	}
 	ofstream outfile__array_Core_1_Igaba_b;
-	outfile__array_Core_1_Igaba_b.open("results/_array_Core_1_Igaba_b_-2830727254159325600", ios::binary | ios::out);
+	outfile__array_Core_1_Igaba_b.open("results/_array_Core_1_Igaba_b_4181302973271716044", ios::binary | ios::out);
 	if(outfile__array_Core_1_Igaba_b.is_open())
 	{
 		outfile__array_Core_1_Igaba_b.write(reinterpret_cast<char*>(_array_Core_1_Igaba_b), 256*sizeof(_array_Core_1_Igaba_b[0]));
@@ -1867,7 +1763,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Igaba_b." << endl;
 	}
 	ofstream outfile__array_Core_1_Igaba_b_tau;
-	outfile__array_Core_1_Igaba_b_tau.open("results/_array_Core_1_Igaba_b_tau_-1324238346765784920", ios::binary | ios::out);
+	outfile__array_Core_1_Igaba_b_tau.open("results/_array_Core_1_Igaba_b_tau_1255687534998843380", ios::binary | ios::out);
 	if(outfile__array_Core_1_Igaba_b_tau.is_open())
 	{
 		outfile__array_Core_1_Igaba_b_tau.write(reinterpret_cast<char*>(_array_Core_1_Igaba_b_tau), 256*sizeof(_array_Core_1_Igaba_b_tau[0]));
@@ -1877,7 +1773,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Igaba_b_tau." << endl;
 	}
 	ofstream outfile__array_Core_1_Igaba_b_w0;
-	outfile__array_Core_1_Igaba_b_w0.open("results/_array_Core_1_Igaba_b_w0_-4036507308726292977", ios::binary | ios::out);
+	outfile__array_Core_1_Igaba_b_w0.open("results/_array_Core_1_Igaba_b_w0_234580988452980457", ios::binary | ios::out);
 	if(outfile__array_Core_1_Igaba_b_w0.is_open())
 	{
 		outfile__array_Core_1_Igaba_b_w0.write(reinterpret_cast<char*>(_array_Core_1_Igaba_b_w0), 256*sizeof(_array_Core_1_Igaba_b_w0[0]));
@@ -1887,7 +1783,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Igaba_b_w0." << endl;
 	}
 	ofstream outfile__array_Core_1_Inmda;
-	outfile__array_Core_1_Inmda.open("results/_array_Core_1_Inmda_-2135308913508804700", ios::binary | ios::out);
+	outfile__array_Core_1_Inmda.open("results/_array_Core_1_Inmda_5165625148638551004", ios::binary | ios::out);
 	if(outfile__array_Core_1_Inmda.is_open())
 	{
 		outfile__array_Core_1_Inmda.write(reinterpret_cast<char*>(_array_Core_1_Inmda), 256*sizeof(_array_Core_1_Inmda[0]));
@@ -1897,7 +1793,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Inmda." << endl;
 	}
 	ofstream outfile__array_Core_1_Inmda_tau;
-	outfile__array_Core_1_Inmda_tau.open("results/_array_Core_1_Inmda_tau_3580390384761226821", ios::binary | ios::out);
+	outfile__array_Core_1_Inmda_tau.open("results/_array_Core_1_Inmda_tau_7570685690612394729", ios::binary | ios::out);
 	if(outfile__array_Core_1_Inmda_tau.is_open())
 	{
 		outfile__array_Core_1_Inmda_tau.write(reinterpret_cast<char*>(_array_Core_1_Inmda_tau), 256*sizeof(_array_Core_1_Inmda_tau[0]));
@@ -1907,7 +1803,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Inmda_tau." << endl;
 	}
 	ofstream outfile__array_Core_1_Inmda_w0;
-	outfile__array_Core_1_Inmda_w0.open("results/_array_Core_1_Inmda_w0_8872404854688922118", ios::binary | ios::out);
+	outfile__array_Core_1_Inmda_w0.open("results/_array_Core_1_Inmda_w0_-1267867838482046779", ios::binary | ios::out);
 	if(outfile__array_Core_1_Inmda_w0.is_open())
 	{
 		outfile__array_Core_1_Inmda_w0.write(reinterpret_cast<char*>(_array_Core_1_Inmda_w0), 256*sizeof(_array_Core_1_Inmda_w0[0]));
@@ -1917,7 +1813,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Inmda_w0." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_ahp;
-	outfile__array_Core_1_Isoma_ahp.open("results/_array_Core_1_Isoma_ahp_-4683821669659054680", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_ahp.open("results/_array_Core_1_Isoma_ahp_6912298048512682808", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_ahp.is_open())
 	{
 		outfile__array_Core_1_Isoma_ahp.write(reinterpret_cast<char*>(_array_Core_1_Isoma_ahp), 256*sizeof(_array_Core_1_Isoma_ahp[0]));
@@ -1927,7 +1823,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_ahp_tau;
-	outfile__array_Core_1_Isoma_ahp_tau.open("results/_array_Core_1_Isoma_ahp_tau_-1887862972466481622", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_ahp_tau.open("results/_array_Core_1_Isoma_ahp_tau_7223716057247902436", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_ahp_tau.is_open())
 	{
 		outfile__array_Core_1_Isoma_ahp_tau.write(reinterpret_cast<char*>(_array_Core_1_Isoma_ahp_tau), 1*sizeof(_array_Core_1_Isoma_ahp_tau[0]));
@@ -1937,7 +1833,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_ahp_tau." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_ahp_th;
-	outfile__array_Core_1_Isoma_ahp_th.open("results/_array_Core_1_Isoma_ahp_th_-6894285469901270691", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_ahp_th.open("results/_array_Core_1_Isoma_ahp_th_7404222482541630090", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_ahp_th.is_open())
 	{
 		outfile__array_Core_1_Isoma_ahp_th.write(reinterpret_cast<char*>(_array_Core_1_Isoma_ahp_th), 1*sizeof(_array_Core_1_Isoma_ahp_th[0]));
@@ -1947,7 +1843,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_ahp_th." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_ahp_w;
-	outfile__array_Core_1_Isoma_ahp_w.open("results/_array_Core_1_Isoma_ahp_w_-8512226482497076875", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_ahp_w.open("results/_array_Core_1_Isoma_ahp_w_7072443153751518999", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_ahp_w.is_open())
 	{
 		outfile__array_Core_1_Isoma_ahp_w.write(reinterpret_cast<char*>(_array_Core_1_Isoma_ahp_w), 256*sizeof(_array_Core_1_Isoma_ahp_w[0]));
@@ -1957,7 +1853,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_ahp_w." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_const;
-	outfile__array_Core_1_Isoma_const.open("results/_array_Core_1_Isoma_const_1248414725098018161", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_const.open("results/_array_Core_1_Isoma_const_-3741468716725083720", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_const.is_open())
 	{
 		outfile__array_Core_1_Isoma_const.write(reinterpret_cast<char*>(_array_Core_1_Isoma_const), 256*sizeof(_array_Core_1_Isoma_const[0]));
@@ -1967,7 +1863,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_const." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_dpi_tau;
-	outfile__array_Core_1_Isoma_dpi_tau.open("results/_array_Core_1_Isoma_dpi_tau_8121466923656282516", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_dpi_tau.open("results/_array_Core_1_Isoma_dpi_tau_-3795651691745873183", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_dpi_tau.is_open())
 	{
 		outfile__array_Core_1_Isoma_dpi_tau.write(reinterpret_cast<char*>(_array_Core_1_Isoma_dpi_tau), 1*sizeof(_array_Core_1_Isoma_dpi_tau[0]));
@@ -1977,7 +1873,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_dpi_tau." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_mem;
-	outfile__array_Core_1_Isoma_mem.open("results/_array_Core_1_Isoma_mem_3037796243820870930", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_mem.open("results/_array_Core_1_Isoma_mem_6763980833865717731", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_mem.is_open())
 	{
 		outfile__array_Core_1_Isoma_mem.write(reinterpret_cast<char*>(_array_Core_1_Isoma_mem), 256*sizeof(_array_Core_1_Isoma_mem[0]));
@@ -1987,7 +1883,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_pfb_gain;
-	outfile__array_Core_1_Isoma_pfb_gain.open("results/_array_Core_1_Isoma_pfb_gain_2681836395418678132", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_pfb_gain.open("results/_array_Core_1_Isoma_pfb_gain_-6323092088045192551", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_pfb_gain.is_open())
 	{
 		outfile__array_Core_1_Isoma_pfb_gain.write(reinterpret_cast<char*>(_array_Core_1_Isoma_pfb_gain), 1*sizeof(_array_Core_1_Isoma_pfb_gain[0]));
@@ -1997,7 +1893,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_pfb_gain." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_pfb_norm;
-	outfile__array_Core_1_Isoma_pfb_norm.open("results/_array_Core_1_Isoma_pfb_norm_6188868286135245531", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_pfb_norm.open("results/_array_Core_1_Isoma_pfb_norm_4943974822919639169", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_pfb_norm.is_open())
 	{
 		outfile__array_Core_1_Isoma_pfb_norm.write(reinterpret_cast<char*>(_array_Core_1_Isoma_pfb_norm), 1*sizeof(_array_Core_1_Isoma_pfb_norm[0]));
@@ -2007,7 +1903,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_pfb_norm." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_pfb_th;
-	outfile__array_Core_1_Isoma_pfb_th.open("results/_array_Core_1_Isoma_pfb_th_3704761733795739987", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_pfb_th.open("results/_array_Core_1_Isoma_pfb_th_-1940280114659747011", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_pfb_th.is_open())
 	{
 		outfile__array_Core_1_Isoma_pfb_th.write(reinterpret_cast<char*>(_array_Core_1_Isoma_pfb_th), 1*sizeof(_array_Core_1_Isoma_pfb_th[0]));
@@ -2017,7 +1913,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_pfb_th." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_reset;
-	outfile__array_Core_1_Isoma_reset.open("results/_array_Core_1_Isoma_reset_-7452382335445104003", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_reset.open("results/_array_Core_1_Isoma_reset_-5972044550959237026", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_reset.is_open())
 	{
 		outfile__array_Core_1_Isoma_reset.write(reinterpret_cast<char*>(_array_Core_1_Isoma_reset), 1*sizeof(_array_Core_1_Isoma_reset[0]));
@@ -2027,7 +1923,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_reset." << endl;
 	}
 	ofstream outfile__array_Core_1_Isoma_th;
-	outfile__array_Core_1_Isoma_th.open("results/_array_Core_1_Isoma_th_3130591012166289715", ios::binary | ios::out);
+	outfile__array_Core_1_Isoma_th.open("results/_array_Core_1_Isoma_th_3562425046288098391", ios::binary | ios::out);
 	if(outfile__array_Core_1_Isoma_th.is_open())
 	{
 		outfile__array_Core_1_Isoma_th.write(reinterpret_cast<char*>(_array_Core_1_Isoma_th), 1*sizeof(_array_Core_1_Isoma_th[0]));
@@ -2037,7 +1933,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Isoma_th." << endl;
 	}
 	ofstream outfile__array_Core_1_kn;
-	outfile__array_Core_1_kn.open("results/_array_Core_1_kn_5801154894413297724", ios::binary | ios::out);
+	outfile__array_Core_1_kn.open("results/_array_Core_1_kn_-7632872205077892285", ios::binary | ios::out);
 	if(outfile__array_Core_1_kn.is_open())
 	{
 		outfile__array_Core_1_kn.write(reinterpret_cast<char*>(_array_Core_1_kn), 1*sizeof(_array_Core_1_kn[0]));
@@ -2047,7 +1943,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_kn." << endl;
 	}
 	ofstream outfile__array_Core_1_kp;
-	outfile__array_Core_1_kp.open("results/_array_Core_1_kp_-2484042846635798014", ios::binary | ios::out);
+	outfile__array_Core_1_kp.open("results/_array_Core_1_kp_1377722054779167041", ios::binary | ios::out);
 	if(outfile__array_Core_1_kp.is_open())
 	{
 		outfile__array_Core_1_kp.write(reinterpret_cast<char*>(_array_Core_1_kp), 1*sizeof(_array_Core_1_kp[0]));
@@ -2057,7 +1953,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_kp." << endl;
 	}
 	ofstream outfile__array_Core_1_lastspike;
-	outfile__array_Core_1_lastspike.open("results/_array_Core_1_lastspike_1738134254255077244", ios::binary | ios::out);
+	outfile__array_Core_1_lastspike.open("results/_array_Core_1_lastspike_-364132331603415851", ios::binary | ios::out);
 	if(outfile__array_Core_1_lastspike.is_open())
 	{
 		outfile__array_Core_1_lastspike.write(reinterpret_cast<char*>(_array_Core_1_lastspike), 256*sizeof(_array_Core_1_lastspike[0]));
@@ -2067,7 +1963,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_lastspike." << endl;
 	}
 	ofstream outfile__array_Core_1_not_refractory;
-	outfile__array_Core_1_not_refractory.open("results/_array_Core_1_not_refractory_5196068239578854650", ios::binary | ios::out);
+	outfile__array_Core_1_not_refractory.open("results/_array_Core_1_not_refractory_-8385826990595957215", ios::binary | ios::out);
 	if(outfile__array_Core_1_not_refractory.is_open())
 	{
 		outfile__array_Core_1_not_refractory.write(reinterpret_cast<char*>(_array_Core_1_not_refractory), 256*sizeof(_array_Core_1_not_refractory[0]));
@@ -2077,7 +1973,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_not_refractory." << endl;
 	}
 	ofstream outfile__array_Core_1_soma_refP;
-	outfile__array_Core_1_soma_refP.open("results/_array_Core_1_soma_refP_-2977174290402373230", ios::binary | ios::out);
+	outfile__array_Core_1_soma_refP.open("results/_array_Core_1_soma_refP_9064680826640654083", ios::binary | ios::out);
 	if(outfile__array_Core_1_soma_refP.is_open())
 	{
 		outfile__array_Core_1_soma_refP.write(reinterpret_cast<char*>(_array_Core_1_soma_refP), 1*sizeof(_array_Core_1_soma_refP[0]));
@@ -2086,18 +1982,18 @@ void _write_arrays()
 	{
 		std::cout << "Error writing output file for _array_Core_1_soma_refP." << endl;
 	}
-	ofstream outfile__array_Core_1_subgroup_1__sub_idx;
-	outfile__array_Core_1_subgroup_1__sub_idx.open("results/_array_Core_1_subgroup_1__sub_idx_6402555288723963606", ios::binary | ios::out);
-	if(outfile__array_Core_1_subgroup_1__sub_idx.is_open())
+	ofstream outfile__array_Core_1_subgroup__sub_idx;
+	outfile__array_Core_1_subgroup__sub_idx.open("results/_array_Core_1_subgroup__sub_idx_3899378301309207361", ios::binary | ios::out);
+	if(outfile__array_Core_1_subgroup__sub_idx.is_open())
 	{
-		outfile__array_Core_1_subgroup_1__sub_idx.write(reinterpret_cast<char*>(_array_Core_1_subgroup_1__sub_idx), 1*sizeof(_array_Core_1_subgroup_1__sub_idx[0]));
-		outfile__array_Core_1_subgroup_1__sub_idx.close();
+		outfile__array_Core_1_subgroup__sub_idx.write(reinterpret_cast<char*>(_array_Core_1_subgroup__sub_idx), 200*sizeof(_array_Core_1_subgroup__sub_idx[0]));
+		outfile__array_Core_1_subgroup__sub_idx.close();
 	} else
 	{
-		std::cout << "Error writing output file for _array_Core_1_subgroup_1__sub_idx." << endl;
+		std::cout << "Error writing output file for _array_Core_1_subgroup__sub_idx." << endl;
 	}
 	ofstream outfile__array_Core_1_Ut;
-	outfile__array_Core_1_Ut.open("results/_array_Core_1_Ut_-1074480676430422111", ios::binary | ios::out);
+	outfile__array_Core_1_Ut.open("results/_array_Core_1_Ut_8561731026037120197", ios::binary | ios::out);
 	if(outfile__array_Core_1_Ut.is_open())
 	{
 		outfile__array_Core_1_Ut.write(reinterpret_cast<char*>(_array_Core_1_Ut), 1*sizeof(_array_Core_1_Ut[0]));
@@ -2107,7 +2003,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Ut." << endl;
 	}
 	ofstream outfile__array_Core_1_Vnmda;
-	outfile__array_Core_1_Vnmda.open("results/_array_Core_1_Vnmda_3311484665845293901", ios::binary | ios::out);
+	outfile__array_Core_1_Vnmda.open("results/_array_Core_1_Vnmda_3067544200709820555", ios::binary | ios::out);
 	if(outfile__array_Core_1_Vnmda.is_open())
 	{
 		outfile__array_Core_1_Vnmda.write(reinterpret_cast<char*>(_array_Core_1_Vnmda), 256*sizeof(_array_Core_1_Vnmda[0]));
@@ -2117,7 +2013,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_1_Vnmda." << endl;
 	}
 	ofstream outfile__array_Core_2__spikespace;
-	outfile__array_Core_2__spikespace.open("results/_array_Core_2__spikespace_3971949524566974502", ios::binary | ios::out);
+	outfile__array_Core_2__spikespace.open("results/_array_Core_2__spikespace_2714288011452248463", ios::binary | ios::out);
 	if(outfile__array_Core_2__spikespace.is_open())
 	{
 		outfile__array_Core_2__spikespace.write(reinterpret_cast<char*>(_array_Core_2__spikespace), 257*sizeof(_array_Core_2__spikespace[0]));
@@ -2127,7 +2023,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2__spikespace." << endl;
 	}
 	ofstream outfile__array_Core_2_alpha;
-	outfile__array_Core_2_alpha.open("results/_array_Core_2_alpha_193307695220039407", ios::binary | ios::out);
+	outfile__array_Core_2_alpha.open("results/_array_Core_2_alpha_4829133918550077155", ios::binary | ios::out);
 	if(outfile__array_Core_2_alpha.is_open())
 	{
 		outfile__array_Core_2_alpha.write(reinterpret_cast<char*>(_array_Core_2_alpha), 1*sizeof(_array_Core_2_alpha[0]));
@@ -2137,7 +2033,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_alpha." << endl;
 	}
 	ofstream outfile__array_Core_2_Campa;
-	outfile__array_Core_2_Campa.open("results/_array_Core_2_Campa_-262839488943614162", ios::binary | ios::out);
+	outfile__array_Core_2_Campa.open("results/_array_Core_2_Campa_7047386180542495969", ios::binary | ios::out);
 	if(outfile__array_Core_2_Campa.is_open())
 	{
 		outfile__array_Core_2_Campa.write(reinterpret_cast<char*>(_array_Core_2_Campa), 256*sizeof(_array_Core_2_Campa[0]));
@@ -2147,7 +2043,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Campa." << endl;
 	}
 	ofstream outfile__array_Core_2_Cgaba_a;
-	outfile__array_Core_2_Cgaba_a.open("results/_array_Core_2_Cgaba_a_5478308718918755589", ios::binary | ios::out);
+	outfile__array_Core_2_Cgaba_a.open("results/_array_Core_2_Cgaba_a_-8905278182133238360", ios::binary | ios::out);
 	if(outfile__array_Core_2_Cgaba_a.is_open())
 	{
 		outfile__array_Core_2_Cgaba_a.write(reinterpret_cast<char*>(_array_Core_2_Cgaba_a), 256*sizeof(_array_Core_2_Cgaba_a[0]));
@@ -2157,7 +2053,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Cgaba_a." << endl;
 	}
 	ofstream outfile__array_Core_2_Cgaba_b;
-	outfile__array_Core_2_Cgaba_b.open("results/_array_Core_2_Cgaba_b_1414722138931795699", ios::binary | ios::out);
+	outfile__array_Core_2_Cgaba_b.open("results/_array_Core_2_Cgaba_b_-1971229590902507628", ios::binary | ios::out);
 	if(outfile__array_Core_2_Cgaba_b.is_open())
 	{
 		outfile__array_Core_2_Cgaba_b.write(reinterpret_cast<char*>(_array_Core_2_Cgaba_b), 256*sizeof(_array_Core_2_Cgaba_b[0]));
@@ -2167,7 +2063,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Cgaba_b." << endl;
 	}
 	ofstream outfile__array_Core_2_Cnmda;
-	outfile__array_Core_2_Cnmda.open("results/_array_Core_2_Cnmda_-7578077558258820532", ios::binary | ios::out);
+	outfile__array_Core_2_Cnmda.open("results/_array_Core_2_Cnmda_-1986683408901046977", ios::binary | ios::out);
 	if(outfile__array_Core_2_Cnmda.is_open())
 	{
 		outfile__array_Core_2_Cnmda.write(reinterpret_cast<char*>(_array_Core_2_Cnmda), 256*sizeof(_array_Core_2_Cnmda[0]));
@@ -2177,7 +2073,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Cnmda." << endl;
 	}
 	ofstream outfile__array_Core_2_Csoma_ahp;
-	outfile__array_Core_2_Csoma_ahp.open("results/_array_Core_2_Csoma_ahp_8147538897977255800", ios::binary | ios::out);
+	outfile__array_Core_2_Csoma_ahp.open("results/_array_Core_2_Csoma_ahp_1138092045845657559", ios::binary | ios::out);
 	if(outfile__array_Core_2_Csoma_ahp.is_open())
 	{
 		outfile__array_Core_2_Csoma_ahp.write(reinterpret_cast<char*>(_array_Core_2_Csoma_ahp), 1*sizeof(_array_Core_2_Csoma_ahp[0]));
@@ -2187,7 +2083,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Csoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_2_Csoma_mem;
-	outfile__array_Core_2_Csoma_mem.open("results/_array_Core_2_Csoma_mem_-3173814390701021112", ios::binary | ios::out);
+	outfile__array_Core_2_Csoma_mem.open("results/_array_Core_2_Csoma_mem_-6925124155335664906", ios::binary | ios::out);
 	if(outfile__array_Core_2_Csoma_mem.is_open())
 	{
 		outfile__array_Core_2_Csoma_mem.write(reinterpret_cast<char*>(_array_Core_2_Csoma_mem), 1*sizeof(_array_Core_2_Csoma_mem[0]));
@@ -2197,7 +2093,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Csoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_2_i;
-	outfile__array_Core_2_i.open("results/_array_Core_2_i_8713122488007769132", ios::binary | ios::out);
+	outfile__array_Core_2_i.open("results/_array_Core_2_i_2968909171995655679", ios::binary | ios::out);
 	if(outfile__array_Core_2_i.is_open())
 	{
 		outfile__array_Core_2_i.write(reinterpret_cast<char*>(_array_Core_2_i), 256*sizeof(_array_Core_2_i[0]));
@@ -2207,7 +2103,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_i." << endl;
 	}
 	ofstream outfile__array_Core_2_I0;
-	outfile__array_Core_2_I0.open("results/_array_Core_2_I0_2006286739137106307", ios::binary | ios::out);
+	outfile__array_Core_2_I0.open("results/_array_Core_2_I0_682878840923591516", ios::binary | ios::out);
 	if(outfile__array_Core_2_I0.is_open())
 	{
 		outfile__array_Core_2_I0.write(reinterpret_cast<char*>(_array_Core_2_I0), 1*sizeof(_array_Core_2_I0[0]));
@@ -2217,7 +2113,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_I0." << endl;
 	}
 	ofstream outfile__array_Core_2_Iampa;
-	outfile__array_Core_2_Iampa.open("results/_array_Core_2_Iampa_7065608158590112663", ios::binary | ios::out);
+	outfile__array_Core_2_Iampa.open("results/_array_Core_2_Iampa_-974519474301591764", ios::binary | ios::out);
 	if(outfile__array_Core_2_Iampa.is_open())
 	{
 		outfile__array_Core_2_Iampa.write(reinterpret_cast<char*>(_array_Core_2_Iampa), 256*sizeof(_array_Core_2_Iampa[0]));
@@ -2227,7 +2123,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Iampa." << endl;
 	}
 	ofstream outfile__array_Core_2_Iampa_tau;
-	outfile__array_Core_2_Iampa_tau.open("results/_array_Core_2_Iampa_tau_2905278911718806175", ios::binary | ios::out);
+	outfile__array_Core_2_Iampa_tau.open("results/_array_Core_2_Iampa_tau_-544179754447697738", ios::binary | ios::out);
 	if(outfile__array_Core_2_Iampa_tau.is_open())
 	{
 		outfile__array_Core_2_Iampa_tau.write(reinterpret_cast<char*>(_array_Core_2_Iampa_tau), 256*sizeof(_array_Core_2_Iampa_tau[0]));
@@ -2237,7 +2133,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Iampa_tau." << endl;
 	}
 	ofstream outfile__array_Core_2_Iampa_w0;
-	outfile__array_Core_2_Iampa_w0.open("results/_array_Core_2_Iampa_w0_3116854705816207589", ios::binary | ios::out);
+	outfile__array_Core_2_Iampa_w0.open("results/_array_Core_2_Iampa_w0_-4669962256799230612", ios::binary | ios::out);
 	if(outfile__array_Core_2_Iampa_w0.is_open())
 	{
 		outfile__array_Core_2_Iampa_w0.write(reinterpret_cast<char*>(_array_Core_2_Iampa_w0), 256*sizeof(_array_Core_2_Iampa_w0[0]));
@@ -2247,7 +2143,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Iampa_w0." << endl;
 	}
 	ofstream outfile__array_Core_2_Igaba_a;
-	outfile__array_Core_2_Igaba_a.open("results/_array_Core_2_Igaba_a_2054664195227117799", ios::binary | ios::out);
+	outfile__array_Core_2_Igaba_a.open("results/_array_Core_2_Igaba_a_-8178172425224408915", ios::binary | ios::out);
 	if(outfile__array_Core_2_Igaba_a.is_open())
 	{
 		outfile__array_Core_2_Igaba_a.write(reinterpret_cast<char*>(_array_Core_2_Igaba_a), 256*sizeof(_array_Core_2_Igaba_a[0]));
@@ -2257,7 +2153,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Igaba_a." << endl;
 	}
 	ofstream outfile__array_Core_2_Igaba_a_tau;
-	outfile__array_Core_2_Igaba_a_tau.open("results/_array_Core_2_Igaba_a_tau_6926861183112310080", ios::binary | ios::out);
+	outfile__array_Core_2_Igaba_a_tau.open("results/_array_Core_2_Igaba_a_tau_-1929011691668370533", ios::binary | ios::out);
 	if(outfile__array_Core_2_Igaba_a_tau.is_open())
 	{
 		outfile__array_Core_2_Igaba_a_tau.write(reinterpret_cast<char*>(_array_Core_2_Igaba_a_tau), 256*sizeof(_array_Core_2_Igaba_a_tau[0]));
@@ -2267,7 +2163,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Igaba_a_tau." << endl;
 	}
 	ofstream outfile__array_Core_2_Igaba_a_w0;
-	outfile__array_Core_2_Igaba_a_w0.open("results/_array_Core_2_Igaba_a_w0_-6642308449314566360", ios::binary | ios::out);
+	outfile__array_Core_2_Igaba_a_w0.open("results/_array_Core_2_Igaba_a_w0_-208738957315584050", ios::binary | ios::out);
 	if(outfile__array_Core_2_Igaba_a_w0.is_open())
 	{
 		outfile__array_Core_2_Igaba_a_w0.write(reinterpret_cast<char*>(_array_Core_2_Igaba_a_w0), 256*sizeof(_array_Core_2_Igaba_a_w0[0]));
@@ -2277,7 +2173,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Igaba_a_w0." << endl;
 	}
 	ofstream outfile__array_Core_2_Igaba_b;
-	outfile__array_Core_2_Igaba_b.open("results/_array_Core_2_Igaba_b_4307095322593546347", ios::binary | ios::out);
+	outfile__array_Core_2_Igaba_b.open("results/_array_Core_2_Igaba_b_8301307780769450769", ios::binary | ios::out);
 	if(outfile__array_Core_2_Igaba_b.is_open())
 	{
 		outfile__array_Core_2_Igaba_b.write(reinterpret_cast<char*>(_array_Core_2_Igaba_b), 256*sizeof(_array_Core_2_Igaba_b[0]));
@@ -2287,7 +2183,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Igaba_b." << endl;
 	}
 	ofstream outfile__array_Core_2_Igaba_b_tau;
-	outfile__array_Core_2_Igaba_b_tau.open("results/_array_Core_2_Igaba_b_tau_-5304957945468405051", ios::binary | ios::out);
+	outfile__array_Core_2_Igaba_b_tau.open("results/_array_Core_2_Igaba_b_tau_1374943908093485507", ios::binary | ios::out);
 	if(outfile__array_Core_2_Igaba_b_tau.is_open())
 	{
 		outfile__array_Core_2_Igaba_b_tau.write(reinterpret_cast<char*>(_array_Core_2_Igaba_b_tau), 256*sizeof(_array_Core_2_Igaba_b_tau[0]));
@@ -2297,7 +2193,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Igaba_b_tau." << endl;
 	}
 	ofstream outfile__array_Core_2_Igaba_b_w0;
-	outfile__array_Core_2_Igaba_b_w0.open("results/_array_Core_2_Igaba_b_w0_1238083476417227204", ios::binary | ios::out);
+	outfile__array_Core_2_Igaba_b_w0.open("results/_array_Core_2_Igaba_b_w0_-5816505228291761172", ios::binary | ios::out);
 	if(outfile__array_Core_2_Igaba_b_w0.is_open())
 	{
 		outfile__array_Core_2_Igaba_b_w0.write(reinterpret_cast<char*>(_array_Core_2_Igaba_b_w0), 256*sizeof(_array_Core_2_Igaba_b_w0[0]));
@@ -2307,7 +2203,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Igaba_b_w0." << endl;
 	}
 	ofstream outfile__array_Core_2_Inmda;
-	outfile__array_Core_2_Inmda.open("results/_array_Core_2_Inmda_6895365014635739922", ios::binary | ios::out);
+	outfile__array_Core_2_Inmda.open("results/_array_Core_2_Inmda_7539677657246542543", ios::binary | ios::out);
 	if(outfile__array_Core_2_Inmda.is_open())
 	{
 		outfile__array_Core_2_Inmda.write(reinterpret_cast<char*>(_array_Core_2_Inmda), 256*sizeof(_array_Core_2_Inmda[0]));
@@ -2317,7 +2213,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Inmda." << endl;
 	}
 	ofstream outfile__array_Core_2_Inmda_tau;
-	outfile__array_Core_2_Inmda_tau.open("results/_array_Core_2_Inmda_tau_4828380368683441523", ios::binary | ios::out);
+	outfile__array_Core_2_Inmda_tau.open("results/_array_Core_2_Inmda_tau_5841666628376730255", ios::binary | ios::out);
 	if(outfile__array_Core_2_Inmda_tau.is_open())
 	{
 		outfile__array_Core_2_Inmda_tau.write(reinterpret_cast<char*>(_array_Core_2_Inmda_tau), 256*sizeof(_array_Core_2_Inmda_tau[0]));
@@ -2327,7 +2223,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Inmda_tau." << endl;
 	}
 	ofstream outfile__array_Core_2_Inmda_w0;
-	outfile__array_Core_2_Inmda_w0.open("results/_array_Core_2_Inmda_w0_-8422157882968353161", ios::binary | ios::out);
+	outfile__array_Core_2_Inmda_w0.open("results/_array_Core_2_Inmda_w0_-3925476476951872238", ios::binary | ios::out);
 	if(outfile__array_Core_2_Inmda_w0.is_open())
 	{
 		outfile__array_Core_2_Inmda_w0.write(reinterpret_cast<char*>(_array_Core_2_Inmda_w0), 256*sizeof(_array_Core_2_Inmda_w0[0]));
@@ -2337,7 +2233,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Inmda_w0." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_ahp;
-	outfile__array_Core_2_Isoma_ahp.open("results/_array_Core_2_Isoma_ahp_6026921424791857039", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_ahp.open("results/_array_Core_2_Isoma_ahp_5357668929509119229", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_ahp.is_open())
 	{
 		outfile__array_Core_2_Isoma_ahp.write(reinterpret_cast<char*>(_array_Core_2_Isoma_ahp), 256*sizeof(_array_Core_2_Isoma_ahp[0]));
@@ -2347,7 +2243,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_ahp_tau;
-	outfile__array_Core_2_Isoma_ahp_tau.open("results/_array_Core_2_Isoma_ahp_tau_5823759008360236368", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_ahp_tau.open("results/_array_Core_2_Isoma_ahp_tau_-5655943616640550978", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_ahp_tau.is_open())
 	{
 		outfile__array_Core_2_Isoma_ahp_tau.write(reinterpret_cast<char*>(_array_Core_2_Isoma_ahp_tau), 1*sizeof(_array_Core_2_Isoma_ahp_tau[0]));
@@ -2357,7 +2253,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_ahp_tau." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_ahp_th;
-	outfile__array_Core_2_Isoma_ahp_th.open("results/_array_Core_2_Isoma_ahp_th_273084921555707992", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_ahp_th.open("results/_array_Core_2_Isoma_ahp_th_1323424557956543554", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_ahp_th.is_open())
 	{
 		outfile__array_Core_2_Isoma_ahp_th.write(reinterpret_cast<char*>(_array_Core_2_Isoma_ahp_th), 1*sizeof(_array_Core_2_Isoma_ahp_th[0]));
@@ -2367,7 +2263,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_ahp_th." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_ahp_w;
-	outfile__array_Core_2_Isoma_ahp_w.open("results/_array_Core_2_Isoma_ahp_w_-1732725583424863039", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_ahp_w.open("results/_array_Core_2_Isoma_ahp_w_-684021785476012181", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_ahp_w.is_open())
 	{
 		outfile__array_Core_2_Isoma_ahp_w.write(reinterpret_cast<char*>(_array_Core_2_Isoma_ahp_w), 256*sizeof(_array_Core_2_Isoma_ahp_w[0]));
@@ -2377,7 +2273,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_ahp_w." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_const;
-	outfile__array_Core_2_Isoma_const.open("results/_array_Core_2_Isoma_const_4246714488293236361", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_const.open("results/_array_Core_2_Isoma_const_4039152237381443532", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_const.is_open())
 	{
 		outfile__array_Core_2_Isoma_const.write(reinterpret_cast<char*>(_array_Core_2_Isoma_const), 256*sizeof(_array_Core_2_Isoma_const[0]));
@@ -2387,7 +2283,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_const." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_dpi_tau;
-	outfile__array_Core_2_Isoma_dpi_tau.open("results/_array_Core_2_Isoma_dpi_tau_-4128530652817674169", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_dpi_tau.open("results/_array_Core_2_Isoma_dpi_tau_3046647324501871057", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_dpi_tau.is_open())
 	{
 		outfile__array_Core_2_Isoma_dpi_tau.write(reinterpret_cast<char*>(_array_Core_2_Isoma_dpi_tau), 1*sizeof(_array_Core_2_Isoma_dpi_tau[0]));
@@ -2397,7 +2293,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_dpi_tau." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_mem;
-	outfile__array_Core_2_Isoma_mem.open("results/_array_Core_2_Isoma_mem_1578010101792896035", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_mem.open("results/_array_Core_2_Isoma_mem_3157564184355940062", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_mem.is_open())
 	{
 		outfile__array_Core_2_Isoma_mem.write(reinterpret_cast<char*>(_array_Core_2_Isoma_mem), 256*sizeof(_array_Core_2_Isoma_mem[0]));
@@ -2407,7 +2303,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_pfb_gain;
-	outfile__array_Core_2_Isoma_pfb_gain.open("results/_array_Core_2_Isoma_pfb_gain_-323936177847830165", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_pfb_gain.open("results/_array_Core_2_Isoma_pfb_gain_-7420569219266410542", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_pfb_gain.is_open())
 	{
 		outfile__array_Core_2_Isoma_pfb_gain.write(reinterpret_cast<char*>(_array_Core_2_Isoma_pfb_gain), 1*sizeof(_array_Core_2_Isoma_pfb_gain[0]));
@@ -2417,7 +2313,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_pfb_gain." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_pfb_norm;
-	outfile__array_Core_2_Isoma_pfb_norm.open("results/_array_Core_2_Isoma_pfb_norm_-2630027377401385261", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_pfb_norm.open("results/_array_Core_2_Isoma_pfb_norm_5549272964492540823", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_pfb_norm.is_open())
 	{
 		outfile__array_Core_2_Isoma_pfb_norm.write(reinterpret_cast<char*>(_array_Core_2_Isoma_pfb_norm), 1*sizeof(_array_Core_2_Isoma_pfb_norm[0]));
@@ -2427,7 +2323,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_pfb_norm." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_pfb_th;
-	outfile__array_Core_2_Isoma_pfb_th.open("results/_array_Core_2_Isoma_pfb_th_2106383135318742123", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_pfb_th.open("results/_array_Core_2_Isoma_pfb_th_-4891874736898815128", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_pfb_th.is_open())
 	{
 		outfile__array_Core_2_Isoma_pfb_th.write(reinterpret_cast<char*>(_array_Core_2_Isoma_pfb_th), 1*sizeof(_array_Core_2_Isoma_pfb_th[0]));
@@ -2437,7 +2333,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_pfb_th." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_reset;
-	outfile__array_Core_2_Isoma_reset.open("results/_array_Core_2_Isoma_reset_5121903095640708732", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_reset.open("results/_array_Core_2_Isoma_reset_9053691545112417306", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_reset.is_open())
 	{
 		outfile__array_Core_2_Isoma_reset.write(reinterpret_cast<char*>(_array_Core_2_Isoma_reset), 1*sizeof(_array_Core_2_Isoma_reset[0]));
@@ -2447,7 +2343,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_reset." << endl;
 	}
 	ofstream outfile__array_Core_2_Isoma_th;
-	outfile__array_Core_2_Isoma_th.open("results/_array_Core_2_Isoma_th_-453970067526477737", ios::binary | ios::out);
+	outfile__array_Core_2_Isoma_th.open("results/_array_Core_2_Isoma_th_4014757945149860417", ios::binary | ios::out);
 	if(outfile__array_Core_2_Isoma_th.is_open())
 	{
 		outfile__array_Core_2_Isoma_th.write(reinterpret_cast<char*>(_array_Core_2_Isoma_th), 1*sizeof(_array_Core_2_Isoma_th[0]));
@@ -2457,7 +2353,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Isoma_th." << endl;
 	}
 	ofstream outfile__array_Core_2_kn;
-	outfile__array_Core_2_kn.open("results/_array_Core_2_kn_-3488709355709049930", ios::binary | ios::out);
+	outfile__array_Core_2_kn.open("results/_array_Core_2_kn_5461670827021580351", ios::binary | ios::out);
 	if(outfile__array_Core_2_kn.is_open())
 	{
 		outfile__array_Core_2_kn.write(reinterpret_cast<char*>(_array_Core_2_kn), 1*sizeof(_array_Core_2_kn[0]));
@@ -2467,7 +2363,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_kn." << endl;
 	}
 	ofstream outfile__array_Core_2_kp;
-	outfile__array_Core_2_kp.open("results/_array_Core_2_kp_3034711187867852071", ios::binary | ios::out);
+	outfile__array_Core_2_kp.open("results/_array_Core_2_kp_1030090911550580157", ios::binary | ios::out);
 	if(outfile__array_Core_2_kp.is_open())
 	{
 		outfile__array_Core_2_kp.write(reinterpret_cast<char*>(_array_Core_2_kp), 1*sizeof(_array_Core_2_kp[0]));
@@ -2477,7 +2373,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_kp." << endl;
 	}
 	ofstream outfile__array_Core_2_lastspike;
-	outfile__array_Core_2_lastspike.open("results/_array_Core_2_lastspike_-2276532803093056789", ios::binary | ios::out);
+	outfile__array_Core_2_lastspike.open("results/_array_Core_2_lastspike_2829611964094689767", ios::binary | ios::out);
 	if(outfile__array_Core_2_lastspike.is_open())
 	{
 		outfile__array_Core_2_lastspike.write(reinterpret_cast<char*>(_array_Core_2_lastspike), 256*sizeof(_array_Core_2_lastspike[0]));
@@ -2487,7 +2383,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_lastspike." << endl;
 	}
 	ofstream outfile__array_Core_2_not_refractory;
-	outfile__array_Core_2_not_refractory.open("results/_array_Core_2_not_refractory_-313128332537369915", ios::binary | ios::out);
+	outfile__array_Core_2_not_refractory.open("results/_array_Core_2_not_refractory_-6684990326119076777", ios::binary | ios::out);
 	if(outfile__array_Core_2_not_refractory.is_open())
 	{
 		outfile__array_Core_2_not_refractory.write(reinterpret_cast<char*>(_array_Core_2_not_refractory), 256*sizeof(_array_Core_2_not_refractory[0]));
@@ -2497,7 +2393,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_not_refractory." << endl;
 	}
 	ofstream outfile__array_Core_2_soma_refP;
-	outfile__array_Core_2_soma_refP.open("results/_array_Core_2_soma_refP_-4370867960337496956", ios::binary | ios::out);
+	outfile__array_Core_2_soma_refP.open("results/_array_Core_2_soma_refP_1669772621464462177", ios::binary | ios::out);
 	if(outfile__array_Core_2_soma_refP.is_open())
 	{
 		outfile__array_Core_2_soma_refP.write(reinterpret_cast<char*>(_array_Core_2_soma_refP), 1*sizeof(_array_Core_2_soma_refP[0]));
@@ -2507,7 +2403,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_soma_refP." << endl;
 	}
 	ofstream outfile__array_Core_2_Ut;
-	outfile__array_Core_2_Ut.open("results/_array_Core_2_Ut_-3573679059321338293", ios::binary | ios::out);
+	outfile__array_Core_2_Ut.open("results/_array_Core_2_Ut_-1343622603439472376", ios::binary | ios::out);
 	if(outfile__array_Core_2_Ut.is_open())
 	{
 		outfile__array_Core_2_Ut.write(reinterpret_cast<char*>(_array_Core_2_Ut), 1*sizeof(_array_Core_2_Ut[0]));
@@ -2517,7 +2413,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Ut." << endl;
 	}
 	ofstream outfile__array_Core_2_Vnmda;
-	outfile__array_Core_2_Vnmda.open("results/_array_Core_2_Vnmda_4280542275566459000", ios::binary | ios::out);
+	outfile__array_Core_2_Vnmda.open("results/_array_Core_2_Vnmda_8312045330919369892", ios::binary | ios::out);
 	if(outfile__array_Core_2_Vnmda.is_open())
 	{
 		outfile__array_Core_2_Vnmda.write(reinterpret_cast<char*>(_array_Core_2_Vnmda), 256*sizeof(_array_Core_2_Vnmda[0]));
@@ -2527,7 +2423,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_2_Vnmda." << endl;
 	}
 	ofstream outfile__array_Core_3__spikespace;
-	outfile__array_Core_3__spikespace.open("results/_array_Core_3__spikespace_-8558753207534099911", ios::binary | ios::out);
+	outfile__array_Core_3__spikespace.open("results/_array_Core_3__spikespace_925090370136711148", ios::binary | ios::out);
 	if(outfile__array_Core_3__spikespace.is_open())
 	{
 		outfile__array_Core_3__spikespace.write(reinterpret_cast<char*>(_array_Core_3__spikespace), 257*sizeof(_array_Core_3__spikespace[0]));
@@ -2537,7 +2433,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3__spikespace." << endl;
 	}
 	ofstream outfile__array_Core_3_alpha;
-	outfile__array_Core_3_alpha.open("results/_array_Core_3_alpha_-1912876297395900681", ios::binary | ios::out);
+	outfile__array_Core_3_alpha.open("results/_array_Core_3_alpha_7023912066492965080", ios::binary | ios::out);
 	if(outfile__array_Core_3_alpha.is_open())
 	{
 		outfile__array_Core_3_alpha.write(reinterpret_cast<char*>(_array_Core_3_alpha), 1*sizeof(_array_Core_3_alpha[0]));
@@ -2547,7 +2443,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_alpha." << endl;
 	}
 	ofstream outfile__array_Core_3_Campa;
-	outfile__array_Core_3_Campa.open("results/_array_Core_3_Campa_-6048638412715239175", ios::binary | ios::out);
+	outfile__array_Core_3_Campa.open("results/_array_Core_3_Campa_5609373316574156489", ios::binary | ios::out);
 	if(outfile__array_Core_3_Campa.is_open())
 	{
 		outfile__array_Core_3_Campa.write(reinterpret_cast<char*>(_array_Core_3_Campa), 256*sizeof(_array_Core_3_Campa[0]));
@@ -2557,7 +2453,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Campa." << endl;
 	}
 	ofstream outfile__array_Core_3_Cgaba_a;
-	outfile__array_Core_3_Cgaba_a.open("results/_array_Core_3_Cgaba_a_2790871056406088701", ios::binary | ios::out);
+	outfile__array_Core_3_Cgaba_a.open("results/_array_Core_3_Cgaba_a_-5882218436572377360", ios::binary | ios::out);
 	if(outfile__array_Core_3_Cgaba_a.is_open())
 	{
 		outfile__array_Core_3_Cgaba_a.write(reinterpret_cast<char*>(_array_Core_3_Cgaba_a), 256*sizeof(_array_Core_3_Cgaba_a[0]));
@@ -2567,7 +2463,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Cgaba_a." << endl;
 	}
 	ofstream outfile__array_Core_3_Cgaba_b;
-	outfile__array_Core_3_Cgaba_b.open("results/_array_Core_3_Cgaba_b_-1097513444456653837", ios::binary | ios::out);
+	outfile__array_Core_3_Cgaba_b.open("results/_array_Core_3_Cgaba_b_3618821169187363468", ios::binary | ios::out);
 	if(outfile__array_Core_3_Cgaba_b.is_open())
 	{
 		outfile__array_Core_3_Cgaba_b.write(reinterpret_cast<char*>(_array_Core_3_Cgaba_b), 256*sizeof(_array_Core_3_Cgaba_b[0]));
@@ -2577,7 +2473,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Cgaba_b." << endl;
 	}
 	ofstream outfile__array_Core_3_Cnmda;
-	outfile__array_Core_3_Cnmda.open("results/_array_Core_3_Cnmda_7003574456062497860", ios::binary | ios::out);
+	outfile__array_Core_3_Cnmda.open("results/_array_Core_3_Cnmda_8116837111563939204", ios::binary | ios::out);
 	if(outfile__array_Core_3_Cnmda.is_open())
 	{
 		outfile__array_Core_3_Cnmda.write(reinterpret_cast<char*>(_array_Core_3_Cnmda), 256*sizeof(_array_Core_3_Cnmda[0]));
@@ -2587,7 +2483,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Cnmda." << endl;
 	}
 	ofstream outfile__array_Core_3_Csoma_ahp;
-	outfile__array_Core_3_Csoma_ahp.open("results/_array_Core_3_Csoma_ahp_5389076835254793515", ios::binary | ios::out);
+	outfile__array_Core_3_Csoma_ahp.open("results/_array_Core_3_Csoma_ahp_-3793483691755332528", ios::binary | ios::out);
 	if(outfile__array_Core_3_Csoma_ahp.is_open())
 	{
 		outfile__array_Core_3_Csoma_ahp.write(reinterpret_cast<char*>(_array_Core_3_Csoma_ahp), 1*sizeof(_array_Core_3_Csoma_ahp[0]));
@@ -2597,7 +2493,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Csoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_3_Csoma_mem;
-	outfile__array_Core_3_Csoma_mem.open("results/_array_Core_3_Csoma_mem_4167457012841858996", ios::binary | ios::out);
+	outfile__array_Core_3_Csoma_mem.open("results/_array_Core_3_Csoma_mem_-5889416037957276374", ios::binary | ios::out);
 	if(outfile__array_Core_3_Csoma_mem.is_open())
 	{
 		outfile__array_Core_3_Csoma_mem.write(reinterpret_cast<char*>(_array_Core_3_Csoma_mem), 1*sizeof(_array_Core_3_Csoma_mem[0]));
@@ -2607,7 +2503,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Csoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_3_i;
-	outfile__array_Core_3_i.open("results/_array_Core_3_i_-1563287511977822979", ios::binary | ios::out);
+	outfile__array_Core_3_i.open("results/_array_Core_3_i_8591714197859633164", ios::binary | ios::out);
 	if(outfile__array_Core_3_i.is_open())
 	{
 		outfile__array_Core_3_i.write(reinterpret_cast<char*>(_array_Core_3_i), 256*sizeof(_array_Core_3_i[0]));
@@ -2617,7 +2513,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_i." << endl;
 	}
 	ofstream outfile__array_Core_3_I0;
-	outfile__array_Core_3_I0.open("results/_array_Core_3_I0_1087701370501418587", ios::binary | ios::out);
+	outfile__array_Core_3_I0.open("results/_array_Core_3_I0_3075125978108322843", ios::binary | ios::out);
 	if(outfile__array_Core_3_I0.is_open())
 	{
 		outfile__array_Core_3_I0.write(reinterpret_cast<char*>(_array_Core_3_I0), 1*sizeof(_array_Core_3_I0[0]));
@@ -2627,7 +2523,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_I0." << endl;
 	}
 	ofstream outfile__array_Core_3_Iampa;
-	outfile__array_Core_3_Iampa.open("results/_array_Core_3_Iampa_-3954045512064502323", ios::binary | ios::out);
+	outfile__array_Core_3_Iampa.open("results/_array_Core_3_Iampa_19337635397207523", ios::binary | ios::out);
 	if(outfile__array_Core_3_Iampa.is_open())
 	{
 		outfile__array_Core_3_Iampa.write(reinterpret_cast<char*>(_array_Core_3_Iampa), 256*sizeof(_array_Core_3_Iampa[0]));
@@ -2637,7 +2533,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Iampa." << endl;
 	}
 	ofstream outfile__array_Core_3_Iampa_tau;
-	outfile__array_Core_3_Iampa_tau.open("results/_array_Core_3_Iampa_tau_-7811513043501176800", ios::binary | ios::out);
+	outfile__array_Core_3_Iampa_tau.open("results/_array_Core_3_Iampa_tau_-5291959108577628328", ios::binary | ios::out);
 	if(outfile__array_Core_3_Iampa_tau.is_open())
 	{
 		outfile__array_Core_3_Iampa_tau.write(reinterpret_cast<char*>(_array_Core_3_Iampa_tau), 256*sizeof(_array_Core_3_Iampa_tau[0]));
@@ -2647,7 +2543,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Iampa_tau." << endl;
 	}
 	ofstream outfile__array_Core_3_Iampa_w0;
-	outfile__array_Core_3_Iampa_w0.open("results/_array_Core_3_Iampa_w0_5626617935346278306", ios::binary | ios::out);
+	outfile__array_Core_3_Iampa_w0.open("results/_array_Core_3_Iampa_w0_1106509828622934673", ios::binary | ios::out);
 	if(outfile__array_Core_3_Iampa_w0.is_open())
 	{
 		outfile__array_Core_3_Iampa_w0.write(reinterpret_cast<char*>(_array_Core_3_Iampa_w0), 256*sizeof(_array_Core_3_Iampa_w0[0]));
@@ -2657,7 +2553,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Iampa_w0." << endl;
 	}
 	ofstream outfile__array_Core_3_Igaba_a;
-	outfile__array_Core_3_Igaba_a.open("results/_array_Core_3_Igaba_a_6390617070436285860", ios::binary | ios::out);
+	outfile__array_Core_3_Igaba_a.open("results/_array_Core_3_Igaba_a_-2449380911012052708", ios::binary | ios::out);
 	if(outfile__array_Core_3_Igaba_a.is_open())
 	{
 		outfile__array_Core_3_Igaba_a.write(reinterpret_cast<char*>(_array_Core_3_Igaba_a), 256*sizeof(_array_Core_3_Igaba_a[0]));
@@ -2667,7 +2563,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Igaba_a." << endl;
 	}
 	ofstream outfile__array_Core_3_Igaba_a_tau;
-	outfile__array_Core_3_Igaba_a_tau.open("results/_array_Core_3_Igaba_a_tau_-6700989906754774812", ios::binary | ios::out);
+	outfile__array_Core_3_Igaba_a_tau.open("results/_array_Core_3_Igaba_a_tau_4553950090293187123", ios::binary | ios::out);
 	if(outfile__array_Core_3_Igaba_a_tau.is_open())
 	{
 		outfile__array_Core_3_Igaba_a_tau.write(reinterpret_cast<char*>(_array_Core_3_Igaba_a_tau), 256*sizeof(_array_Core_3_Igaba_a_tau[0]));
@@ -2677,7 +2573,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Igaba_a_tau." << endl;
 	}
 	ofstream outfile__array_Core_3_Igaba_a_w0;
-	outfile__array_Core_3_Igaba_a_w0.open("results/_array_Core_3_Igaba_a_w0_3151108490683818952", ios::binary | ios::out);
+	outfile__array_Core_3_Igaba_a_w0.open("results/_array_Core_3_Igaba_a_w0_8547859044992465929", ios::binary | ios::out);
 	if(outfile__array_Core_3_Igaba_a_w0.is_open())
 	{
 		outfile__array_Core_3_Igaba_a_w0.write(reinterpret_cast<char*>(_array_Core_3_Igaba_a_w0), 256*sizeof(_array_Core_3_Igaba_a_w0[0]));
@@ -2687,7 +2583,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Igaba_a_w0." << endl;
 	}
 	ofstream outfile__array_Core_3_Igaba_b;
-	outfile__array_Core_3_Igaba_b.open("results/_array_Core_3_Igaba_b_-5085468844639579992", ios::binary | ios::out);
+	outfile__array_Core_3_Igaba_b.open("results/_array_Core_3_Igaba_b_-2140163809950727578", ios::binary | ios::out);
 	if(outfile__array_Core_3_Igaba_b.is_open())
 	{
 		outfile__array_Core_3_Igaba_b.write(reinterpret_cast<char*>(_array_Core_3_Igaba_b), 256*sizeof(_array_Core_3_Igaba_b[0]));
@@ -2697,7 +2593,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Igaba_b." << endl;
 	}
 	ofstream outfile__array_Core_3_Igaba_b_tau;
-	outfile__array_Core_3_Igaba_b_tau.open("results/_array_Core_3_Igaba_b_tau_3490272416589589144", ios::binary | ios::out);
+	outfile__array_Core_3_Igaba_b_tau.open("results/_array_Core_3_Igaba_b_tau_-4753321281669164666", ios::binary | ios::out);
 	if(outfile__array_Core_3_Igaba_b_tau.is_open())
 	{
 		outfile__array_Core_3_Igaba_b_tau.write(reinterpret_cast<char*>(_array_Core_3_Igaba_b_tau), 256*sizeof(_array_Core_3_Igaba_b_tau[0]));
@@ -2707,7 +2603,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Igaba_b_tau." << endl;
 	}
 	ofstream outfile__array_Core_3_Igaba_b_w0;
-	outfile__array_Core_3_Igaba_b_w0.open("results/_array_Core_3_Igaba_b_w0_1905927409617847014", ios::binary | ios::out);
+	outfile__array_Core_3_Igaba_b_w0.open("results/_array_Core_3_Igaba_b_w0_-3055420324327214710", ios::binary | ios::out);
 	if(outfile__array_Core_3_Igaba_b_w0.is_open())
 	{
 		outfile__array_Core_3_Igaba_b_w0.write(reinterpret_cast<char*>(_array_Core_3_Igaba_b_w0), 256*sizeof(_array_Core_3_Igaba_b_w0[0]));
@@ -2717,7 +2613,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Igaba_b_w0." << endl;
 	}
 	ofstream outfile__array_Core_3_Inmda;
-	outfile__array_Core_3_Inmda.open("results/_array_Core_3_Inmda_-6877942328163652535", ios::binary | ios::out);
+	outfile__array_Core_3_Inmda.open("results/_array_Core_3_Inmda_-3903150805585098248", ios::binary | ios::out);
 	if(outfile__array_Core_3_Inmda.is_open())
 	{
 		outfile__array_Core_3_Inmda.write(reinterpret_cast<char*>(_array_Core_3_Inmda), 256*sizeof(_array_Core_3_Inmda[0]));
@@ -2727,7 +2623,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Inmda." << endl;
 	}
 	ofstream outfile__array_Core_3_Inmda_tau;
-	outfile__array_Core_3_Inmda_tau.open("results/_array_Core_3_Inmda_tau_-3062053233013798391", ios::binary | ios::out);
+	outfile__array_Core_3_Inmda_tau.open("results/_array_Core_3_Inmda_tau_4142429705960385365", ios::binary | ios::out);
 	if(outfile__array_Core_3_Inmda_tau.is_open())
 	{
 		outfile__array_Core_3_Inmda_tau.write(reinterpret_cast<char*>(_array_Core_3_Inmda_tau), 256*sizeof(_array_Core_3_Inmda_tau[0]));
@@ -2737,7 +2633,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Inmda_tau." << endl;
 	}
 	ofstream outfile__array_Core_3_Inmda_w0;
-	outfile__array_Core_3_Inmda_w0.open("results/_array_Core_3_Inmda_w0_5637339252874208358", ios::binary | ios::out);
+	outfile__array_Core_3_Inmda_w0.open("results/_array_Core_3_Inmda_w0_8805286254491715353", ios::binary | ios::out);
 	if(outfile__array_Core_3_Inmda_w0.is_open())
 	{
 		outfile__array_Core_3_Inmda_w0.write(reinterpret_cast<char*>(_array_Core_3_Inmda_w0), 256*sizeof(_array_Core_3_Inmda_w0[0]));
@@ -2747,7 +2643,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Inmda_w0." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_ahp;
-	outfile__array_Core_3_Isoma_ahp.open("results/_array_Core_3_Isoma_ahp_-3290792891494583683", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_ahp.open("results/_array_Core_3_Isoma_ahp_-5129403062028320144", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_ahp.is_open())
 	{
 		outfile__array_Core_3_Isoma_ahp.write(reinterpret_cast<char*>(_array_Core_3_Isoma_ahp), 256*sizeof(_array_Core_3_Isoma_ahp[0]));
@@ -2757,7 +2653,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_ahp." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_ahp_tau;
-	outfile__array_Core_3_Isoma_ahp_tau.open("results/_array_Core_3_Isoma_ahp_tau_-7103019723526642067", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_ahp_tau.open("results/_array_Core_3_Isoma_ahp_tau_6770652563715760761", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_ahp_tau.is_open())
 	{
 		outfile__array_Core_3_Isoma_ahp_tau.write(reinterpret_cast<char*>(_array_Core_3_Isoma_ahp_tau), 1*sizeof(_array_Core_3_Isoma_ahp_tau[0]));
@@ -2767,7 +2663,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_ahp_tau." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_ahp_th;
-	outfile__array_Core_3_Isoma_ahp_th.open("results/_array_Core_3_Isoma_ahp_th_-5231984496966084912", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_ahp_th.open("results/_array_Core_3_Isoma_ahp_th_1847420288654044548", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_ahp_th.is_open())
 	{
 		outfile__array_Core_3_Isoma_ahp_th.write(reinterpret_cast<char*>(_array_Core_3_Isoma_ahp_th), 1*sizeof(_array_Core_3_Isoma_ahp_th[0]));
@@ -2777,7 +2673,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_ahp_th." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_ahp_w;
-	outfile__array_Core_3_Isoma_ahp_w.open("results/_array_Core_3_Isoma_ahp_w_7876287845905258810", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_ahp_w.open("results/_array_Core_3_Isoma_ahp_w_-1453795793844147635", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_ahp_w.is_open())
 	{
 		outfile__array_Core_3_Isoma_ahp_w.write(reinterpret_cast<char*>(_array_Core_3_Isoma_ahp_w), 256*sizeof(_array_Core_3_Isoma_ahp_w[0]));
@@ -2787,7 +2683,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_ahp_w." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_const;
-	outfile__array_Core_3_Isoma_const.open("results/_array_Core_3_Isoma_const_-4944377309947394583", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_const.open("results/_array_Core_3_Isoma_const_7084774506719423407", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_const.is_open())
 	{
 		outfile__array_Core_3_Isoma_const.write(reinterpret_cast<char*>(_array_Core_3_Isoma_const), 256*sizeof(_array_Core_3_Isoma_const[0]));
@@ -2797,7 +2693,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_const." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_dpi_tau;
-	outfile__array_Core_3_Isoma_dpi_tau.open("results/_array_Core_3_Isoma_dpi_tau_5405968899704334188", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_dpi_tau.open("results/_array_Core_3_Isoma_dpi_tau_-7023190833673187737", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_dpi_tau.is_open())
 	{
 		outfile__array_Core_3_Isoma_dpi_tau.write(reinterpret_cast<char*>(_array_Core_3_Isoma_dpi_tau), 1*sizeof(_array_Core_3_Isoma_dpi_tau[0]));
@@ -2807,7 +2703,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_dpi_tau." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_mem;
-	outfile__array_Core_3_Isoma_mem.open("results/_array_Core_3_Isoma_mem_731956121531855452", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_mem.open("results/_array_Core_3_Isoma_mem_6235376650510639338", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_mem.is_open())
 	{
 		outfile__array_Core_3_Isoma_mem.write(reinterpret_cast<char*>(_array_Core_3_Isoma_mem), 256*sizeof(_array_Core_3_Isoma_mem[0]));
@@ -2817,7 +2713,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_mem." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_pfb_gain;
-	outfile__array_Core_3_Isoma_pfb_gain.open("results/_array_Core_3_Isoma_pfb_gain_-8043931401037955390", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_pfb_gain.open("results/_array_Core_3_Isoma_pfb_gain_5534789968890428236", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_pfb_gain.is_open())
 	{
 		outfile__array_Core_3_Isoma_pfb_gain.write(reinterpret_cast<char*>(_array_Core_3_Isoma_pfb_gain), 1*sizeof(_array_Core_3_Isoma_pfb_gain[0]));
@@ -2827,7 +2723,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_pfb_gain." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_pfb_norm;
-	outfile__array_Core_3_Isoma_pfb_norm.open("results/_array_Core_3_Isoma_pfb_norm_-6336462757113760691", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_pfb_norm.open("results/_array_Core_3_Isoma_pfb_norm_-7643615461468460731", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_pfb_norm.is_open())
 	{
 		outfile__array_Core_3_Isoma_pfb_norm.write(reinterpret_cast<char*>(_array_Core_3_Isoma_pfb_norm), 1*sizeof(_array_Core_3_Isoma_pfb_norm[0]));
@@ -2837,7 +2733,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_pfb_norm." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_pfb_th;
-	outfile__array_Core_3_Isoma_pfb_th.open("results/_array_Core_3_Isoma_pfb_th_-1495853780467923903", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_pfb_th.open("results/_array_Core_3_Isoma_pfb_th_5465390347841482473", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_pfb_th.is_open())
 	{
 		outfile__array_Core_3_Isoma_pfb_th.write(reinterpret_cast<char*>(_array_Core_3_Isoma_pfb_th), 1*sizeof(_array_Core_3_Isoma_pfb_th[0]));
@@ -2847,7 +2743,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_pfb_th." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_reset;
-	outfile__array_Core_3_Isoma_reset.open("results/_array_Core_3_Isoma_reset_-5236665866815973378", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_reset.open("results/_array_Core_3_Isoma_reset_-7838902228483364023", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_reset.is_open())
 	{
 		outfile__array_Core_3_Isoma_reset.write(reinterpret_cast<char*>(_array_Core_3_Isoma_reset), 1*sizeof(_array_Core_3_Isoma_reset[0]));
@@ -2857,7 +2753,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_reset." << endl;
 	}
 	ofstream outfile__array_Core_3_Isoma_th;
-	outfile__array_Core_3_Isoma_th.open("results/_array_Core_3_Isoma_th_-7960876642068606632", ios::binary | ios::out);
+	outfile__array_Core_3_Isoma_th.open("results/_array_Core_3_Isoma_th_5036898745500982380", ios::binary | ios::out);
 	if(outfile__array_Core_3_Isoma_th.is_open())
 	{
 		outfile__array_Core_3_Isoma_th.write(reinterpret_cast<char*>(_array_Core_3_Isoma_th), 1*sizeof(_array_Core_3_Isoma_th[0]));
@@ -2867,7 +2763,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Isoma_th." << endl;
 	}
 	ofstream outfile__array_Core_3_kn;
-	outfile__array_Core_3_kn.open("results/_array_Core_3_kn_-142212873592917243", ios::binary | ios::out);
+	outfile__array_Core_3_kn.open("results/_array_Core_3_kn_-5596949268185192018", ios::binary | ios::out);
 	if(outfile__array_Core_3_kn.is_open())
 	{
 		outfile__array_Core_3_kn.write(reinterpret_cast<char*>(_array_Core_3_kn), 1*sizeof(_array_Core_3_kn[0]));
@@ -2877,7 +2773,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_kn." << endl;
 	}
 	ofstream outfile__array_Core_3_kp;
-	outfile__array_Core_3_kp.open("results/_array_Core_3_kp_-1450682640111659039", ios::binary | ios::out);
+	outfile__array_Core_3_kp.open("results/_array_Core_3_kp_531274463574687305", ios::binary | ios::out);
 	if(outfile__array_Core_3_kp.is_open())
 	{
 		outfile__array_Core_3_kp.write(reinterpret_cast<char*>(_array_Core_3_kp), 1*sizeof(_array_Core_3_kp[0]));
@@ -2887,7 +2783,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_kp." << endl;
 	}
 	ofstream outfile__array_Core_3_lastspike;
-	outfile__array_Core_3_lastspike.open("results/_array_Core_3_lastspike_-8096464443586817412", ios::binary | ios::out);
+	outfile__array_Core_3_lastspike.open("results/_array_Core_3_lastspike_5828215839358648469", ios::binary | ios::out);
 	if(outfile__array_Core_3_lastspike.is_open())
 	{
 		outfile__array_Core_3_lastspike.write(reinterpret_cast<char*>(_array_Core_3_lastspike), 256*sizeof(_array_Core_3_lastspike[0]));
@@ -2897,7 +2793,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_lastspike." << endl;
 	}
 	ofstream outfile__array_Core_3_not_refractory;
-	outfile__array_Core_3_not_refractory.open("results/_array_Core_3_not_refractory_2162410802118798808", ios::binary | ios::out);
+	outfile__array_Core_3_not_refractory.open("results/_array_Core_3_not_refractory_4285103038334197389", ios::binary | ios::out);
 	if(outfile__array_Core_3_not_refractory.is_open())
 	{
 		outfile__array_Core_3_not_refractory.write(reinterpret_cast<char*>(_array_Core_3_not_refractory), 256*sizeof(_array_Core_3_not_refractory[0]));
@@ -2907,7 +2803,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_not_refractory." << endl;
 	}
 	ofstream outfile__array_Core_3_soma_refP;
-	outfile__array_Core_3_soma_refP.open("results/_array_Core_3_soma_refP_7925079334920302943", ios::binary | ios::out);
+	outfile__array_Core_3_soma_refP.open("results/_array_Core_3_soma_refP_6738957755782379340", ios::binary | ios::out);
 	if(outfile__array_Core_3_soma_refP.is_open())
 	{
 		outfile__array_Core_3_soma_refP.write(reinterpret_cast<char*>(_array_Core_3_soma_refP), 1*sizeof(_array_Core_3_soma_refP[0]));
@@ -2917,7 +2813,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_soma_refP." << endl;
 	}
 	ofstream outfile__array_Core_3_Ut;
-	outfile__array_Core_3_Ut.open("results/_array_Core_3_Ut_7053391759117306928", ios::binary | ios::out);
+	outfile__array_Core_3_Ut.open("results/_array_Core_3_Ut_-4131228439442331510", ios::binary | ios::out);
 	if(outfile__array_Core_3_Ut.is_open())
 	{
 		outfile__array_Core_3_Ut.write(reinterpret_cast<char*>(_array_Core_3_Ut), 1*sizeof(_array_Core_3_Ut[0]));
@@ -2927,7 +2823,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Ut." << endl;
 	}
 	ofstream outfile__array_Core_3_Vnmda;
-	outfile__array_Core_3_Vnmda.open("results/_array_Core_3_Vnmda_2060181113349191789", ios::binary | ios::out);
+	outfile__array_Core_3_Vnmda.open("results/_array_Core_3_Vnmda_-6892628026604575664", ios::binary | ios::out);
 	if(outfile__array_Core_3_Vnmda.is_open())
 	{
 		outfile__array_Core_3_Vnmda.write(reinterpret_cast<char*>(_array_Core_3_Vnmda), 256*sizeof(_array_Core_3_Vnmda[0]));
@@ -2937,7 +2833,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_Core_3_Vnmda." << endl;
 	}
 	ofstream outfile__array_defaultclock_dt;
-	outfile__array_defaultclock_dt.open("results/_array_defaultclock_dt_-3327646895251333201", ios::binary | ios::out);
+	outfile__array_defaultclock_dt.open("results/_array_defaultclock_dt_-8325147453693480284", ios::binary | ios::out);
 	if(outfile__array_defaultclock_dt.is_open())
 	{
 		outfile__array_defaultclock_dt.write(reinterpret_cast<char*>(_array_defaultclock_dt), 1*sizeof(_array_defaultclock_dt[0]));
@@ -2947,7 +2843,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_defaultclock_dt." << endl;
 	}
 	ofstream outfile__array_defaultclock_t;
-	outfile__array_defaultclock_t.open("results/_array_defaultclock_t_-6019923799449224931", ios::binary | ios::out);
+	outfile__array_defaultclock_t.open("results/_array_defaultclock_t_3766643217606192898", ios::binary | ios::out);
 	if(outfile__array_defaultclock_t.is_open())
 	{
 		outfile__array_defaultclock_t.write(reinterpret_cast<char*>(_array_defaultclock_t), 1*sizeof(_array_defaultclock_t[0]));
@@ -2957,7 +2853,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_defaultclock_t." << endl;
 	}
 	ofstream outfile__array_defaultclock_timestep;
-	outfile__array_defaultclock_timestep.open("results/_array_defaultclock_timestep_5241679376691945749", ios::binary | ios::out);
+	outfile__array_defaultclock_timestep.open("results/_array_defaultclock_timestep_3459174420874988273", ios::binary | ios::out);
 	if(outfile__array_defaultclock_timestep.is_open())
 	{
 		outfile__array_defaultclock_timestep.write(reinterpret_cast<char*>(_array_defaultclock_timestep), 1*sizeof(_array_defaultclock_timestep[0]));
@@ -2966,78 +2862,28 @@ void _write_arrays()
 	{
 		std::cout << "Error writing output file for _array_defaultclock_timestep." << endl;
 	}
-	ofstream outfile__array_InpSpikeGenerator__lastindex;
-	outfile__array_InpSpikeGenerator__lastindex.open("results/_array_InpSpikeGenerator__lastindex_4801848235970708605", ios::binary | ios::out);
-	if(outfile__array_InpSpikeGenerator__lastindex.is_open())
-	{
-		outfile__array_InpSpikeGenerator__lastindex.write(reinterpret_cast<char*>(_array_InpSpikeGenerator__lastindex), 1*sizeof(_array_InpSpikeGenerator__lastindex[0]));
-		outfile__array_InpSpikeGenerator__lastindex.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_InpSpikeGenerator__lastindex." << endl;
-	}
-	ofstream outfile__array_InpSpikeGenerator__period_bins;
-	outfile__array_InpSpikeGenerator__period_bins.open("results/_array_InpSpikeGenerator__period_bins_5661498020460657369", ios::binary | ios::out);
-	if(outfile__array_InpSpikeGenerator__period_bins.is_open())
-	{
-		outfile__array_InpSpikeGenerator__period_bins.write(reinterpret_cast<char*>(_array_InpSpikeGenerator__period_bins), 1*sizeof(_array_InpSpikeGenerator__period_bins[0]));
-		outfile__array_InpSpikeGenerator__period_bins.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_InpSpikeGenerator__period_bins." << endl;
-	}
-	ofstream outfile__array_InpSpikeGenerator__spikespace;
-	outfile__array_InpSpikeGenerator__spikespace.open("results/_array_InpSpikeGenerator__spikespace_2225582696650092539", ios::binary | ios::out);
-	if(outfile__array_InpSpikeGenerator__spikespace.is_open())
-	{
-		outfile__array_InpSpikeGenerator__spikespace.write(reinterpret_cast<char*>(_array_InpSpikeGenerator__spikespace), 2*sizeof(_array_InpSpikeGenerator__spikespace[0]));
-		outfile__array_InpSpikeGenerator__spikespace.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_InpSpikeGenerator__spikespace." << endl;
-	}
-	ofstream outfile__array_InpSpikeGenerator_i;
-	outfile__array_InpSpikeGenerator_i.open("results/_array_InpSpikeGenerator_i_-5914901119139706510", ios::binary | ios::out);
-	if(outfile__array_InpSpikeGenerator_i.is_open())
-	{
-		outfile__array_InpSpikeGenerator_i.write(reinterpret_cast<char*>(_array_InpSpikeGenerator_i), 1*sizeof(_array_InpSpikeGenerator_i[0]));
-		outfile__array_InpSpikeGenerator_i.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_InpSpikeGenerator_i." << endl;
-	}
-	ofstream outfile__array_InpSpikeGenerator_period;
-	outfile__array_InpSpikeGenerator_period.open("results/_array_InpSpikeGenerator_period_-3424100192078546549", ios::binary | ios::out);
-	if(outfile__array_InpSpikeGenerator_period.is_open())
-	{
-		outfile__array_InpSpikeGenerator_period.write(reinterpret_cast<char*>(_array_InpSpikeGenerator_period), 1*sizeof(_array_InpSpikeGenerator_period[0]));
-		outfile__array_InpSpikeGenerator_period.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_InpSpikeGenerator_period." << endl;
-	}
 	ofstream outfile__array_mon_neuron_input__source_idx;
-	outfile__array_mon_neuron_input__source_idx.open("results/_array_mon_neuron_input__source_idx_7568694347369115764", ios::binary | ios::out);
+	outfile__array_mon_neuron_input__source_idx.open("results/_array_mon_neuron_input__source_idx_-1747735418370144032", ios::binary | ios::out);
 	if(outfile__array_mon_neuron_input__source_idx.is_open())
 	{
-		outfile__array_mon_neuron_input__source_idx.write(reinterpret_cast<char*>(_array_mon_neuron_input__source_idx), 1*sizeof(_array_mon_neuron_input__source_idx[0]));
+		outfile__array_mon_neuron_input__source_idx.write(reinterpret_cast<char*>(_array_mon_neuron_input__source_idx), 200*sizeof(_array_mon_neuron_input__source_idx[0]));
 		outfile__array_mon_neuron_input__source_idx.close();
 	} else
 	{
 		std::cout << "Error writing output file for _array_mon_neuron_input__source_idx." << endl;
 	}
 	ofstream outfile__array_mon_neuron_input_count;
-	outfile__array_mon_neuron_input_count.open("results/_array_mon_neuron_input_count_-7936765537713707503", ios::binary | ios::out);
+	outfile__array_mon_neuron_input_count.open("results/_array_mon_neuron_input_count_135422840089586940", ios::binary | ios::out);
 	if(outfile__array_mon_neuron_input_count.is_open())
 	{
-		outfile__array_mon_neuron_input_count.write(reinterpret_cast<char*>(_array_mon_neuron_input_count), 1*sizeof(_array_mon_neuron_input_count[0]));
+		outfile__array_mon_neuron_input_count.write(reinterpret_cast<char*>(_array_mon_neuron_input_count), 200*sizeof(_array_mon_neuron_input_count[0]));
 		outfile__array_mon_neuron_input_count.close();
 	} else
 	{
 		std::cout << "Error writing output file for _array_mon_neuron_input_count." << endl;
 	}
 	ofstream outfile__array_mon_neuron_input_N;
-	outfile__array_mon_neuron_input_N.open("results/_array_mon_neuron_input_N_8999065353260971856", ios::binary | ios::out);
+	outfile__array_mon_neuron_input_N.open("results/_array_mon_neuron_input_N_3839155734707027753", ios::binary | ios::out);
 	if(outfile__array_mon_neuron_input_N.is_open())
 	{
 		outfile__array_mon_neuron_input_N.write(reinterpret_cast<char*>(_array_mon_neuron_input_N), 1*sizeof(_array_mon_neuron_input_N[0]));
@@ -3047,27 +2893,27 @@ void _write_arrays()
 		std::cout << "Error writing output file for _array_mon_neuron_input_N." << endl;
 	}
 	ofstream outfile__array_mon_neuron_output__source_idx;
-	outfile__array_mon_neuron_output__source_idx.open("results/_array_mon_neuron_output__source_idx_1613589916249488434", ios::binary | ios::out);
+	outfile__array_mon_neuron_output__source_idx.open("results/_array_mon_neuron_output__source_idx_6806756496035578946", ios::binary | ios::out);
 	if(outfile__array_mon_neuron_output__source_idx.is_open())
 	{
-		outfile__array_mon_neuron_output__source_idx.write(reinterpret_cast<char*>(_array_mon_neuron_output__source_idx), 1*sizeof(_array_mon_neuron_output__source_idx[0]));
+		outfile__array_mon_neuron_output__source_idx.write(reinterpret_cast<char*>(_array_mon_neuron_output__source_idx), 200*sizeof(_array_mon_neuron_output__source_idx[0]));
 		outfile__array_mon_neuron_output__source_idx.close();
 	} else
 	{
 		std::cout << "Error writing output file for _array_mon_neuron_output__source_idx." << endl;
 	}
 	ofstream outfile__array_mon_neuron_output_count;
-	outfile__array_mon_neuron_output_count.open("results/_array_mon_neuron_output_count_9015252996481278533", ios::binary | ios::out);
+	outfile__array_mon_neuron_output_count.open("results/_array_mon_neuron_output_count_542873530678187427", ios::binary | ios::out);
 	if(outfile__array_mon_neuron_output_count.is_open())
 	{
-		outfile__array_mon_neuron_output_count.write(reinterpret_cast<char*>(_array_mon_neuron_output_count), 1*sizeof(_array_mon_neuron_output_count[0]));
+		outfile__array_mon_neuron_output_count.write(reinterpret_cast<char*>(_array_mon_neuron_output_count), 200*sizeof(_array_mon_neuron_output_count[0]));
 		outfile__array_mon_neuron_output_count.close();
 	} else
 	{
 		std::cout << "Error writing output file for _array_mon_neuron_output_count." << endl;
 	}
 	ofstream outfile__array_mon_neuron_output_N;
-	outfile__array_mon_neuron_output_N.open("results/_array_mon_neuron_output_N_-8926327259981908482", ios::binary | ios::out);
+	outfile__array_mon_neuron_output_N.open("results/_array_mon_neuron_output_N_-1063235664358423436", ios::binary | ios::out);
 	if(outfile__array_mon_neuron_output_N.is_open())
 	{
 		outfile__array_mon_neuron_output_N.write(reinterpret_cast<char*>(_array_mon_neuron_output_N), 1*sizeof(_array_mon_neuron_output_N[0]));
@@ -3076,192 +2922,39 @@ void _write_arrays()
 	{
 		std::cout << "Error writing output file for _array_mon_neuron_output_N." << endl;
 	}
-	ofstream outfile__array_statemonitor_1__indices;
-	outfile__array_statemonitor_1__indices.open("results/_array_statemonitor_1__indices_1073785819973797312", ios::binary | ios::out);
-	if(outfile__array_statemonitor_1__indices.is_open())
+	ofstream outfile__array_NMDA0_N;
+	outfile__array_NMDA0_N.open("results/_array_NMDA0_N_-5284015481342164905", ios::binary | ios::out);
+	if(outfile__array_NMDA0_N.is_open())
 	{
-		outfile__array_statemonitor_1__indices.write(reinterpret_cast<char*>(_array_statemonitor_1__indices), 1*sizeof(_array_statemonitor_1__indices[0]));
-		outfile__array_statemonitor_1__indices.close();
+		outfile__array_NMDA0_N.write(reinterpret_cast<char*>(_array_NMDA0_N), 1*sizeof(_array_NMDA0_N[0]));
+		outfile__array_NMDA0_N.close();
 	} else
 	{
-		std::cout << "Error writing output file for _array_statemonitor_1__indices." << endl;
+		std::cout << "Error writing output file for _array_NMDA0_N." << endl;
 	}
-	ofstream outfile__array_statemonitor_1_N;
-	outfile__array_statemonitor_1_N.open("results/_array_statemonitor_1_N_-6579344867319069212", ios::binary | ios::out);
-	if(outfile__array_statemonitor_1_N.is_open())
+	ofstream outfile__array_poissongroup__spikespace;
+	outfile__array_poissongroup__spikespace.open("results/_array_poissongroup__spikespace_-2645669618090137782", ios::binary | ios::out);
+	if(outfile__array_poissongroup__spikespace.is_open())
 	{
-		outfile__array_statemonitor_1_N.write(reinterpret_cast<char*>(_array_statemonitor_1_N), 1*sizeof(_array_statemonitor_1_N[0]));
-		outfile__array_statemonitor_1_N.close();
+		outfile__array_poissongroup__spikespace.write(reinterpret_cast<char*>(_array_poissongroup__spikespace), 201*sizeof(_array_poissongroup__spikespace[0]));
+		outfile__array_poissongroup__spikespace.close();
 	} else
 	{
-		std::cout << "Error writing output file for _array_statemonitor_1_N." << endl;
+		std::cout << "Error writing output file for _array_poissongroup__spikespace." << endl;
 	}
-	ofstream outfile__array_statemonitor_2__indices;
-	outfile__array_statemonitor_2__indices.open("results/_array_statemonitor_2__indices_8371123536974497563", ios::binary | ios::out);
-	if(outfile__array_statemonitor_2__indices.is_open())
+	ofstream outfile__array_poissongroup_i;
+	outfile__array_poissongroup_i.open("results/_array_poissongroup_i_-4574790696377929542", ios::binary | ios::out);
+	if(outfile__array_poissongroup_i.is_open())
 	{
-		outfile__array_statemonitor_2__indices.write(reinterpret_cast<char*>(_array_statemonitor_2__indices), 1*sizeof(_array_statemonitor_2__indices[0]));
-		outfile__array_statemonitor_2__indices.close();
+		outfile__array_poissongroup_i.write(reinterpret_cast<char*>(_array_poissongroup_i), 200*sizeof(_array_poissongroup_i[0]));
+		outfile__array_poissongroup_i.close();
 	} else
 	{
-		std::cout << "Error writing output file for _array_statemonitor_2__indices." << endl;
-	}
-	ofstream outfile__array_statemonitor_2_N;
-	outfile__array_statemonitor_2_N.open("results/_array_statemonitor_2_N_8969905340686067115", ios::binary | ios::out);
-	if(outfile__array_statemonitor_2_N.is_open())
-	{
-		outfile__array_statemonitor_2_N.write(reinterpret_cast<char*>(_array_statemonitor_2_N), 1*sizeof(_array_statemonitor_2_N[0]));
-		outfile__array_statemonitor_2_N.close();
-	} else
-	{
-		std::cout << "Error writing output file for _array_statemonitor_2_N." << endl;
+		std::cout << "Error writing output file for _array_poissongroup_i." << endl;
 	}
 
-	ofstream outfile__dynamic_array_AMPA0__synaptic_post;
-	outfile__dynamic_array_AMPA0__synaptic_post.open("results/_dynamic_array_AMPA0__synaptic_post_4529305101777749105", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0__synaptic_post.is_open())
-	{
-        if (! _dynamic_array_AMPA0__synaptic_post.empty() )
-        {
-			outfile__dynamic_array_AMPA0__synaptic_post.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0__synaptic_post[0]), _dynamic_array_AMPA0__synaptic_post.size()*sizeof(_dynamic_array_AMPA0__synaptic_post[0]));
-		    outfile__dynamic_array_AMPA0__synaptic_post.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0__synaptic_post." << endl;
-	}
-	ofstream outfile__dynamic_array_AMPA0__synaptic_pre;
-	outfile__dynamic_array_AMPA0__synaptic_pre.open("results/_dynamic_array_AMPA0__synaptic_pre_-5738300943798107462", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0__synaptic_pre.is_open())
-	{
-        if (! _dynamic_array_AMPA0__synaptic_pre.empty() )
-        {
-			outfile__dynamic_array_AMPA0__synaptic_pre.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0__synaptic_pre[0]), _dynamic_array_AMPA0__synaptic_pre.size()*sizeof(_dynamic_array_AMPA0__synaptic_pre[0]));
-		    outfile__dynamic_array_AMPA0__synaptic_pre.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0__synaptic_pre." << endl;
-	}
-	ofstream outfile__dynamic_array_AMPA0_delay;
-	outfile__dynamic_array_AMPA0_delay.open("results/_dynamic_array_AMPA0_delay_3571079795470077575", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0_delay.is_open())
-	{
-        if (! _dynamic_array_AMPA0_delay.empty() )
-        {
-			outfile__dynamic_array_AMPA0_delay.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0_delay[0]), _dynamic_array_AMPA0_delay.size()*sizeof(_dynamic_array_AMPA0_delay[0]));
-		    outfile__dynamic_array_AMPA0_delay.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0_delay." << endl;
-	}
-	ofstream outfile__dynamic_array_AMPA0_delay_1;
-	outfile__dynamic_array_AMPA0_delay_1.open("results/_dynamic_array_AMPA0_delay_1_5163654014138857734", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0_delay_1.is_open())
-	{
-        if (! _dynamic_array_AMPA0_delay_1.empty() )
-        {
-			outfile__dynamic_array_AMPA0_delay_1.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0_delay_1[0]), _dynamic_array_AMPA0_delay_1.size()*sizeof(_dynamic_array_AMPA0_delay_1[0]));
-		    outfile__dynamic_array_AMPA0_delay_1.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0_delay_1." << endl;
-	}
-	ofstream outfile__dynamic_array_AMPA0_N_incoming;
-	outfile__dynamic_array_AMPA0_N_incoming.open("results/_dynamic_array_AMPA0_N_incoming_-5495183608134919448", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0_N_incoming.is_open())
-	{
-        if (! _dynamic_array_AMPA0_N_incoming.empty() )
-        {
-			outfile__dynamic_array_AMPA0_N_incoming.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0_N_incoming[0]), _dynamic_array_AMPA0_N_incoming.size()*sizeof(_dynamic_array_AMPA0_N_incoming[0]));
-		    outfile__dynamic_array_AMPA0_N_incoming.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0_N_incoming." << endl;
-	}
-	ofstream outfile__dynamic_array_AMPA0_N_outgoing;
-	outfile__dynamic_array_AMPA0_N_outgoing.open("results/_dynamic_array_AMPA0_N_outgoing_-812332318339859100", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0_N_outgoing.is_open())
-	{
-        if (! _dynamic_array_AMPA0_N_outgoing.empty() )
-        {
-			outfile__dynamic_array_AMPA0_N_outgoing.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0_N_outgoing[0]), _dynamic_array_AMPA0_N_outgoing.size()*sizeof(_dynamic_array_AMPA0_N_outgoing[0]));
-		    outfile__dynamic_array_AMPA0_N_outgoing.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0_N_outgoing." << endl;
-	}
-	ofstream outfile__dynamic_array_AMPA0_weight;
-	outfile__dynamic_array_AMPA0_weight.open("results/_dynamic_array_AMPA0_weight_1953286403250948526", ios::binary | ios::out);
-	if(outfile__dynamic_array_AMPA0_weight.is_open())
-	{
-        if (! _dynamic_array_AMPA0_weight.empty() )
-        {
-			outfile__dynamic_array_AMPA0_weight.write(reinterpret_cast<char*>(&_dynamic_array_AMPA0_weight[0]), _dynamic_array_AMPA0_weight.size()*sizeof(_dynamic_array_AMPA0_weight[0]));
-		    outfile__dynamic_array_AMPA0_weight.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_AMPA0_weight." << endl;
-	}
-	ofstream outfile__dynamic_array_InpSpikeGenerator__timebins;
-	outfile__dynamic_array_InpSpikeGenerator__timebins.open("results/_dynamic_array_InpSpikeGenerator__timebins_-4932880968934746149", ios::binary | ios::out);
-	if(outfile__dynamic_array_InpSpikeGenerator__timebins.is_open())
-	{
-        if (! _dynamic_array_InpSpikeGenerator__timebins.empty() )
-        {
-			outfile__dynamic_array_InpSpikeGenerator__timebins.write(reinterpret_cast<char*>(&_dynamic_array_InpSpikeGenerator__timebins[0]), _dynamic_array_InpSpikeGenerator__timebins.size()*sizeof(_dynamic_array_InpSpikeGenerator__timebins[0]));
-		    outfile__dynamic_array_InpSpikeGenerator__timebins.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_InpSpikeGenerator__timebins." << endl;
-	}
-	ofstream outfile__dynamic_array_InpSpikeGenerator_neuron_index;
-	outfile__dynamic_array_InpSpikeGenerator_neuron_index.open("results/_dynamic_array_InpSpikeGenerator_neuron_index_1852992595886779650", ios::binary | ios::out);
-	if(outfile__dynamic_array_InpSpikeGenerator_neuron_index.is_open())
-	{
-        if (! _dynamic_array_InpSpikeGenerator_neuron_index.empty() )
-        {
-			outfile__dynamic_array_InpSpikeGenerator_neuron_index.write(reinterpret_cast<char*>(&_dynamic_array_InpSpikeGenerator_neuron_index[0]), _dynamic_array_InpSpikeGenerator_neuron_index.size()*sizeof(_dynamic_array_InpSpikeGenerator_neuron_index[0]));
-		    outfile__dynamic_array_InpSpikeGenerator_neuron_index.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_InpSpikeGenerator_neuron_index." << endl;
-	}
-	ofstream outfile__dynamic_array_InpSpikeGenerator_spike_number;
-	outfile__dynamic_array_InpSpikeGenerator_spike_number.open("results/_dynamic_array_InpSpikeGenerator_spike_number_6035101331719282641", ios::binary | ios::out);
-	if(outfile__dynamic_array_InpSpikeGenerator_spike_number.is_open())
-	{
-        if (! _dynamic_array_InpSpikeGenerator_spike_number.empty() )
-        {
-			outfile__dynamic_array_InpSpikeGenerator_spike_number.write(reinterpret_cast<char*>(&_dynamic_array_InpSpikeGenerator_spike_number[0]), _dynamic_array_InpSpikeGenerator_spike_number.size()*sizeof(_dynamic_array_InpSpikeGenerator_spike_number[0]));
-		    outfile__dynamic_array_InpSpikeGenerator_spike_number.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_InpSpikeGenerator_spike_number." << endl;
-	}
-	ofstream outfile__dynamic_array_InpSpikeGenerator_spike_time;
-	outfile__dynamic_array_InpSpikeGenerator_spike_time.open("results/_dynamic_array_InpSpikeGenerator_spike_time_8791656723930377309", ios::binary | ios::out);
-	if(outfile__dynamic_array_InpSpikeGenerator_spike_time.is_open())
-	{
-        if (! _dynamic_array_InpSpikeGenerator_spike_time.empty() )
-        {
-			outfile__dynamic_array_InpSpikeGenerator_spike_time.write(reinterpret_cast<char*>(&_dynamic_array_InpSpikeGenerator_spike_time[0]), _dynamic_array_InpSpikeGenerator_spike_time.size()*sizeof(_dynamic_array_InpSpikeGenerator_spike_time[0]));
-		    outfile__dynamic_array_InpSpikeGenerator_spike_time.close();
-		}
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_InpSpikeGenerator_spike_time." << endl;
-	}
 	ofstream outfile__dynamic_array_mon_neuron_input_i;
-	outfile__dynamic_array_mon_neuron_input_i.open("results/_dynamic_array_mon_neuron_input_i_-2103248633029587158", ios::binary | ios::out);
+	outfile__dynamic_array_mon_neuron_input_i.open("results/_dynamic_array_mon_neuron_input_i_6675097172020364218", ios::binary | ios::out);
 	if(outfile__dynamic_array_mon_neuron_input_i.is_open())
 	{
         if (! _dynamic_array_mon_neuron_input_i.empty() )
@@ -3274,7 +2967,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _dynamic_array_mon_neuron_input_i." << endl;
 	}
 	ofstream outfile__dynamic_array_mon_neuron_input_t;
-	outfile__dynamic_array_mon_neuron_input_t.open("results/_dynamic_array_mon_neuron_input_t_1319360303045058294", ios::binary | ios::out);
+	outfile__dynamic_array_mon_neuron_input_t.open("results/_dynamic_array_mon_neuron_input_t_565560797149160085", ios::binary | ios::out);
 	if(outfile__dynamic_array_mon_neuron_input_t.is_open())
 	{
         if (! _dynamic_array_mon_neuron_input_t.empty() )
@@ -3287,7 +2980,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _dynamic_array_mon_neuron_input_t." << endl;
 	}
 	ofstream outfile__dynamic_array_mon_neuron_output_i;
-	outfile__dynamic_array_mon_neuron_output_i.open("results/_dynamic_array_mon_neuron_output_i_1589341828877809150", ios::binary | ios::out);
+	outfile__dynamic_array_mon_neuron_output_i.open("results/_dynamic_array_mon_neuron_output_i_8122066792676967782", ios::binary | ios::out);
 	if(outfile__dynamic_array_mon_neuron_output_i.is_open())
 	{
         if (! _dynamic_array_mon_neuron_output_i.empty() )
@@ -3300,7 +2993,7 @@ void _write_arrays()
 		std::cout << "Error writing output file for _dynamic_array_mon_neuron_output_i." << endl;
 	}
 	ofstream outfile__dynamic_array_mon_neuron_output_t;
-	outfile__dynamic_array_mon_neuron_output_t.open("results/_dynamic_array_mon_neuron_output_t_5506680048305857067", ios::binary | ios::out);
+	outfile__dynamic_array_mon_neuron_output_t.open("results/_dynamic_array_mon_neuron_output_t_-1126661221566807506", ios::binary | ios::out);
 	if(outfile__dynamic_array_mon_neuron_output_t.is_open())
 	{
         if (! _dynamic_array_mon_neuron_output_t.empty() )
@@ -3312,65 +3005,98 @@ void _write_arrays()
 	{
 		std::cout << "Error writing output file for _dynamic_array_mon_neuron_output_t." << endl;
 	}
-	ofstream outfile__dynamic_array_statemonitor_1_t;
-	outfile__dynamic_array_statemonitor_1_t.open("results/_dynamic_array_statemonitor_1_t_4998614934150719231", ios::binary | ios::out);
-	if(outfile__dynamic_array_statemonitor_1_t.is_open())
+	ofstream outfile__dynamic_array_NMDA0__synaptic_post;
+	outfile__dynamic_array_NMDA0__synaptic_post.open("results/_dynamic_array_NMDA0__synaptic_post_122494412421897090", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0__synaptic_post.is_open())
 	{
-        if (! _dynamic_array_statemonitor_1_t.empty() )
+        if (! _dynamic_array_NMDA0__synaptic_post.empty() )
         {
-			outfile__dynamic_array_statemonitor_1_t.write(reinterpret_cast<char*>(&_dynamic_array_statemonitor_1_t[0]), _dynamic_array_statemonitor_1_t.size()*sizeof(_dynamic_array_statemonitor_1_t[0]));
-		    outfile__dynamic_array_statemonitor_1_t.close();
+			outfile__dynamic_array_NMDA0__synaptic_post.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0__synaptic_post[0]), _dynamic_array_NMDA0__synaptic_post.size()*sizeof(_dynamic_array_NMDA0__synaptic_post[0]));
+		    outfile__dynamic_array_NMDA0__synaptic_post.close();
 		}
 	} else
 	{
-		std::cout << "Error writing output file for _dynamic_array_statemonitor_1_t." << endl;
+		std::cout << "Error writing output file for _dynamic_array_NMDA0__synaptic_post." << endl;
 	}
-	ofstream outfile__dynamic_array_statemonitor_2_t;
-	outfile__dynamic_array_statemonitor_2_t.open("results/_dynamic_array_statemonitor_2_t_2611999469313798354", ios::binary | ios::out);
-	if(outfile__dynamic_array_statemonitor_2_t.is_open())
+	ofstream outfile__dynamic_array_NMDA0__synaptic_pre;
+	outfile__dynamic_array_NMDA0__synaptic_pre.open("results/_dynamic_array_NMDA0__synaptic_pre_3868825687735666305", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0__synaptic_pre.is_open())
 	{
-        if (! _dynamic_array_statemonitor_2_t.empty() )
+        if (! _dynamic_array_NMDA0__synaptic_pre.empty() )
         {
-			outfile__dynamic_array_statemonitor_2_t.write(reinterpret_cast<char*>(&_dynamic_array_statemonitor_2_t[0]), _dynamic_array_statemonitor_2_t.size()*sizeof(_dynamic_array_statemonitor_2_t[0]));
-		    outfile__dynamic_array_statemonitor_2_t.close();
+			outfile__dynamic_array_NMDA0__synaptic_pre.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0__synaptic_pre[0]), _dynamic_array_NMDA0__synaptic_pre.size()*sizeof(_dynamic_array_NMDA0__synaptic_pre[0]));
+		    outfile__dynamic_array_NMDA0__synaptic_pre.close();
 		}
 	} else
 	{
-		std::cout << "Error writing output file for _dynamic_array_statemonitor_2_t." << endl;
+		std::cout << "Error writing output file for _dynamic_array_NMDA0__synaptic_pre." << endl;
+	}
+	ofstream outfile__dynamic_array_NMDA0_delay;
+	outfile__dynamic_array_NMDA0_delay.open("results/_dynamic_array_NMDA0_delay_2099685013340918456", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0_delay.is_open())
+	{
+        if (! _dynamic_array_NMDA0_delay.empty() )
+        {
+			outfile__dynamic_array_NMDA0_delay.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0_delay[0]), _dynamic_array_NMDA0_delay.size()*sizeof(_dynamic_array_NMDA0_delay[0]));
+		    outfile__dynamic_array_NMDA0_delay.close();
+		}
+	} else
+	{
+		std::cout << "Error writing output file for _dynamic_array_NMDA0_delay." << endl;
+	}
+	ofstream outfile__dynamic_array_NMDA0_delay_1;
+	outfile__dynamic_array_NMDA0_delay_1.open("results/_dynamic_array_NMDA0_delay_1_539988439311615425", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0_delay_1.is_open())
+	{
+        if (! _dynamic_array_NMDA0_delay_1.empty() )
+        {
+			outfile__dynamic_array_NMDA0_delay_1.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0_delay_1[0]), _dynamic_array_NMDA0_delay_1.size()*sizeof(_dynamic_array_NMDA0_delay_1[0]));
+		    outfile__dynamic_array_NMDA0_delay_1.close();
+		}
+	} else
+	{
+		std::cout << "Error writing output file for _dynamic_array_NMDA0_delay_1." << endl;
+	}
+	ofstream outfile__dynamic_array_NMDA0_N_incoming;
+	outfile__dynamic_array_NMDA0_N_incoming.open("results/_dynamic_array_NMDA0_N_incoming_-622646284535003387", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0_N_incoming.is_open())
+	{
+        if (! _dynamic_array_NMDA0_N_incoming.empty() )
+        {
+			outfile__dynamic_array_NMDA0_N_incoming.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0_N_incoming[0]), _dynamic_array_NMDA0_N_incoming.size()*sizeof(_dynamic_array_NMDA0_N_incoming[0]));
+		    outfile__dynamic_array_NMDA0_N_incoming.close();
+		}
+	} else
+	{
+		std::cout << "Error writing output file for _dynamic_array_NMDA0_N_incoming." << endl;
+	}
+	ofstream outfile__dynamic_array_NMDA0_N_outgoing;
+	outfile__dynamic_array_NMDA0_N_outgoing.open("results/_dynamic_array_NMDA0_N_outgoing_5185441601732951842", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0_N_outgoing.is_open())
+	{
+        if (! _dynamic_array_NMDA0_N_outgoing.empty() )
+        {
+			outfile__dynamic_array_NMDA0_N_outgoing.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0_N_outgoing[0]), _dynamic_array_NMDA0_N_outgoing.size()*sizeof(_dynamic_array_NMDA0_N_outgoing[0]));
+		    outfile__dynamic_array_NMDA0_N_outgoing.close();
+		}
+	} else
+	{
+		std::cout << "Error writing output file for _dynamic_array_NMDA0_N_outgoing." << endl;
+	}
+	ofstream outfile__dynamic_array_NMDA0_weight;
+	outfile__dynamic_array_NMDA0_weight.open("results/_dynamic_array_NMDA0_weight_-3239081387640548461", ios::binary | ios::out);
+	if(outfile__dynamic_array_NMDA0_weight.is_open())
+	{
+        if (! _dynamic_array_NMDA0_weight.empty() )
+        {
+			outfile__dynamic_array_NMDA0_weight.write(reinterpret_cast<char*>(&_dynamic_array_NMDA0_weight[0]), _dynamic_array_NMDA0_weight.size()*sizeof(_dynamic_array_NMDA0_weight[0]));
+		    outfile__dynamic_array_NMDA0_weight.close();
+		}
+	} else
+	{
+		std::cout << "Error writing output file for _dynamic_array_NMDA0_weight." << endl;
 	}
 
-	ofstream outfile__dynamic_array_statemonitor_1_Isoma_ahp;
-	outfile__dynamic_array_statemonitor_1_Isoma_ahp.open("results/_dynamic_array_statemonitor_1_Isoma_ahp_-5966878006666669798", ios::binary | ios::out);
-	if(outfile__dynamic_array_statemonitor_1_Isoma_ahp.is_open())
-	{
-        for (int n=0; n<_dynamic_array_statemonitor_1_Isoma_ahp.n; n++)
-        {
-            if (! _dynamic_array_statemonitor_1_Isoma_ahp(n).empty())
-            {
-                outfile__dynamic_array_statemonitor_1_Isoma_ahp.write(reinterpret_cast<char*>(&_dynamic_array_statemonitor_1_Isoma_ahp(n, 0)), _dynamic_array_statemonitor_1_Isoma_ahp.m*sizeof(_dynamic_array_statemonitor_1_Isoma_ahp(0, 0)));
-            }
-        }
-        outfile__dynamic_array_statemonitor_1_Isoma_ahp.close();
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_statemonitor_1_Isoma_ahp." << endl;
-	}
-	ofstream outfile__dynamic_array_statemonitor_2_Isoma_mem;
-	outfile__dynamic_array_statemonitor_2_Isoma_mem.open("results/_dynamic_array_statemonitor_2_Isoma_mem_1069130357917290540", ios::binary | ios::out);
-	if(outfile__dynamic_array_statemonitor_2_Isoma_mem.is_open())
-	{
-        for (int n=0; n<_dynamic_array_statemonitor_2_Isoma_mem.n; n++)
-        {
-            if (! _dynamic_array_statemonitor_2_Isoma_mem(n).empty())
-            {
-                outfile__dynamic_array_statemonitor_2_Isoma_mem.write(reinterpret_cast<char*>(&_dynamic_array_statemonitor_2_Isoma_mem(n, 0)), _dynamic_array_statemonitor_2_Isoma_mem.m*sizeof(_dynamic_array_statemonitor_2_Isoma_mem(0, 0)));
-            }
-        }
-        outfile__dynamic_array_statemonitor_2_Isoma_mem.close();
-	} else
-	{
-		std::cout << "Error writing output file for _dynamic_array_statemonitor_2_Isoma_mem." << endl;
-	}
 	// Write last run info to disk
 	ofstream outfile_last_run_info;
 	outfile_last_run_info.open("results/last_run_info.txt", ios::out);
@@ -3390,25 +3116,10 @@ void _dealloc_arrays()
 
 
 	// static arrays
-	if(_static_array__dynamic_array_InpSpikeGenerator__timebins!=0)
+	if(_timedarray_values!=0)
 	{
-		delete [] _static_array__dynamic_array_InpSpikeGenerator__timebins;
-		_static_array__dynamic_array_InpSpikeGenerator__timebins = 0;
-	}
-	if(_static_array__dynamic_array_InpSpikeGenerator_neuron_index!=0)
-	{
-		delete [] _static_array__dynamic_array_InpSpikeGenerator_neuron_index;
-		_static_array__dynamic_array_InpSpikeGenerator_neuron_index = 0;
-	}
-	if(_static_array__dynamic_array_InpSpikeGenerator_spike_number!=0)
-	{
-		delete [] _static_array__dynamic_array_InpSpikeGenerator_spike_number;
-		_static_array__dynamic_array_InpSpikeGenerator_spike_number = 0;
-	}
-	if(_static_array__dynamic_array_InpSpikeGenerator_spike_time!=0)
-	{
-		delete [] _static_array__dynamic_array_InpSpikeGenerator_spike_time;
-		_static_array__dynamic_array_InpSpikeGenerator_spike_time = 0;
+		delete [] _timedarray_values;
+		_timedarray_values = 0;
 	}
 }
 
