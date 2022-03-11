@@ -1,13 +1,13 @@
 var
 output
 
-/equations/.ipynb_checkpoints/
-/parameters/.ipynb_checkpoints/
+**/.ipynb_checkpoints
+**/.ipynb_checkpoints
 
 .DS_Store
-/equations/.DS_Store
-/parameters/.DS_Store
+**/.DS_Store
+**/.DS_Store
 
 __pycache__
-/parameters/__pycache__
-/equations/__pycache__
+**/__pycache__
+**/__pycache__
