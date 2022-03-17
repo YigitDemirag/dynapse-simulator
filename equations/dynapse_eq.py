@@ -39,16 +39,20 @@ def dynapse_eq():
                     Vsoma_mem = Ut / kappa * log(Isoma_mem / I0*(Isoma_mem>I0) + 1*(Isoma_mem<=I0)) : volt           # Membrane voltage
 
                     # Substrate constants
-                    kn      : 1     (shared, constant)                          # Subthreshold slope factor for nFETs
-                    kp      : 1     (shared, constant)                          # Subthreshold slope factor for pFETs
-                    Ut      : volt  (shared, constant)                          # Thermal voltage
-                    I0      : amp   (shared, constant)                          # Dark current
-                    alpha   : 1     (shared, constant)                          # Scaling factor equal to Ig/Itau 
+                    kn              : 1     (shared, constant)                          # Subthreshold slope factor for nFETs
+                    kp              : 1     (shared, constant)                          # Subthreshold slope factor for pFETs
+                    Ut              : volt  (shared, constant)                          # Thermal voltage
+                    I0              : amp   (shared, constant)                          # Dark current
+                    alpha_soma           : 1     (shared, constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_nmda      : 1     (shared, constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_ampa      : 1     (shared, constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_gaba_a    : 1     (shared, constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_gaba_b    : 1     (shared, constant)                          # Scaling factor equal to Ig/Itau 
 
                     # Soma constants
                     Csoma_mem       : farad (shared, constant)                  # Membrane capacitance
                     Isoma_dpi_tau   : amp   (shared, constant)                  # Leakage current
-                    Isoma_dpi_g = alpha * Isoma_dpi_tau : amp                   # DPI threshold (low pass filter) (Igmem)
+                    Isoma_dpi_g = alpha_soma * Isoma_dpi_tau : amp              # DPI threshold (low pass filter) (Igmem)
                     Isoma_th        : amp   (shared, constant)                  # Spiking threshold
                     Isoma_reset     : amp   (shared, constant)                  # Reset current
                     Isoma_const     : amp   (constant)                          # Additional input current similar to constant current injection
@@ -77,7 +81,7 @@ def dynapse_eq():
 
                     Vnmda : volt  (constant)                                    # NMDA threshold voltage
                     Inmda_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Inmda_g = alpha * Inmda_tau : amp                           # Current flowing through ?? sets the DPI's threshold
+                    Inmda_g = alpha_nmda * Inmda_tau : amp                      # Current flowing through ?? sets the DPI's threshold
                     Inmda_thr = I0 * exp(kappa * Vnmda / Ut) : amp
                     Inmda_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_nmda = Cnmda * Ut /(kappa * Inmda_tau_clip) : second    # Synaptic time-constant
@@ -90,7 +94,7 @@ def dynapse_eq():
                     Iampa_tau_clip = I0*(Iampa<=I0) + Iampa_tau*(Iampa>I0) : amp
 
                     Iampa_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Iampa_g = alpha * Iampa_tau : amp                           # Current flowing through ?? sets the DPI's threshold
+                    Iampa_g = alpha_ampa * Iampa_tau : amp                      # Current flowing through ?? sets the DPI's threshold
                     Iampa_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_ampa = Campa * Ut / (kappa * Iampa_tau_clip) : second   # Synaptic time-constant
                     Campa          : farad (constant)                           # Synapse's capacitance
@@ -105,7 +109,7 @@ def dynapse_eq():
                     Igaba_b_tau_clip  = I0*(Igaba_b<=I0) + Igaba_b_tau*(Igaba_b>I0) : amp
 
                     Igaba_b_tau      : amp (constant)                           # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_b_g = alpha * Igaba_b_tau : amp                       # Current flowing through ?? sets the DPI's threshold
+                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                # Current flowing through ?? sets the DPI's threshold
                     Igaba_b_w0 : amp (constant)                                 # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau_clip) : second    # Synaptic time-constant
                     Cgaba_b          : farad (constant)                         # Synapse's capacitance
@@ -118,7 +122,7 @@ def dynapse_eq():
                     Igaba_a_tau_clip = I0*(Igaba_a<=I0) + Igaba_a_tau*(Igaba_a>I0) : amp
 
                     Igaba_a_tau     : amp (constant)                            # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_a_g = alpha * Igaba_a_tau : amp                       # Current flowing through ?? sets the DPI's threshold
+                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                # Current flowing through ?? sets the DPI's threshold
                     Igaba_a_w0 : amp (constant)                                 # Synaptic weight, to convert unitless weight to current
                     tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau_clip) : second     # Synaptic time-constant
                     Cgaba_a         : farad (constant)                          # Synapse's capacitance
@@ -138,8 +142,11 @@ def dynapse_nmda_syn_eq(): # SLOW_EXC
     """
     return{'model': """
                     weight : 1 # Can only be integer on the chip
+                    sigma : 1 # Magnitude
+                    learning : 1 # Learning on/off
                     """,
            'on_pre': """
+                    weight = clip(weight + learning*sigma*(Iampa_post-Inmda_post)/amp, 0, inf)
                     Inmda_post += Inmda_w0*weight*Inmda_g_post/(Inmda_tau_post*((Inmda_g_post/Inmda_post)+1))
                     """,
            'on_post': """ """,
