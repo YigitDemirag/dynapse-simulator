@@ -25,18 +25,17 @@ dynapse_param = {
     "I0": constants.I0,                     # Dark current, can be from 2x to 10x default Io if necessary
     ##################
 
-    "alpha_soma": 4,                             # Scaling factor equal to Ig/Itau 
-    "alpha_nmda": 4,                             # Scaling factor equal to Ig/Itau 
-    "alpha_ampa": 4,                             # Scaling factor equal to Ig/Itau 
-    "alpha_gaba_a": 4,                             # Scaling factor equal to Ig/Itau 
-    "alpha_gaba_b": 4,                             # Scaling factor equal to Ig/Itau 
+    "alpha_soma": 4,                        # Scaling factor equal to Ig/Itau 
+    "alpha_nmda": 4,                        # Scaling factor equal to Ig/Itau 
+    "alpha_ampa": 4,                        # Scaling factor equal to Ig/Itau 
+    "alpha_gaba_a": 4,                      # Scaling factor equal to Ig/Itau 
+    "alpha_gaba_b": 4,                      # Scaling factor equal to Ig/Itau 
 
     #  Neuron parameters  ###############
     #  SOMA  ##############################################################################################
     "Csoma_mem": 1.5 * pF,                  # Membrane capacitance, fixed at layout time (see chip for details)
-    "Isoma_dpi_tau": 5 * constants.I0, #6 * constants.I0,      # New Default according to I_tau experiments: Membrane time constant current, the time constant is inversely proportional to Itau
+    "Isoma_dpi_tau": 5 * constants.I0,      # Membrane time constant current, the time constant is inversely proportional to Itau
     "Isoma_th": 2000 * constants.I0,        # Spiking threshold current, depends on layout (see chip for details)
-    # "Isoma_dpi_g":  1.8 * constants.I0,   # Threshold / gain current, scaling factor for the membrane current (typically equal to Itau)
     "Isoma_reset": 1.2 * constants.I0,      # Reset current after spike generation
     "Isoma_const": constants.I0,            # Initialize constant current injection to Io
     "soma_refP": 5. * ms,                   # New Default according to Refractory Period experiments: Refractory period, limits maximum firing rate at 200Hz
@@ -61,27 +60,23 @@ dynapse_param = {
     'Inmda_w0': 100 * constants.I0,         # Base synaptic weight current which can be scaled by the .weight parameter
     'Inmda': constants.I0,                  # Output current initial value
     'Vnmda': 10 * mV,                       # Voltage NMDA DPI slow
-    # 'I_g_syn_nmda': 5 * constants.I0,     # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
 
     #FAST_EXC, AMPA ########################################################################################
     'Campa': 1.5 * pF,                      # Synaptic capacitance, fixed at layout time (see chip for details)
-    'Iampa_tau': 20 * constants.I0, #24 * constants.I0,         # New Default according to guidance from Giacomo: Synaptic time constant current, the time constant is inversely proportional to I_tau
+    'Iampa_tau': 20 * constants.I0,         # Synaptic time constant current, the time constant is inversely proportional to I_tau
     'Iampa_w0': 100 * constants.I0,         # Base synaptic weight current which can be scaled by the .weight parameter
     'Iampa': constants.I0,                  # Output current initial value
-    # 'I_g_syn_ampa': 100 * constants.I0, #50. * pA, # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
 
-    #inh, SLOW_INH, GABA_B, subtractive ##################################################################
+    #INH, SLOW_INH, GABA_B, subtractive ##################################################################
     'Cgaba_b': 1.5 * pF,                    # Synaptic capacitance, fixed at layout time (see chip for details)
-    'Igaba_b_tau': 5 * constants.I0,        # New Default according to guidance from Arianna: Synaptic time constant current, the time constant is inversely proportional to I_tau
+    'Igaba_b_tau': 5 * constants.I0,        # Synaptic time constant current, the time constant is inversely proportional to I_tau
     'Igaba_b_w0': 100 * constants.I0,       # Base synaptic weight current which can be scaled by the .weight parameter
     'Igaba_b': constants.I0,                # Output current initial value
-    # 'I_g_syn_gaba_b': 20 * constants.I0,#10. * pA,         # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
 
     #FAST_INH, GABA_A, shunting, a mixture of subtractive and divisive ############################################
     'Cgaba_a': 1.5 * pF,                    # Synaptic capacitance, fixed at layout time (see chip for details)
-    'Igaba_a_tau': 5 * constants.I0,        # New Default according to guidance from Arianna: Synaptic time constant current, the time constant is inversely proportional to I_tau
+    'Igaba_a_tau': 5 * constants.I0,        # Synaptic time constant current, the time constant is inversely proportional to I_tau
     'Igaba_a_w0': 100 * constants.I0,       # Base synaptic weight current which can be scaled by the .weight parameter
     'Igaba_a': constants.I0                 # Output current initial value
-    # 'I_g_syn_gaba_a': 20 * constants.I0,#10. * pA,         # DPI's threshold / gain current, scaling factor for the synaptic weight (typically equal to I_tau)
     ##################
 }
