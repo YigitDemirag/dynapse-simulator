@@ -44,7 +44,7 @@ dynapse_param = {
     "Csoma_ahp": 1 * pF,                    # Spike-frequency adaptation capacitance
     "Isoma_ahp": constants.I0,              # Initialize spike-frequency adaptation output current to Io
     "Isoma_ahp_tau": 2 * constants.I0,      # Spike-frequency adaptation time constant current
-    "Isoma_ahp_th": 2 * constants.I0,       # Spike-frequency adaptation threshold
+    "Isoma_ahp_g": 2 * constants.I0,       # Spike-frequency adaptation threshold
     "Isoma_ahp_w": 4 * constants.I0,        # Spike-frequency adaptation weight current
     
     #  POSITIVE FEEDBACK ##################################################################################

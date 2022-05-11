@@ -14,21 +14,20 @@ def dynapse_eq():
                     dIsoma_mem/dt = (((Isoma_dpi_g / Isoma_dpi_tau) * (Isoma_in_clip + Isoma_pfb_clip -\
                     Isoma_shunt_clip - Isoma_ahp_clip)) - Isoma_dpi_g - ((1 + ((Isoma_shunt_clip +\
                     Isoma_ahp_clip - Isoma_pfb_clip) / Isoma_dpi_tau)) * Isoma_mem)) / (tau_soma *\
-                    ((Isoma_dpi_g/(Isoma_mem + I0)) + 1)) : amp (unless refractory)
+                    ((Isoma_dpi_g/(Isoma_mem)) + 1)) : amp (unless refractory)
 
-                    dIsoma_ahp/dt = (- Isoma_ahp_th_clip - Isoma_ahp + 2*I0*(Isoma_ahp<=I0)) / (tau_soma_ahp *\
-                    (Isoma_ahp_th_clip / Isoma_ahp + 1)) : amp # adaptation current
+                    dIsoma_ahp/dt = (- Isoma_ahp_g - Isoma_ahp) / (tau_soma_ahp *\
+                    (Isoma_ahp_g / Isoma_ahp + 1)) : amp # adaptation current
 
                     # The *_clip currents are needed to prevent current from going
                     # below I0, since negative currents are not possible on chips
                     Isoma_in_clip = clip(Inmda_dp + Iampa - Igaba_b + Isoma_const, I0, 1*amp) : amp
                     Isoma_ahp_clip = Isoma_ahp*(Isoma_ahp>I0) + I0*(Isoma_ahp<=I0) : amp
                     Isoma_pfb_clip = Isoma_pfb*(Isoma_pfb>I0) + 2*I0*(Isoma_pfb<=I0) : amp
-                    Isoma_ahp_th_clip = Isoma_ahp_th*(Isoma_ahp>I0) + I0*(Isoma_ahp<=I0) : amp
                     Isoma_shunt_clip = clip(Igaba_a, I0, Isoma_mem) : amp
                     Isoma_mem_clip = Isoma_mem*(Isoma_mem>I0) + I0*(Isoma_mem<=I0) : amp
 
-                    Isoma_ahp_max = (Isoma_ahp_w / Isoma_ahp_tau) * Isoma_ahp_th_clip : amp         # Ratio of currents through diffpair and adaptation block
+                    Isoma_ahp_max = (Isoma_ahp_w / Isoma_ahp_tau) * Isoma_ahp_g : amp         # Ratio of currents through diffpair and adaptation block
                     Isoma_pfb = Isoma_pfb_gain / (1 + exp(-(Isoma_mem - Isoma_pfb_th) / Isoma_pfb_norm)) : amp       # Positive feedback current
 
                     tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau) : second              # Time constant of adaptation
@@ -59,7 +58,7 @@ def dynapse_eq():
                     # Adaptation constants
                     Csoma_ahp       : farad (shared, constant)                  # Spike-frequency adaptation capacitance
                     Isoma_ahp_tau   : amp   (shared, constant)                  # Leakage current for spike-frequency adaptation
-                    Isoma_ahp_th    : amp   (shared, constant)                  # Threshold for spike-frequency adaptation
+                    Isoma_ahp_g     : amp   (shared, constant)                  # Threshold for spike-frequency adaptation
                     Isoma_ahp_w     : amp   (constant)                          # Calcium current
 
                     # Positive feedback constants
