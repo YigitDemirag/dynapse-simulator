@@ -162,7 +162,7 @@ def dynapse_gaba_b_syn_eq():  # SLOW_INH
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                     Igaba_b_post += Igaba_b_w0_post*weight*Igaba_b_g_post/(Igaba_b_tau_post*((Igaba_b_g_post/Igaba_b_post)+1))
+                     Igaba_b_post += Igaba_b_w0_post*weight
                      """,
            'on_post': """ """,
            'method': 'euler'}
@@ -175,7 +175,7 @@ def dynapse_gaba_a_syn_eq():  # FAST_INH
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                    Igaba_a_post += Igaba_a_w0_post*weight*Igaba_a_g_post/(Igaba_a_tau_post*((Igaba_a_g_post/Igaba_a_post)+1))
+                    Igaba_a_post += Igaba_a_w0_post*weight
                     """,            # On pre-synaptic spike adds current to state variable of DPI synapse
            'on_post': """ """,
            'method': 'euler'}
