@@ -14,8 +14,8 @@ def dynapse_eq():
 
                     # Differential equations
                     dIsoma_mem/dt = (((Isoma_dpi_g / Isoma_dpi_tau) *\
-                    (Iin_clip + Isoma_pfb_clip - Igaba_a_clip - Isoma_ahp_clip)) -\
-                    Isoma_dpi_g - ((1 + ((Igaba_a_clip + Isoma_ahp_clip - Isoma_pfb_clip) /\
+                    (Iin_clip + Isoma_pfb_clip - Igaba_a_clip)) -\
+                    Isoma_dpi_g - ((1 + ((Igaba_a_clip - Isoma_pfb_clip) /\
                     Isoma_dpi_tau)) * Isoma_mem_clip)) / (tau_soma *\
                     (1+(Isoma_dpi_g/Isoma_mem_clip))) : amp (unless refractory)
 
@@ -24,7 +24,8 @@ def dynapse_eq():
 
                     Isoma_pfb = Isoma_pfb_gain / (1 + exp(-(Isoma_mem_clip - Isoma_pfb_th) / Isoma_pfb_norm)) : amp       # Positive feedback current
 
-                    Iin_clip=clip(Inmda_dp + Iampa_clip - Igaba_b_clip + Isoma_const, I0,1*amp) : amp
+                    Iin_clip=clip(Inmda_dp + Iampa_clip - Igaba_b_clip - Isoma_ahp_clip +\
+                    Isoma_const, I0,1*amp) : amp
                     Isoma_mem_clip=clip(Isoma_mem,I0,1*amp) : amp
                     Isoma_pfb_clip=clip(Isoma_pfb,I0,1*amp) : amp
                     Isoma_ahp_clip=clip(Isoma_ahp,I0,1*amp) : amp
