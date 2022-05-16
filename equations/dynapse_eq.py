@@ -80,7 +80,7 @@ def dynapse_eq():
 
                     Vnmda : volt  (constant)                                    # NMDA threshold voltage
                     Inmda_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Inmda_g = alpha_nmda * Inmda_tau : amp                      # Current flowing through ?? sets the DPI's threshold
+                    Inmda_g = alpha_nmda * Inmda_tau : amp                      # NMDA synapse gain term expressed in terms of its tau current
                     Inmda_thr = I0 * exp(kappa * Vnmda / Ut) : amp              # NMDA voltage-gating threshold
                     Inmda_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_nmda = Cnmda * Ut /(kappa * Inmda_tau) : second         # Synaptic time-constant
@@ -92,7 +92,7 @@ def dynapse_eq():
 
                     Iampa_clip = clip(Iampa,I0,1*amp) : amp
                     Iampa_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Iampa_g = alpha_ampa * Iampa_tau : amp                      # Current flowing through ?? sets the DPI's threshold
+                    Iampa_g = alpha_ampa * Iampa_tau : amp                      # AMPA synapse gain term expressed in terms of its tau current
                     Iampa_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_ampa = Campa * Ut / (kappa * Iampa_tau) : second        # Synaptic time-constant
                     Campa  : farad (constant)                                   # Synapse's capacitance
@@ -105,7 +105,7 @@ def dynapse_eq():
 
                     Igaba_b_clip = clip(Igaba_b,I0,1*amp) : amp
                     Igaba_b_tau      : amp (constant)                           # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                # Current flowing through ?? sets the DPI's threshold
+                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                # GABA B synapse gain term expressed in terms of its tau current
                     Igaba_b_w0 : amp (constant)                                 # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau) : second  # Synaptic time-constant
                     Cgaba_b : farad (constant)                                  # Synapse's capacitance
@@ -116,7 +116,7 @@ def dynapse_eq():
 
                     Igaba_a_clip = clip(Igaba_a,I0,1*amp) : amp
                     Igaba_a_tau     : amp (constant)                            # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                # Current flowing through ?? sets the DPI's threshold
+                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                # GABA A synapse gain term expressed in terms of its tau current
                     Igaba_a_w0 : amp (constant)                                 # Synaptic weight, to convert unitless weight to current
                     tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau) : second  # Synaptic time-constant
                     Cgaba_a : farad (constant)                                  # Synapse's capacitance
