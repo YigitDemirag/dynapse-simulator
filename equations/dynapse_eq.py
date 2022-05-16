@@ -29,7 +29,7 @@ def dynapse_eq():
                     Isoma_pfb_clip=clip(Isoma_pfb,I0,1*amp) : amp
                     Isoma_ahp_clip=clip(Isoma_ahp,I0,1*amp) : amp
 
-                    tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau) : second              # Time constant of adaptation
+                    tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau) : second         # Time constant of adaptation
                     tau_soma = (Csoma_mem * Ut) / (kappa * Isoma_dpi_tau) : second             # Membrane time constant                    
                     kappa = (kn + kp) / 2 : 1
                     Vsoma_mem = Ut / kappa * log(Isoma_mem / I0) : volt           # Membrane voltage
@@ -80,7 +80,7 @@ def dynapse_eq():
                     Inmda_g = alpha_nmda * Inmda_tau : amp                      # Current flowing through ?? sets the DPI's threshold
                     Inmda_thr = I0 * exp(kappa * Vnmda / Ut) : amp
                     Inmda_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
-                    tau_nmda = Cnmda * Ut /(kappa * Inmda_tau) : second    # Synaptic time-constant
+                    tau_nmda = Cnmda * Ut /(kappa * Inmda_tau) : second         # Synaptic time-constant
                     Cnmda : farad (constant)                                    # Synapse's capacitance
 
                     # AMPA #######################################################
@@ -91,7 +91,7 @@ def dynapse_eq():
                     Iampa_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Iampa_g = alpha_ampa * Iampa_tau : amp                      # Current flowing through ?? sets the DPI's threshold
                     Iampa_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
-                    tau_ampa = Campa * Ut / (kappa * Iampa_tau) : second   # Synaptic time-constant
+                    tau_ampa = Campa * Ut / (kappa * Iampa_tau) : second        # Synaptic time-constant
                     Campa          : farad (constant)                           # Synapse's capacitance
 
                     # GABA B - inh #######################################################
@@ -104,7 +104,7 @@ def dynapse_eq():
                     Igaba_b_tau      : amp (constant)                           # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                # Current flowing through ?? sets the DPI's threshold
                     Igaba_b_w0 : amp (constant)                                 # Base synaptic weight, to convert unitless weight (set in synapse) to current
-                    tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau) : second    # Synaptic time-constant
+                    tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau) : second  # Synaptic time-constant
                     Cgaba_b          : farad (constant)                         # Synapse's capacitance
 
                     # GABA A - shunt #####################################################
@@ -115,7 +115,7 @@ def dynapse_eq():
                     Igaba_a_tau     : amp (constant)                            # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                # Current flowing through ?? sets the DPI's threshold
                     Igaba_a_w0 : amp (constant)                                 # Synaptic weight, to convert unitless weight to current
-                    tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau) : second     # Synaptic time-constant
+                    tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau) : second  # Synaptic time-constant
                     Cgaba_a         : farad (constant)                          # Synapse's capacitance
                     ''',
            'threshold': '''Isoma_mem > Isoma_th''',
@@ -125,9 +125,6 @@ def dynapse_eq():
                     ''',
            'refractory': 'soma_refP',
            'method': 'euler'}
-
-# synapses
-# Inmda_post += Inmda_w0*weight*Inmda_g_post/(Inmda_tau_post*((Inmda_g_post/Inmda_post)+1))
 
 
 def dynapse_nmda_syn_eq():  # SLOW_EXC
