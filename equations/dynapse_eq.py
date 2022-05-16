@@ -40,6 +40,7 @@ def dynapse_eq():
                     Ut              : volt  (shared, constant)                  # Thermal voltage
                     I0              : amp   (shared, constant)                  # Dark current
                     alpha_soma      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
+                    alpha_ahp      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
                     alpha_nmda      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
                     alpha_ampa      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
                     alpha_gaba_a    : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
