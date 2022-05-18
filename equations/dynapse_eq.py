@@ -5,8 +5,6 @@
 
 Modified from https://code.ini.uzh.ch/ncs/teili
 """
-# neuron
-
 
 def dynapse_eq():
     return{'model': '''
@@ -138,7 +136,7 @@ def dynapse_eq():
            'refractory': 'soma_refP',
            'method': 'euler'}
 
-
+# Warning: do NOT write comments in the on_pre / on_post equations, to prevent problems with GPU code generation.
 def dynapse_nmda_syn_eq():  # SLOW_EXC
     """This function returns the slow excitatory synapse equation dictionary.
     """
@@ -147,7 +145,7 @@ def dynapse_nmda_syn_eq():  # SLOW_EXC
                     """,
            'on_pre': """
                     Inmda_post += Inmda_w0_post*weight   
-                    """, # On pre-synaptic spike adds current to state variable of DPI synapse
+                    """, # On pre-synaptic spike adds current to state variable of DPI synapse.
            'on_post': """ """,
            'method': 'euler'}
 
@@ -172,8 +170,8 @@ def dynapse_gaba_b_syn_eq():  # SLOW_INH
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                     Igaba_b_post += Igaba_b_w0_post*weight   
-                     """, # On pre-synaptic spike adds current to state variable of DPI synapse
+                    Igaba_b_post += Igaba_b_w0_post*weight   
+                    """, # On pre-synaptic spike adds current to state variable of DPI synapse
            'on_post': """ """,
            'method': 'euler'}
 
