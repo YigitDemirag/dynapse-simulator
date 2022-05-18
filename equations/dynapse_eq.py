@@ -25,9 +25,9 @@ def dynapse_eq():
                     Isoma_pfb = Isoma_pfb_gain / (1 + exp(-(Isoma_mem_clip - Isoma_pfb_th) / Isoma_pfb_norm)) : amp       # Positive feedback current
 
                     Iin_clip=clip(Inmda_dp + Iampa_clip - Igaba_b_clip + Isoma_const, I0,1*amp) : amp
-                    Isoma_mem_clip=clip(Isoma_mem,I0,1*amp) : amp
-                    Isoma_pfb_clip=clip(Isoma_pfb,I0,1*amp) : amp
-                    Isoma_ahp_clip=clip(Isoma_ahp,I0,1*amp) : amp
+                    Isoma_mem_clip = clip(Isoma_mem,I0,1*amp) : amp
+                    Isoma_pfb_clip = clip(Isoma_pfb,I0,1*amp) : amp
+                    Isoma_ahp_clip = clip(Isoma_ahp,I0,1*amp) : amp
 
                     tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau) : second         # Time constant of adaptation
                     tau_soma = (Csoma_mem * Ut) / (kappa * Isoma_dpi_tau) : second             # Membrane time constant                    
@@ -77,8 +77,8 @@ def dynapse_eq():
 
                     Vnmda : volt  (constant)                                    # NMDA threshold voltage
                     Inmda_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Inmda_g = alpha_nmda * Inmda_tau : amp                      # Current flowing through ?? sets the DPI's threshold
-                    Inmda_thr = I0 * exp(kappa * Vnmda / Ut) : amp
+                    Inmda_g = alpha_nmda * Inmda_tau : amp                      # NMDA synapse gain term expressed in terms of its tau current
+                    Inmda_thr = I0 * exp(kappa * Vnmda / Ut) : amp              # NMDA voltage-gating threshold
                     Inmda_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_nmda = Cnmda * Ut /(kappa * Inmda_tau) : second         # Synaptic time-constant
                     Cnmda : farad (constant)                                    # Synapse's capacitance
@@ -89,7 +89,7 @@ def dynapse_eq():
 
                     Iampa_clip = clip(Iampa,I0,1*amp) : amp
                     Iampa_tau : amp (constant)                                  # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Iampa_g = alpha_ampa * Iampa_tau : amp                      # Current flowing through ?? sets the DPI's threshold
+                    Iampa_g = alpha_ampa * Iampa_tau : amp                      # AMPA synapse gain term expressed in terms of its tau current
                     Iampa_w0 : amp (constant)                                   # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_ampa = Campa * Ut / (kappa * Iampa_tau) : second        # Synaptic time-constant
                     Campa          : farad (constant)                           # Synapse's capacitance
@@ -102,7 +102,7 @@ def dynapse_eq():
 
                     Igaba_b_clip = clip(Igaba_b,I0,1*amp) : amp
                     Igaba_b_tau      : amp (constant)                           # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                # Current flowing through ?? sets the DPI's threshold
+                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                # GABA B synapse gain term expressed in terms of its tau current
                     Igaba_b_w0 : amp (constant)                                 # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau) : second  # Synaptic time-constant
                     Cgaba_b          : farad (constant)                         # Synapse's capacitance
@@ -113,7 +113,7 @@ def dynapse_eq():
 
                     Igaba_a_clip = clip(Igaba_a,I0,1*amp) : amp
                     Igaba_a_tau     : amp (constant)                            # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                # Current flowing through ?? sets the DPI's threshold
+                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                # GABA A synapse gain term expressed in terms of its tau current
                     Igaba_a_w0 : amp (constant)                                 # Synaptic weight, to convert unitless weight to current
                     tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau) : second  # Synaptic time-constant
                     Cgaba_a         : farad (constant)                          # Synapse's capacitance
@@ -134,7 +134,7 @@ def dynapse_nmda_syn_eq():  # SLOW_EXC
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                    Inmda_post += Inmda_w0*weight
+                    Inmda_post += Inmda_w0*weight   # On pre-synaptic spike adds current to state variable of DPI synapse
                     """,
            'on_post': """ """,
            'method': 'euler'}
@@ -147,7 +147,7 @@ def dynapse_ampa_syn_eq():  # FAST_EXC
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                    Iampa_post += Iampa_w0*weight
+                    Iampa_post += Iampa_w0*weight   # On pre-synaptic spike adds current to state variable of DPI synapse
                     """,
            'on_post': """ """,
            'method': 'euler'}
@@ -160,7 +160,7 @@ def dynapse_gaba_b_syn_eq():  # SLOW_INH
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                     Igaba_b_post += Igaba_b_w0_post*weight
+                     Igaba_b_post += Igaba_b_w0_post*weight   # On pre-synaptic spike adds current to state variable of DPI synapse
                      """,
            'on_post': """ """,
            'method': 'euler'}
@@ -173,7 +173,7 @@ def dynapse_gaba_a_syn_eq():  # FAST_INH
                     weight : 1 # Can only be integer on the chip
                     """,
            'on_pre': """
-                    Igaba_a_post += Igaba_a_w0_post*weight
-                    """,            # On pre-synaptic spike adds current to state variable of DPI synapse
+                    Igaba_a_post += Igaba_a_w0_post*weight  # On pre-synaptic spike adds current to state variable of DPI synapse
+                    """,
            'on_post': """ """,
            'method': 'euler'}
