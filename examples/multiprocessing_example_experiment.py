@@ -18,7 +18,7 @@ def run_experiment(params):
 	pid = os.getpid()
 	print(f'Process {pid} launched, at ' + date_time)
 
-	directory = f"mp_example_{pid}_{date_time}"
+	directory = f"mp_run_{pid}_{date_time}"
 		
 	set_device('cpp_standalone', directory=directory)
 

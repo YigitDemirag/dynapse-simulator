@@ -4,5 +4,5 @@ var
 **/.ipynb_checkpoints
 **/__pycache__
 **/.DS_Store
-**/gpu_example_*
-**/mp_example_*
+**/gpu_run_*
+**/mp_run_*
