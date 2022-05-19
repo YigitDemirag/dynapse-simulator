@@ -136,7 +136,9 @@ def dynapse_eq():
            'refractory': 'soma_refP',
            'method': 'euler'}
 
-# Warning: do NOT write comments in the on_pre / on_post equations, to prevent problems with GPU code generation.
+# Warning: do NOT write comments in the on_pre / on_post equations,
+# to prevent problems with GPU code generation.
+
 def dynapse_nmda_syn_eq():  # SLOW_EXC
     """This function returns the slow excitatory synapse equation dictionary.
     """
