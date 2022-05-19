@@ -29,7 +29,7 @@ def run_experiment(params):
 	BrianLogger.suppress_name('base')
 	defaultclock.dt = 20 * us
 
-	# Do NOT use the PoissonGenerators!
+	# Do NOT use the TimedArrays!
 	# They are not supported by brian2genn
 	spikes = np.zeros(params['_exp_duration_'])
 	dt = int(1000/params['_input_rate_'])
