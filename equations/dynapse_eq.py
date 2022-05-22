@@ -30,7 +30,7 @@ def dynapse_eq():
                     tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau) : second         # Time constant of adaptation
                     tau_soma = (Csoma_mem * Ut) / (kappa * Isoma_dpi_tau) : second             # Membrane time constant                    
                     kappa = (kn + kp) / 2 : 1
-                    Vsoma_mem = Ut / kappa * log(Isoma_mem / I0) : volt           # Membrane voltage
+                    Vsoma_mem = Ut / kappa * log(Isoma_mem / I0) : volt         # Membrane voltage
 
                     # Substrate constants
                     kn              : 1     (shared, constant)                  # Subthreshold slope factor for nFETs
@@ -39,10 +39,10 @@ def dynapse_eq():
                     I0              : amp   (shared, constant)                  # Dark current
                     alpha_soma      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau
                     alpha_ahp       : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
-                    alpha_nmda      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
-                    alpha_ampa      : 1     (constant)                  # Scaling factor equal to Ig/Itau 
-                    alpha_gaba_a    : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
-                    alpha_gaba_b    : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
+                    alpha_nmda      : 1     (constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_ampa      : 1     (constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_gaba_a    : 1     (constant)                          # Scaling factor equal to Ig/Itau 
+                    alpha_gaba_b    : 1     (constant)                          # Scaling factor equal to Ig/Itau 
 
                     # Soma constants
                     Csoma_mem       : farad (shared, constant)                  # Membrane capacitance
@@ -78,7 +78,7 @@ def dynapse_eq():
 
                     Vnmda : volt  (constant)                                            # NMDA threshold voltage
                     Inmda_tau : amp (constant)                                          # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Inmda_g = alpha_nmda * Inmda_tau : amp                              # Current flowing through ?? sets the DPI's threshold
+                    Inmda_g = alpha_nmda * Inmda_tau : amp                              # NMDA synapse gain term expressed in terms of its tau current
                     Inmda_thr = I0 * exp(kappa * Vnmda / Ut) : amp                      # NMDA voltage-gating threshold
                     Inmda_w0 : amp (constant)                                           # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_nmda = Cnmda * Ut /(kappa * Inmda_tau_clip) : second            # Synaptic time-constant
@@ -93,7 +93,7 @@ def dynapse_eq():
                     Iampa_g_clip = I0*(Iampa <= I0) + Iampa_g*(Iampa > I0) : amp        # Clipping current used to prevent Iampa from going negative after differential updates (don't change)
 
                     Iampa_tau : amp (constant)                                          # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Iampa_g = alpha_ampa * Iampa_tau : amp                              # Current flowing through ?? sets the DPI's threshold
+                    Iampa_g = alpha_ampa * Iampa_tau : amp                              # AMPA synapse gain term expressed in terms of its tau current
                     Iampa_w0 : amp (constant)                                           # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_ampa = Campa * Ut / (kappa * Iampa_tau_clip) : second           # Synaptic time-constant
                     Campa : farad (constant)                                            # Synapse's capacitance
@@ -109,7 +109,7 @@ def dynapse_eq():
                     Igaba_b_g_clip = I0*(Igaba_b <= I0) + Igaba_b_g*(Igaba_b > I0) : amp        # Clipping current used to prevent Igaba_b from going negative after differential updates (don't change)
 
                     Igaba_b_tau : amp (constant)                                        # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                        # Current flowing through ?? sets the DPI's threshold
+                    Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                        # GABA B synapse gain term expressed in terms of its tau current
                     Igaba_b_w0 : amp (constant)                                         # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau_clip) : second     # Synaptic time-constant
                     Cgaba_b : farad (constant)                                          # Synapse's capacitance
@@ -123,7 +123,7 @@ def dynapse_eq():
                     Igaba_a_g_clip = I0*(Igaba_a <= I0) + Igaba_a_g*(Igaba_a > I0) : amp        # Clipping current used to prevent Igaba_a from going negative after differential updates (don't change)
 
                     Igaba_a_tau : amp (constant)                                        # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                        # Current flowing through ?? sets the DPI's threshold
+                    Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                        # GABA A synapse gain term expressed in terms of its tau current
                     Igaba_a_w0 : amp (constant)                                         # Synaptic weight, to convert unitless weight to current
                     tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau_clip) : second     # Synaptic time-constant
                     Cgaba_a : farad (constant)                                          # Synapse's capacitance
