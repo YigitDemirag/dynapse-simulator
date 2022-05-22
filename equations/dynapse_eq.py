@@ -11,18 +11,20 @@ def dynapse_eq():
                     # Neuronal dynamics #########################################
 
                     # Differential equations
-                    dIsoma_mem/dt = (((Isoma_dpi_g / Isoma_dpi_tau) *\
-                    (Iin_clip + Isoma_pfb - Igaba_a_clip - Isoma_ahp_clip)) -\
-                    Isoma_dpi_g - ((1 + ((Igaba_a_clip + Isoma_ahp_clip - Isoma_pfb) /\
-                    Isoma_dpi_tau)) * Isoma_mem_clip)) / (tau_soma *\
-                    (1+(Isoma_dpi_g/Isoma_mem_clip))) : amp (unless refractory)
+                    dIsoma_mem/dt = (((Isoma_dpi_g_clip / Isoma_dpi_tau) *\
+                    (Iin_clip + Isoma_pfb - Igaba_a - Isoma_ahp)) -\
+                    Isoma_dpi_g_clip - ((1 + ((Igaba_a + Isoma_ahp - Isoma_pfb) /\
+                    Isoma_dpi_tau)) * Isoma_mem)) / (tau_soma *\
+                    (1+(Isoma_dpi_g_clip/Isoma_mem_clip))) : amp (unless refractory)
 
-                    dIsoma_ahp/dt = (I0-Isoma_ahp_g-Isoma_ahp_clip)/(tau_soma_ahp*(1+(Isoma_ahp_g/Isoma_ahp_clip))) : amp # Adaptation current
+                    dIsoma_ahp/dt = (I0-Isoma_ahp_g_clip-Isoma_ahp)/(tau_soma_ahp*(1+(Isoma_ahp_g_clip/Isoma_ahp))) : amp # Adaptation current
 
                     Isoma_pfb = Isoma_pfb_gain/(1+exp(-(Isoma_mem_clip-Isoma_pfb_th)/Isoma_pfb_norm)) : amp               # Positive feedback current
-                    Iin_clip = clip(Inmda_clip + Iampa_clip - Igaba_b_clip + Isoma_const, I0,1*amp) : amp                 # Clip currents to I0
-                    Isoma_mem_clip = clip(Isoma_mem,I0,1*amp) : amp
-                    Isoma_ahp_clip = clip(Isoma_ahp,I0,1*amp) : amp
+                    Iin_clip = clip(Inmda + Iampa - Igaba_b + Isoma_const, I0,1*amp) : amp                 # Clip current to I0
+                    Isoma_mem_clip = clip(Isoma_mem,I0,1*amp) : amp                                                       # Clip current to I0
+
+                    Isoma_ahp_g_clip = Isoma_ahp_g*(Isoma_ahp>I0) + I0*(Isoma_ahp<=I0) : amp   # Shunt g current if Iahp goes to I0
+                    Isoma_dpi_g_clip = Isoma_dpi_g*(Isoma_mem>I0) + I0*(Isoma_mem<=I0) : amp   # Shunt g current if Imem goes to I0
 
                     kappa = (kn + kp) / 2 : 1
                     tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau) : second         # Time constant of adaptation
@@ -63,23 +65,23 @@ def dynapse_eq():
                     # Synaptic dynamics #########################################
 
                     # NMDA #######################################################
-                    dInmda/dt = (I0 -Inmda - Inmda_g)/(tau_nmda * ((Inmda_g / Inmda_clip) + 1)) : amp
+                    dInmda/dt = (I0 -Inmda - Inmda_g_clip)/(tau_nmda * ((Inmda_g_clip / Inmda) + 1)) : amp
                     Inmda_dp = Inmda/(1 + Inmda_thr / Isoma_mem_clip) : amp             # Voltage gating differential pair block 
-                    Inmda_clip = clip(Inmda_dp, I0, 1*amp) : amp                        # Clip NMDA current to I0 if it goes negative
 
                     Inmda_tau : amp (constant)                                          # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Inmda_g = alpha_nmda * Inmda_tau : amp                              # Current flowing through ?? sets the DPI's threshold
+                    Inmda_g_clip = Inmda_g*(Inmda>I0) + I0*(Inmda<=I0) : amp            # Shunt g current if Inmda goes to I0
                     Inmda_thr : amp                                                     # NMDA voltage-gating threshold
                     Inmda_w0 : amp (constant)                                           # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_nmda = Cnmda * Ut /(kappa * Inmda_tau) : second            # Synaptic time-constant
                     Cnmda : farad (constant)                                            # Synapse's capacitance
 
                     # AMPA #######################################################
-                    dIampa/dt = (I0-Iampa_clip - Iampa)/(tau_ampa * ((Iampa_g / Iampa_clip) + 1)) : amp
-                    Iampa_clip = clip(Iampa, I0, 1*amp) : amp                           # Clipping current used to prevent Iampa from going negative
+                    dIampa/dt = (I0-Iampa - Iampa_g_clip)/(tau_ampa * ((Iampa_g_clip / Iampa) + 1)) : amp
 
                     Iampa_tau : amp (constant)                                          # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Iampa_g = alpha_ampa * Iampa_tau : amp                              # Current flowing through ?? sets the DPI's threshold
+                    Iampa_g_clip = Iampa_g*(Iampa>I0) + I0*(Iampa<=I0) : amp            # Shunt g current if Iampa goes to I0
                     Iampa_w0 : amp (constant)                                           # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_ampa = Campa * Ut / (kappa * Iampa_tau) : second           # Synaptic time-constant
                     Campa : farad (constant)                                            # Synapse's capacitance
@@ -87,21 +89,21 @@ def dynapse_eq():
                     # GABA B - inh #######################################################
                     # the ihn synapse does not actually decrease Imem, it just
                     # decreases the input current from other synapses
-                    dIgaba_b/dt = (I0-Igaba_b_clip - Igaba_b_g)/(tau_gaba_b * ((Igaba_b_g / Igaba_b_clip) + 1)) : amp
-                    Igaba_b_clip = clip(Igaba_b, I0, 1*amp) : amp
+                    dIgaba_b/dt = (I0-Igaba_b - Igaba_b_g_clip)/(tau_gaba_b * ((Igaba_b_g_clip / Igaba_b) + 1)) : amp
 
                     Igaba_b_tau : amp (constant)                                        # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Igaba_b_g = alpha_gaba_b * Igaba_b_tau : amp                        # Current flowing through ?? sets the DPI's threshold
+                    Igaba_b_g_clip = Igaba_b_g*(Igaba_b>I0) + I0*(Igaba_b<=I0) : amp    # Shunt g current if Igaba_b goes to I0
                     Igaba_b_w0 : amp (constant)                                         # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     tau_gaba_b = Cgaba_b * Ut / (kappa * Igaba_b_tau) : second     # Synaptic time-constant
                     Cgaba_b : farad (constant)                                          # Synapse's capacitance
 
                     # GABA A - shunt #####################################################
-                    dIgaba_a/dt =(I0-Igaba_a_clip - Igaba_a_g)/(tau_gaba_a * ((Igaba_a_g / Igaba_a_clip) + 1)) : amp
-                    Igaba_a_clip = clip(Igaba_a, I0, 1*amp) : amp
+                    dIgaba_a/dt =(I0-Igaba_a - Igaba_a_g_clip)/(tau_gaba_a * ((Igaba_a_g_clip / Igaba_a) + 1)) : amp
 
                     Igaba_a_tau : amp (constant)                                        # Leakage current, i.e. how much current is constantly leaked away (time-constant)
                     Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                        # Current flowing through ?? sets the DPI's threshold
+                    Igaba_a_g_clip = Igaba_a_g*(Igaba_a>I0) + I0*(Igaba_a<=I0) : amp    # Shunt g current if Igaba_a goes to I0
                     Igaba_a_w0 : amp (constant)                                         # Synaptic weight, to convert unitless weight to current
                     tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau) : second     # Synaptic time-constant
                     Cgaba_a : farad (constant)                                          # Synapse's capacitance
