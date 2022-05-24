@@ -122,7 +122,7 @@ def dynapse_eq():
 
                     Cgaba_a : farad (constant)                                          # Synapse's capacitance
                     Igaba_a_tau : amp (constant)                                        # Leakage current, i.e. how much current is constantly leaked away (time-constant)
-                    Igaba_a_w0 : amp (constant)                                         # Base aynaptic weight, to convert unitless weight (set in synapse) to current
+                    Igaba_a_w0 : amp (constant)                                         # Base synaptic weight, to convert unitless weight (set in synapse) to current
                     Igaba_a_g = alpha_gaba_a * Igaba_a_tau : amp                        # GABA A synapse gain expressed in terms of its tau current
                     tau_gaba_a = Cgaba_a * Ut / (kappa * Igaba_a_tau_shunt) : second    # Synaptic time-constant
                     ''',
