@@ -4,18 +4,16 @@
 """
 
 import os
-import sys 
-sys.path.append('..')
-
+os.sys.path.append(os.path.dirname(os.path.abspath('..')))
 
 from brian2 import *
 import brian2genn
 
-from DynapSE import DynapSE
-from equations.dynapse_eq import *
-from parameters.dynapse_param import *
-from parameters.set_params import set_params
-from utils.utils import get_attrs
+from Dynapse.DynapSE import DynapSE
+from Dynapse.equations.dynapse_eq import *
+from Dynapse.parameters.dynapse_param import *
+from Dynapse.parameters.set_params import set_params
+from Dynapse.utils.utils import get_attrs
 
 def run_experiment(params):
 	
@@ -51,16 +49,15 @@ def run_experiment(params):
 	synapses.connect()
 	synapses.weight = params['_ampa_weight_']
 
-	monitor_neuron_state  = StateMonitor(neuron, ['Isoma_mem_clip'], record=True, name="monitor_neuron_state")
+	monitor_neuron_state  = StateMonitor(neuron, ['Isoma_mem_clip', 'Iampa'], record=True, name="monitor_neuron_state")
 	monitor_neuron_output = SpikeMonitor(neuron, name="monitor_neuron_output")
-	monitor_synapses_state  = StateMonitor(synapses, 'Iampa', record=np.linspace(0, params['_nr_inputs_']*params['_nr_neurons_']-1, params['_nr_inputs_']*params['_nr_neurons_']), name="monitor_synapse_state")
 
 	run(1 * second)
 	
 	result = {
 		'neuron_membrane_current': [monitor_neuron_state.t/ms, get_attrs(monitor_neuron_state, 'Isoma_mem_clip')],
 		'neuron_spike_output': array([monitor_neuron_output.t/ms, monitor_neuron_output.i]),
-		'synapses_states': [monitor_synapses_state.t/ms, get_attrs(monitor_synapses_state, 'Iampa')],
+		'synaptic_current': [monitor_neuron_state.t/ms, get_attrs(monitor_neuron_state, 'Iampa')],
 	}
 
 	device.reinit()
