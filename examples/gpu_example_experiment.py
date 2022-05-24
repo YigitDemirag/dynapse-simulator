@@ -4,16 +4,18 @@
 """
 
 import os
-os.sys.path.append(os.path.dirname(os.path.abspath('..')))
+import sys 
+sys.path.append('..')
+
 
 from brian2 import *
 import brian2genn
 
-from Dynapse.DynapSE import DynapSE
-from Dynapse.equations.dynapse_eq import *
-from Dynapse.parameters.dynapse_param import *
-from Dynapse.parameters.set_params import set_params
-from Dynapse.utils.utils import get_attrs
+from DynapSE import DynapSE
+from equations.dynapse_eq import *
+from parameters.dynapse_param import *
+from parameters.set_params import set_params
+from utils.utils import get_attrs
 
 def run_experiment(params):
 	
