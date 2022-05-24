@@ -61,7 +61,7 @@ dynapse_param = {
     'Inmda_tau': 2 * constants.I0,          # Synaptic time constant current, the time constant is inversely proportional to I_tau
     'Inmda_w0': 100 * constants.I0,         # Base synaptic weight current which can be scaled by the .weight parameter
     'Inmda': constants.I0,                  # Output current initial value
-    'Vnmda': 10 * mV,                       # Voltage NMDA DPI slow
+    'Inmda_thr': constants.I0,              # NMDA "voltage" gating threshold expressed as a fraction of the neuron spiking threshold
 
     #FAST_EXC, AMPA ########################################################################################
     'Campa': 2 * pF,                        # Synaptic capacitance, fixed at layout time (see chip for details)
