@@ -1,0 +1,8 @@
+var
+**/output
+**/__pycache__
+**/.ipynb_checkpoints
+**/__pycache__
+**/.DS_Store
+**/gpu_run_*
+**/mp_run_*
