@@ -11,14 +11,11 @@ def dynapse_eq():
                     # Neuronal dynamics #########################################
 
                     # Differential equations
-                    dIsoma_mem/dt = (((Isoma_dpi_g_shunt / Isoma_dpi_tau_shunt) *\
-                    (Iin_clip + Isoma_pfb_shunt - Ishunt_clip - Isoma_ahp_shunt)) -\
-                    Isoma_dpi_g_shunt - ((1 + ((Ishunt_clip + Isoma_ahp_shunt - Isoma_pfb_shunt) /\
-                    Isoma_dpi_tau_shunt)) * Isoma_mem)) / (tau_soma *\
-                    ((Isoma_dpi_g_shunt / Isoma_mem_clip) + 1)) : amp (unless refractory)
+                    dIsoma_mem/dt = (alpha_soma * (Iin_clip - Isoma_sum) - Isoma_sum*Isoma_mem_clip/Isoma_dpi_tau_shunt) /\
+                                    (tau_soma * ((Isoma_dpi_g_shunt / Isoma_mem_clip) + 1)) : amp (unless refractory)
 
                     dIsoma_ahp/dt = (- Isoma_ahp_g_shunt - Isoma_ahp + 2*I0*(Isoma_ahp<=I0)) /\
-                    (tau_soma_ahp * (1 + (Isoma_ahp_g_shunt / Isoma_ahp))) : amp # Adaptation current
+                    (tau_soma_ahp * (1 + (Isoma_ahp_g_shunt / Isoma_ahp_shunt))) : amp # Adaptation current
 
                     Isoma_pfb = Isoma_pfb_gain/(1+exp(-(Isoma_mem-Isoma_pfb_th)/Isoma_pfb_norm)) : amp  # Positive feedback current
                     
@@ -26,15 +23,19 @@ def dynapse_eq():
                     # below I0, since negative currents are not possible on chips
                     Isoma_mem_clip = clip(Isoma_mem, I0, 1*amp) : amp
                     Iin_clip = clip(Inmda_dp + Iampa - Igaba_b + Isoma_const, I0, 1*amp) : amp
-                    Ishunt_clip = clip(Igaba_a, I0, Isoma_mem) : amp
-
+                 
                     Isoma_dpi_g_shunt = Isoma_dpi_g*(Isoma_mem>I0) + I0*(Isoma_mem<=I0) : amp           # Shunt g current if Imem goes to I0
                     Isoma_dpi_tau_shunt = Isoma_dpi_tau*(Isoma_mem>I0) + I0*(Isoma_mem<=I0) : amp       # Shunt tau current if Imem goes to I0
                     Isoma_pfb_shunt = Isoma_pfb*(Isoma_mem>I0) + I0*(Isoma_mem<=I0)    : amp
                     Isoma_ahp_shunt = Isoma_ahp*(Isoma_mem>I0) + I0*(Isoma_mem<=I0)  : amp
                     Isoma_ahp_g_shunt = Isoma_ahp_g*(Isoma_ahp>I0) + I0*(Isoma_ahp<=I0) : amp           # Shunt g current if Iahp goes to I0
                     Isoma_ahp_tau_shunt = Isoma_ahp_tau*(Isoma_ahp>I0) + I0*(Isoma_ahp<=I0) : amp       # Shunt g current if Iahp goes to I0
-                  
+                    Igaba_a_shunt = Igaba_a*(Isoma_mem>I0) + I0*(Isoma_mem<=I0) : amp                   # Shunt gaba_a inhibitory current
+
+                    Isoma_sum = Isoma_dpi_tau_shunt + Isoma_ahp_shunt + Igaba_a_shunt - Isoma_pfb_shunt : amp  # Auxiliary variable
+
+                    alpha_soma = Isoma_dpi_g / Isoma_dpi_tau : 1                                        # Soma DPI gain factor
+                    alpha_ahp = Isoma_ahp_g / Isoma_ahp_tau : 1                                         # AHP  DPI gain factor 
                     tau_soma_ahp = (Csoma_ahp * Ut) / (kappa * Isoma_ahp_tau_shunt) : second            # Time constant of adaptation
                     tau_soma = (Csoma_mem * Ut) / (kappa * Isoma_dpi_tau_shunt) : second                # Membrane time constant                    
                     kappa = (kn + kp) / 2 : 1
@@ -44,8 +45,6 @@ def dynapse_eq():
                     kp              : 1     (shared, constant)                  # Subthreshold slope factor for pFETs
                     Ut              : volt  (shared, constant)                  # Thermal voltage
                     I0              : amp   (shared, constant)                  # Dark current
-                    alpha_soma      : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau
-                    alpha_ahp       : 1     (shared, constant)                  # Scaling factor equal to Ig/Itau 
                     alpha_nmda      : 1     (constant)                          # Scaling factor equal to Ig/Itau 
                     alpha_ampa      : 1     (constant)                          # Scaling factor equal to Ig/Itau 
                     alpha_gaba_a    : 1     (constant)                          # Scaling factor equal to Ig/Itau 
@@ -54,7 +53,7 @@ def dynapse_eq():
                     # Soma constants
                     Csoma_mem       : farad (shared, constant)                  # Membrane capacitance
                     Isoma_dpi_tau   : amp   (shared, constant)                  # Leakage current
-                    Isoma_dpi_g = alpha_soma * Isoma_dpi_tau : amp              # Soma DPI gain current 
+                    Isoma_dpi_g     : amp   (shared, constant)                  # DPI gain current
                     Isoma_th        : amp   (shared, constant)                  # Spiking threshold
                     Isoma_reset     : amp   (shared, constant)                  # Reset current
                     Isoma_const     : amp   (constant)                          # Additional input current similar to constant current injection
@@ -63,12 +62,12 @@ def dynapse_eq():
                     # Adaptation constants
                     Csoma_ahp       : farad (shared, constant)                  # Spike-frequency adaptation capacitance
                     Isoma_ahp_tau   : amp   (shared, constant)                  # Leakage current for spike-frequency adaptation
-                    Isoma_ahp_g = alpha_ahp * Isoma_ahp_tau  : amp              # AHP gain current
+                    Isoma_ahp_g     : amp   (shared, constant)                  # AHP gain current
                     Isoma_ahp_w     : amp   (constant)                          # AHP jump height, on post
 
-                    # Positive feedback constants
+                    # Positive feedback fitting constants
                     Isoma_pfb_gain  : amp   (shared, constant)                  # Positive feedback gain
-                    Isoma_pfb_th    : amp   (shared, constant)                  # Positive feedback threshold (since it is a DPI circuit)
+                    Isoma_pfb_th    : amp   (shared, constant)                  # Positive feedback activation threshold 
                     Isoma_pfb_norm  : amp   (shared, constant)                  # Positive feedback normalization current
 
                     # Synaptic dynamics #########################################
@@ -128,7 +127,7 @@ def dynapse_eq():
                     ''',
            'threshold': '''Isoma_mem > Isoma_th''',
            'reset': '''
-                    Isoma_ahp += Isoma_ahp_w
+                    Isoma_ahp += Isoma_ahp_w * alpha_ahp
                     Isoma_mem = Isoma_reset
                     ''',
            'refractory': 'soma_refP',

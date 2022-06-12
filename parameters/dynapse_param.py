@@ -27,8 +27,8 @@ dynapse_param = {
     ##################
 
     #  SCALING FACTORS  #########################################################################################
-    "alpha_soma": 4,                        # Scaling factor equal to Ig/Itau
-    "alpha_ahp": 4,                         # Scaling factor equal to Ig/Itau
+    # "alpha_soma": 4,                        # Scaling factor equal to Ig/Itau
+    # "alpha_ahp": 4,                         # Scaling factor equal to Ig/Itau
     "alpha_nmda": 4,                        # Scaling factor equal to Ig/Itau
     "alpha_ampa": 4,                        # Scaling factor equal to Ig/Itau
     "alpha_gaba_a": 4,                      # Scaling factor equal to Ig/Itau
@@ -39,6 +39,7 @@ dynapse_param = {
     #  SOMA  ##############################################################################################
     "Csoma_mem": 2 * pF,                    # Membrane capacitance, fixed at layout time (see chip for details)
     "Isoma_dpi_tau": 5 * constants.I0,      # Membrane time constant current, the time constant is inversely proportional to Itau
+    "Isoma_dpi_g" : 20 * constants.I0,      # Membrane gain current parameter to set neuron excitability
     "Isoma_th": 2000 * constants.I0,        # Spiking threshold current, depends on layout (see chip for details)
     "Isoma_reset": 1.2 * constants.I0,      # Reset current after spike generation
     "Isoma_const": constants.I0,            # Initialize constant current injection to Io
@@ -47,6 +48,7 @@ dynapse_param = {
     #  ADAPTATION  ########################################################################################
     "Csoma_ahp": 4 * pF,                    # Spike-frequency adaptation capacitance
     "Isoma_ahp_tau": 2 * constants.I0,      # Spike-frequency adaptation time constant current
+    "Isoma_ahp_g" : 8 * constants.I0,       # Spike-frequency adaptation current
     "Isoma_ahp_w": 1 * constants.I0,        # Spike-frequency adaptation weight current
 
     #  POSITIVE FEEDBACK ##################################################################################
