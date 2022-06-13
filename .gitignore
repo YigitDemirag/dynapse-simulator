@@ -6,3 +6,4 @@ var
 **/.DS_Store
 **/gpu_run_*
 **/mp_run_*
+**/standalone**

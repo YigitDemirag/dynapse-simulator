@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Modified from https://code.ini.uzh.ch/ncs/teili
 
@@ -7,10 +6,10 @@ This dictionary contains the default parameters for the
 Differential Pair Integrator (DPI) neuron including synapses as implemented on
 the DYNAP-SE chip, developed at the Institute of Neuroinformatics.
 Circuit and equations were published in Chicca et al. 2014
-These values were estimated empircally based on the example in the tutorial.
+These values were estimated empirically based on the example in the tutorial.
 These parameters may serve you as a starting point for a given experiment.
 
-Variable Naming Convention: 
+Variable Naming Convention: Physical-quantity-type_block-it-belongs-to_role-in-the-block
 """
 
 from brian2 import pF, ms, pA, nA, mV
@@ -27,8 +26,8 @@ dynapse_param = {
     ##################
 
     #  SCALING FACTORS  #########################################################################################
-    # "alpha_soma": 4,                        # Scaling factor equal to Ig/Itau
-    # "alpha_ahp": 4,                         # Scaling factor equal to Ig/Itau
+    "alpha_soma": 4,                        # Scaling factor equal to Ig/Itau
+    "alpha_ahp": 4,                         # Scaling factor equal to Ig/Itau
     "alpha_nmda": 4,                        # Scaling factor equal to Ig/Itau
     "alpha_ampa": 4,                        # Scaling factor equal to Ig/Itau
     "alpha_gaba_a": 4,                      # Scaling factor equal to Ig/Itau
@@ -37,18 +36,17 @@ dynapse_param = {
 
     #  Neuron parameters  ###############
     #  SOMA  ##############################################################################################
+    "Isoma_mem": 1.1*constants.I0,
     "Csoma_mem": 2 * pF,                    # Membrane capacitance, fixed at layout time (see chip for details)
     "Isoma_dpi_tau": 5 * constants.I0,      # Membrane time constant current, the time constant is inversely proportional to Itau
-    "Isoma_dpi_g" : 20 * constants.I0,      # Membrane gain current parameter to set neuron excitability
     "Isoma_th": 2000 * constants.I0,        # Spiking threshold current, depends on layout (see chip for details)
     "Isoma_reset": 1.2 * constants.I0,      # Reset current after spike generation
-    "Isoma_const": constants.I0,            # Initialize constant current injection to Io
+    "Isoma_const": constants.I0,            # Initialize constant current injection to I0
     "soma_refP": 5. * ms,                   # Refractory period: 5*ms limits maximum firing rate at 200Hz
 
     #  ADAPTATION  ########################################################################################
     "Csoma_ahp": 4 * pF,                    # Spike-frequency adaptation capacitance
     "Isoma_ahp_tau": 2 * constants.I0,      # Spike-frequency adaptation time constant current
-    "Isoma_ahp_g" : 8 * constants.I0,       # Spike-frequency adaptation current
     "Isoma_ahp_w": 1 * constants.I0,        # Spike-frequency adaptation weight current
 
     #  POSITIVE FEEDBACK ##################################################################################
