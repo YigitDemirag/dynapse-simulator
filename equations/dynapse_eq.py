@@ -51,7 +51,6 @@ def dynapse_eq():
                     # Soma constants
                     Csoma_mem       : farad (shared, constant)                  # Membrane capacitance
                     Isoma_dpi_tau   : amp   (shared, constant)                  # Leakage current
-                    Isoma_dpi_g     : amp   (shared, constant)                  # DPI gain current
                     Isoma_th        : amp   (shared, constant)                  # Spiking threshold
                     Isoma_reset     : amp   (shared, constant)                  # Reset current
                     Isoma_const     : amp   (constant)                          # Additional input current similar to constant current injection

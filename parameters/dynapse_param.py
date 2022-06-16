@@ -36,8 +36,8 @@ dynapse_param = {
 
     #  Neuron parameters  ###############
     #  SOMA  ##############################################################################################
-    "Isoma_mem": 1.1*constants.I0,
     "Csoma_mem": 2 * pF,                    # Membrane capacitance, fixed at layout time (see chip for details)
+    "Isoma_mem": 1.1 * constants.I0,        # Initial value for Isoma_mem, set to prevent Imem from going below I0
     "Isoma_dpi_tau": 5 * constants.I0,      # Membrane time constant current, the time constant is inversely proportional to Itau
     "Isoma_th": 2000 * constants.I0,        # Spiking threshold current, depends on layout (see chip for details)
     "Isoma_reset": 1.2 * constants.I0,      # Reset current after spike generation
