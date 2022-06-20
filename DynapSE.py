@@ -24,6 +24,7 @@ import sys
 
 NEURONS_PER_CORE = 256
 NUM_CORES = 4
+MAX_CONN = 64
 
 class DynapSE:
     def __init__(self, Network, num_cores=NUM_CORES, neurons_per_core=NEURONS_PER_CORE):
@@ -82,11 +83,9 @@ class DynapSE:
         ''' Add synaptic connections between different NeuronGroups
         '''
         assert synapse_type in ['NMDA', 'AMPA', 'GABA_A','GABA_B'],'Please provide a valid synapse type.'
-        n11,n12 = NeuronGroup1.start, NeuronGroup1.stop
-        n21,n22 = NeuronGroup2.start, NeuronGroup2.stop
-        
+
         core_id = self.get_core_id_of_pop(NeuronGroup2)
-        self.cores[core_id].blocks.update({synapse_type : [n21, n22]})
+        self.cores[core_id].blocks.update({synapse_type : [NeuronGroup2.start, NeuronGroup2.stop]})
        
         if synapse_type == 'NMDA':
             synapse = Synapses(NeuronGroup1, NeuronGroup2,
@@ -106,11 +105,9 @@ class DynapSE:
         return synapse
     
     def connect(self, Synapse, j='i'):
-        n11,n12 = Synapse.source.start,Synapse.source.stop
-        n21,n22 = Synapse.target.start,Synapse.target.stop
         if isinstance(j, bool):
             if j:
-                assert (n12 - n11) < 64 and (n22 - n11) < 64, 'Pre and Post neurons should have less then 64 connections.'
+                assert (Synapse.source.stop - Synapse.source.start) <= MAX_CONN and (Synapse.target.stop - Synapse.target.start) <= MAX_CONN, 'Pre and Post neurons should have less than ' + str(MAX_CONN) + ' connections.'
                 Synapse.connect(True)
         if isinstance(j, str):
             if j=='i':
