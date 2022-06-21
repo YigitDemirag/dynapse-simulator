@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # Modified from https://code.ini.uzh.ch/ncs/teili
 
@@ -7,10 +6,10 @@ This dictionary contains the default parameters for the
 Differential Pair Integrator (DPI) neuron including synapses as implemented on
 the DYNAP-SE chip, developed at the Institute of Neuroinformatics.
 Circuit and equations were published in Chicca et al. 2014
-These values were estimated empircally based on the example in the tutorial.
+These values were estimated empirically based on the example in the tutorial.
 These parameters may serve you as a starting point for a given experiment.
 
-Variable Naming Convention: 
+Variable Naming Convention: Physical-quantity-type_block-it-belongs-to_role-in-the-block
 """
 
 from brian2 import pF, ms, pA, nA, mV
@@ -38,16 +37,16 @@ dynapse_param = {
     #  Neuron parameters  ###############
     #  SOMA  ##############################################################################################
     "Csoma_mem": 2 * pF,                    # Membrane capacitance, fixed at layout time (see chip for details)
+    "Isoma_mem": 1.1 * constants.I0,        # Initial value for Isoma_mem, set to prevent Imem from going below I0
     "Isoma_dpi_tau": 5 * constants.I0,      # Membrane time constant current, the time constant is inversely proportional to Itau
     "Isoma_th": 2000 * constants.I0,        # Spiking threshold current, depends on layout (see chip for details)
     "Isoma_reset": 1.2 * constants.I0,      # Reset current after spike generation
-    "Isoma_const": constants.I0,            # Initialize constant current injection to Io
-    "soma_refP": 5. * ms,                   # Refractory period, limits maximum firing rate at 200Hz
+    "Isoma_const": constants.I0,            # Initialize constant current injection to I0
+    "soma_refP": 5. * ms,                   # Refractory period: 5*ms limits maximum firing rate at 200Hz
 
     #  ADAPTATION  ########################################################################################
     "Csoma_ahp": 4 * pF,                    # Spike-frequency adaptation capacitance
-    "Isoma_ahp": constants.I0,              # Initialize spike-frequency adaptation output current to Io
-    "Isoma_ahp_tau": 1 * constants.I0,      # Spike-frequency adaptation time constant current
+    "Isoma_ahp_tau": 2 * constants.I0,      # Spike-frequency adaptation time constant current
     "Isoma_ahp_w": 1 * constants.I0,        # Spike-frequency adaptation weight current
 
     #  POSITIVE FEEDBACK ##################################################################################
@@ -62,7 +61,7 @@ dynapse_param = {
     'Inmda_tau': 2 * constants.I0,          # Synaptic time constant current, the time constant is inversely proportional to I_tau
     'Inmda_w0': 100 * constants.I0,         # Base synaptic weight current which can be scaled by the .weight parameter
     'Inmda': constants.I0,                  # Output current initial value
-    'Vnmda': 10 * mV,                       # Voltage NMDA DPI slow
+    'Inmda_thr': constants.I0,              # NMDA "voltage" gating threshold expressed as a fraction of the neuron spiking threshold
 
     #FAST_EXC, AMPA ########################################################################################
     'Campa': 2 * pF,                        # Synaptic capacitance, fixed at layout time (see chip for details)
