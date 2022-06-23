@@ -30,17 +30,17 @@ dynapse-simulator/
 ├─ environment.yml
 ```
 
-equations/ : This folder includes dynapse_eq.py that describes non-linear differential equations that govern DPI neuron and four types of DPI synapse (NMDA, AMPA, GABAA, GABAB) circuit dynamics.
+`equations/` : This folder includes dynapse_eq.py that describes non-linear differential equations that govern DPI neuron and four types of DPI synapse (NMDA, AMPA, GABAA, GABAB) circuit dynamics.
 
-examples/ : This folder includes example implementations that accelerate the simulator on the GPU and multiprocessing architectures.
+`examples/` : This folder includes example implementations that accelerate the simulator on the GPU and multiprocessing architectures.
 
-exercises/ : This folder includes three educational materials each of which might be used as one-hour course material. Part1.ipynb covers the introduction to DPI neuron and synapses, describes the API of the simulator and implements a simple spiking neural network where the current levels on synapse and neuron membrane can be monitored. Part2.ipynb covers the characterization of silicon neurons and four types of synapses. Part3.ipynb covers the adaptation mechanism implemented in the silicon neurons.
+`exercises/` : This folder includes three educational materials each of which might be used as one-hour course material. Part1.ipynb covers the introduction to DPI neuron and synapses, describes the API of the simulator and implements a simple spiking neural network where the current levels on synapse and neuron membrane can be monitored. Part2.ipynb covers the characterization of silicon neurons and four types of synapses. Part3.ipynb covers the adaptation mechanism implemented in the silicon neurons.
 
-parameters/ : This folder includes constants.py and dynapse_param.py that contains default parameters for neuron and synapse circuit biases. set_params.py allows the user to easily set parameters to neuron and synapse models by providing a dictionary with keys (parameter names) and values.
+`parameters/` : This folder includes constants.py and dynapse_param.py that contains default parameters for neuron and synapse circuit biases. set_params.py allows the user to easily set parameters to neuron and synapse models by providing a dictionary with keys (parameter names) and values.
 
-DynapSE.py : This file describes the main DynapSE class and functions that define the hardware resources of the DynapSE-1 neuromorphic processor board and restricts users to create networks that can be implemented on the hardware. The functions e.g. set_bias(bias_dictionary, core_number) and add_connection (source_neuron_ID, target_neuron_ID, synapse_type) mimics the API of SAMNA software that is used for programming the DynapSE neuromorphic hardware family.
+`DynapSE.py` : This file describes the main DynapSE class and functions that define the hardware resources of the DynapSE-1 neuromorphic processor board and restricts users to create networks that can be implemented on the hardware. The functions e.g. set_bias(bias_dictionary, core_number) and add_connection (source_neuron_ID, target_neuron_ID, synapse_type) mimics the API of SAMNA software that is used for programming the DynapSE neuromorphic hardware family.
 
-environment.yml : This file lists the requirements of the simulator.
+`environment.yml` : This file lists the requirements of the simulator.
 
 ## Installation
 
